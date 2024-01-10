@@ -1,0 +1,43 @@
+.bigRedButton{
+    color: red;
+
+}
+.outline{
+    border-radius: 5px;
+    border-width: 3px;
+    border: solid;
+    padding-bottom: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: lightgray;
+    height: fit-content;
+
+}
+.displayBox {
+    margin-left: 20%;
+    margin-right: 20%;
+
+
+}
+.zeroButton{
+    margin-left: 240px;
+}
+.title{
+    margin-left: 300px;
+    font-size: larger;
+}
+.buttonHistory{
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 50px;
+    width: 100px;
+    margin-left: 70px;
+    margin-right: 70px;
+    background-color: bisque;
+}

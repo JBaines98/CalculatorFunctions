@@ -1,0 +1,9 @@
+<div class="historyBorder"> 
+    <span>X + Y = Z</span>
+    <div *ngFor="let calculation of allCalculationsHistory" >
+        <span>
+            {{calculation.number1}} {{calculation.function}} {{calculation.number2}} = {{calculation.result}}
+        </span>
+    </div>
+</div>
+

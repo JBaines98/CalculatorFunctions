@@ -1,0 +1,13 @@
+<span>
+    <button (click)="saveToMemory()" class="memoryBorder"><strong>Save To Memory</strong></button>
+
+    <!-- <div *ngIf="isMemory0">
+        <button (click)="useMemory()" class="memoryBorder"><strong>Use Memory</strong></button>
+    </div>
+    <div *ngIf="!isMemory0">
+        <button (click)="useMemory()" class="memoryBorder"><strong>Use Memory  {{this.calculatorService.memoryNumber$ | async}}</strong></button>
+    </div>  -->
+
+    <button (click)="useMemory()" class="memoryBorder"><strong>Use Memory  {{(this.calculatorService.memoryNumber$ | async)}} </strong></button>    
+    <button (click)="clearMemory()" class="memoryBorder"><strong>Clear memory</strong></button>
+</span>

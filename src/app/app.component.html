@@ -1,0 +1,109 @@
+<div class="outline">
+  <!-- <form>
+    <label>
+      Names for list:
+    </label>
+    <input type="text" id="names" name="names" [(ngModel)]="names">
+    <br>
+    <button (click)="onSubmit(names)">Submit</button>
+  </form>
+
+
+  <div *ngFor="let name of arrayOfNamesAlphabetical">
+    <br>
+    <hr>
+    <h3>{{name | uppercase}}</h3>
+  </div>
+
+  <h3>{{arrayOfNamesAlphabetical}}</h3>
+
+  <div *ngIf="showButton === true">
+    <button class="bigRedButton" (click)="reverseOrder()">REVERSE ORDER</button>
+  </div>
+
+  <div *ngIf="showButton === true">
+    <button class="bigRedButton" (click)="reverseOrder(arrayOfNamesAlphabetical)">REVERSE ORDER</button>
+    <div *ngFor="let name1 of reverseArray">
+      <br>
+      <hr>
+      <h3>{{name1 | uppercase}}</h3>
+    </div>
+  </div>
+
+  <hr>
+  <br>
+  <hr> -->
+<br>
+  <div class="title">
+    <h2>Calculator</h2>
+  </div>
+
+  <div class="displayBox">
+    <app-display-result></app-display-result>
+  </div>
+  <br>
+
+  <div>
+    <app-number-button key="1" (numberClicked)="onNumberClicked($event)"></app-number-button>
+    <app-number-button key="2" (numberClicked)="onNumberClicked($event)"></app-number-button>
+    <app-number-button key="3" (numberClicked)="onNumberClicked($event)"></app-number-button>
+  </div>
+  <br>
+  <div>
+    <app-number-button key="4" (numberClicked)="onNumberClicked($event)"></app-number-button>
+    <app-number-button key="5" (numberClicked)="onNumberClicked($event)"></app-number-button>
+    <app-number-button key="6" (numberClicked)="onNumberClicked($event)"></app-number-button>
+  </div>
+  <br>
+  <div>
+    <app-number-button key="7" (numberClicked)="onNumberClicked($event)"></app-number-button>
+    <app-number-button key="8" (numberClicked)="onNumberClicked($event)"></app-number-button>
+    <app-number-button key="9" (numberClicked)="onNumberClicked($event)"></app-number-button>
+  </div>
+  <br>
+  <div>
+    <app-number-button key="0" (numberClicked)="onNumberClicked($event)" class="zeroButton"></app-number-button>
+  </div>
+  <br>
+  <hr>
+  <br>
+  <div>
+    <app-function-button (functionClicked)="onFunctionClicked($event)" (equalClicked)="onEqualClicked()" (clearClicked)="onClearClicked()" (backSpaceClicked)="onBackSpaceClicked()"></app-function-button>
+  </div>
+  <br>
+  <div>
+    <app-memory></app-memory>
+  </div>
+  <br>
+  <div>
+    <button class="buttonHistory" (click)="showSumHistory()"><strong>Show sum history:</strong></button>
+  </div>
+  <br>
+  <div *ngIf="displaySumHistory">
+    <app-sum-history></app-sum-history>
+  </div>
+  <br>
+  <hr>
+  <br>
+  <div>
+    <app-currency-converter></app-currency-converter>
+  </div>
+  <br>
+  <hr>
+  <br>
+  <div>
+    <app-trigonometry></app-trigonometry>
+  </div>
+  <br>
+  <hr>
+  <br>
+  <div>
+    <app-length-converter></app-length-converter>
+  </div>
+  <br>
+  <hr>
+  <br>
+  <div>
+    <app-weight-converter></app-weight-converter>
+  </div>
+</div>

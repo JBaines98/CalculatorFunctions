@@ -1,0 +1,51 @@
+<div class="weightTitle">
+    <h4>Weight Converter <i class="fa-solid fa-weight-hanging"></i></h4>
+</div>
+<div>
+    <span>
+
+        <label for="gramMeasurements"><strong> Choose a metric weight: </strong></label>
+        <select name="gramMeasurements" id="gramMeasurements" [(ngModel)]="gramSystem">
+            <option value="Grams">Grams</option>
+            <option value="Kilograms">Kilograms</option>
+        </select>
+
+        <label for="poundMeasurements"><strong> Choose an American weight: </strong></label>
+        <select name="poundMeasurements" id="poundMeasurements" [(ngModel)]="poundSystem">
+            <option value="Ounces">Ounces</option>
+            <option value="Pounds">Pounds</option>
+        </select>
+
+    </span>
+</div>
+<br>
+<div>
+    <span>
+
+        <label><strong>Metric </strong></label>
+        <input [(ngModel)]="gramValue">
+        <strong>{{gramSystem}}</strong>
+
+    </span>
+</div>
+<br>
+<div>
+    <span>
+
+        <label><strong>American </strong></label>
+        <input [(ngModel)]="poundValue">
+        <strong>{{poundSystem}}</strong>
+
+    </span>
+</div>
+<br>
+<div>
+    <span>
+
+        <label><strong>Conversion rate : </strong></label>
+        <input readonly [(ngModel)]="displayConversionRate">
+        <button class="weightLength" (click)="weightConverter()"><strong>Go</strong></button>
+        <button class="weightClear" (click)="clearWeights()"><strong>Clear</strong></button>
+
+    </span>
+</div>

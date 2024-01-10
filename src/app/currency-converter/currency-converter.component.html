@@ -1,0 +1,39 @@
+<div>
+  <h4 class="currencyTitle">
+    Currency Converter
+    <i class="fa-solid fa-coins"></i>
+  </h4>
+  <span class="inputCurrency">
+    <i [class]="currency"></i>
+    <strong> : </strong>
+    <input [(ngModel)]="sterlingValue"/>
+  </span>
+</div>
+<br />
+<div>
+  <button class="buttonCurrency" (click)="dollarExchange()" title="US Dollar">
+    <i class="fa-solid fa-dollar-sign iconSize"></i>
+  </button>
+
+  <button class="buttonCurrency" (click)="euroExchange()" title="Euros">
+    <i class="fa-solid fa-euro-sign iconSize"></i>
+  </button>
+
+  <button class="buttonCurrency" (click)="yenExchange()" title="Yen ">
+    <i class="fa-solid fa-yen-sign iconSize"></i>
+  </button>
+</div>
+<br />
+<div>
+  <button class="buttonCurrency" (click)="wonExchange()" title="Won">
+    <i class="fa-solid fa-won-sign iconSize"></i>
+  </button>
+
+  <button class="buttonCurrency" (click)="pesoExchange()" title="Pesos">
+    <i class="fa-solid fa-peso-sign iconSize"></i>
+  </button>
+
+  <i [class]="currency"></i>
+  <strong> : </strong>
+  <input readonly [value]="exchangedValue" />
+</div>

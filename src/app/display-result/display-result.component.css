@@ -1,0 +1,8 @@
+.displayBox {
+    border-width: 3px;
+    border-radius: 5%;
+    font-family: 'Times New Roman', Times, serif;
+    height: 40px;
+    width: 350px;
+    margin-left: 40px;
+}

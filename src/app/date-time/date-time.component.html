@@ -1,0 +1,42 @@
+<div class="titlePosition">
+    <h3>Date & Time <i class="fa-regular fa-calendar-days"></i>  <i class="fa-regular fa-clock"></i></h3>
+</div>
+<div>
+    <div>
+        <strong>
+            GMT:    <input readonly [(ngModel)]="dateGMT" class="textBox">
+        </strong>
+        <span>
+            <button class="dateTimeButton" (click)="getAllTimes()">
+                <strong>Get Times</strong>
+            </button>
+            <button class="dateTimeButtonClear" (click)="clearAllTimes()">
+                <strong>Clear Times</strong>
+            </button>
+        </span>
+    </div>
+    <br>
+    <div>
+        <strong>
+            New York:    <input readonly [(ngModel)]="dateEST" class="textBox">
+        </strong>
+    </div>
+    <br>
+    <div>
+        <strong>
+            India:    <input readonly [(ngModel)]="dateIST" class="textBox">
+        </strong>
+    </div>
+    <br>
+    <div>
+        <strong>
+            Japan:    <input readonly [(ngModel)]="dateJST" class="textBox">
+        </strong>
+    </div>
+    <br>
+    <div>
+        <strong>
+            Moscow:    <input readonly [(ngModel)]="dateMSK" class="textBox">
+        </strong>
+    </div>
+</div>

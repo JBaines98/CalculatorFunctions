@@ -1,0 +1,31 @@
+.titlePosition{
+    margin-left: 280px;
+    font-size: larger;
+}
+.dateTimeButton{
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 50px;
+    width: 100px;
+    margin-left: 220px;
+    background-color: greenyellow;
+}
+.textBox {
+    width: fit-content;
+}
+.dateTimeButtonClear{
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 50px;
+    width: 110px;
+    margin-left: 10px;
+    background-color: lightcoral;
+}

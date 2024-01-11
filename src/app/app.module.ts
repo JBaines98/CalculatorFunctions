@@ -12,6 +12,8 @@ import { CurrencyConverterComponent } from './currency-converter/currency-conver
 import { TrigonometryComponent } from './trigonometry/trigonometry.component';
 import { LengthConverterComponent } from './length-converter/length-converter.component';
 import { WeightConverterComponent } from './weight-converter/weight-converter.component';
+import { DateTimeComponent } from './date-time/date-time.component';
+import { VolumeConverterComponent } from './volume-converter/volume-converter.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { WeightConverterComponent } from './weight-converter/weight-converter.co
     TrigonometryComponent,
     LengthConverterComponent,
     WeightConverterComponent,
+    DateTimeComponent,
+    VolumeConverterComponent,
   ],
   imports: [
     BrowserModule,

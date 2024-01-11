@@ -62,7 +62,7 @@ weightConverter(){
 }
 
   convertToAmerican(conversionRate: number){
-    this.poundValue = this.gramValue * conversionRate
+    this.poundValue = this.gramValue * conversionRate;
     return conversionRate;
   }
 

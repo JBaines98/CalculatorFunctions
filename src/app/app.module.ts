@@ -14,6 +14,7 @@ import { LengthConverterComponent } from './length-converter/length-converter.co
 import { WeightConverterComponent } from './weight-converter/weight-converter.component';
 import { DateTimeComponent } from './date-time/date-time.component';
 import { VolumeConverterComponent } from './volume-converter/volume-converter.component';
+import { FoodEnergyConverterComponent } from './food-energy-converter/food-energy-converter.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { VolumeConverterComponent } from './volume-converter/volume-converter.co
     WeightConverterComponent,
     DateTimeComponent,
     VolumeConverterComponent,
+    FoodEnergyConverterComponent,
   ],
   imports: [
     BrowserModule,

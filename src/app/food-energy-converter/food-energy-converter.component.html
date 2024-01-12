@@ -1,0 +1,64 @@
+<div class="energyTitle">
+    <h4>Food Calorie Converter <i></i></h4>
+</div>
+<div>
+    <span>
+
+        <label><strong> Food Calories: </strong></label>
+        <select name="foodQuantity" id="foodQuantity" [(ngModel)]="foodSystem">
+            <option value="Food Calories">
+                Food Calories
+            </option>
+        </select>
+
+        <label for="energyQuantity"><strong> Choose an energy unit: </strong></label>
+        <select name="energyQuantity" id="energyQuantity" [(ngModel)]="energySystem">
+            <option value="Joules">Joules</option>
+            <option value="KiloJoules">KiloJoules</option>
+        </select>
+
+    </span>
+</div>
+<br>
+<div>
+    <span>
+
+        <label><strong>Calories </strong></label>
+        <input [(ngModel)]="foodValue">
+        <strong>{{foodSystem}}</strong>
+
+    </span>
+</div>
+<br>
+<div>
+    <span>
+
+        <label><strong>Energy </strong></label>
+        <input readonly [(ngModel)]="energyValue">
+        <strong>{{energySystem}}</strong>
+
+    </span>
+</div>
+<br>
+<div>
+    <span>
+
+        <label><strong>Equivalent Bananas </strong></label>
+        <input readonly [(ngModel)]="bananaValue">
+
+    </span>
+</div>
+<div>
+    <span>
+
+        <label>
+            <strong>Conversion rate : </strong>
+        </label>
+        <input readonly [(ngModel)]="displayConversionRate">
+        <span>
+            <button class="buttonEnergy" (click)="energyConversion()"><strong>Go</strong></button>
+            <button class="buttonEnergyClear" (click)="clearQuantities()"><strong>Clear</strong></button>
+        </span>
+
+    </span>
+</div>

@@ -1,9 +1,9 @@
-.energyTitle{
+.speedTitle{
     margin-left: 280px;
     font-size: larger;
 }
 
-.buttonEnergy{
+.buttonSpeed{
     border-radius: 5px;
     padding-left: 15px;
     padding-right: 15px;
@@ -12,10 +12,10 @@
     font-family: 'Times New Roman', Times, serif;
     height: 50px;
     width: 100px;
-    margin-left: 150px;
+    margin-left: 460px;
     background-color: greenyellow;
 }
-.buttonEnergyClear{
+.buttonClear{
     border-radius: 5px;
     padding-left: 15px;
     padding-right: 15px;
@@ -26,7 +26,4 @@
     width: 100px;
     margin-left: 10px;
     background-color: lightcoral;
-}
-.apples{
-    margin-left: 10px;
 }

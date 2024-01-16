@@ -13,7 +13,12 @@ export class LengthConverterComponent {
   metricValue: number = 0;
   americanValue: number = 0;
 
+  rulerValue: number = 0;
+  displayRuler: number[] = [];
+  rulerIconName: string = 'fa-solid fa-ruler';
   displayConversionRate: number = 0;
+  displayRulerConversionRate: number = 0;
+
 
   private readonly centermetersToInches: number = 0.393701;
   private readonly centermetersToFeet: number = 0.0328084;
@@ -24,6 +29,10 @@ export class LengthConverterComponent {
   private readonly kilometersToInches: number = 39370.1;
   private readonly kilometersToFeet: number = 3280.84;
   private readonly kilometersToMiles: number = 0.621371;
+
+  private readonly centremetersToRuler: number = 0.33;
+  private readonly metersToRuler: number = 3;
+  private readonly kilometersToRuler: number = 3000;
 
 
 
@@ -45,14 +54,17 @@ export class LengthConverterComponent {
         switch(this.americanSystem){
           case 'Inches': {
             this.displayConversionRate = this.convertToAmerican(this.centermetersToInches);
+            this.displayRulerConversionRate = this.convertToFeetIcon(this.centremetersToRuler);
             break;
           }
           case 'Feet': {
             this.displayConversionRate = this.convertToAmerican(this.centermetersToFeet);
+            this.displayRulerConversionRate = this.convertToFeetIcon(this.centremetersToRuler);
             break;
           }
           case 'Miles': {
             this.displayConversionRate = this.convertToAmerican(this.centermetersToMiles);
+            this.displayRulerConversionRate = this.convertToFeetIcon(this.centremetersToRuler);
             break;
           }
         }
@@ -62,14 +74,17 @@ export class LengthConverterComponent {
         switch(this.americanSystem){
           case 'Inches': {
             this.displayConversionRate = this.convertToAmerican(this.metersToInches);
+            this.displayRulerConversionRate = this.convertToFeetIcon(this.metersToRuler);
             break;
           }
           case 'Feet': {
             this.displayConversionRate = this.convertToAmerican(this.metersToFeet);
+            this.displayRulerConversionRate = this.convertToFeetIcon(this.metersToRuler);
             break;
           }
           case 'Miles': {
             this.displayConversionRate = this.convertToAmerican(this.metersToMiles);
+            this.displayRulerConversionRate = this.convertToFeetIcon(this.metersToRuler);
             break;
           }
         }
@@ -79,14 +94,17 @@ export class LengthConverterComponent {
         switch(this.americanSystem){
           case 'Inches': {
             this.displayConversionRate = this.convertToAmerican(this.kilometersToInches);
+            this.displayRulerConversionRate = this.convertToFeetIcon(this.kilometersToRuler);
             break;
           }
           case 'Feet': {
             this.displayConversionRate = this.convertToAmerican(this.kilometersToFeet);
+            this.displayRulerConversionRate = this.convertToFeetIcon(this.kilometersToRuler);
             break;
           }
           case 'Miles': {
             this.displayConversionRate = this.convertToAmerican(this.kilometersToMiles);
+            this.displayRulerConversionRate = this.convertToFeetIcon(this.kilometersToRuler);
             break;
           }
         }
@@ -98,6 +116,15 @@ export class LengthConverterComponent {
 
   convertToAmerican(conversionRate: number){
     this.americanValue = this.metricValue * conversionRate;
+    return conversionRate;
+  }
+
+  convertToFeetIcon(conversionRate: number){
+    this.rulerValue = this.metricValue * conversionRate;
+    this.displayRuler = [];
+    for(let index=0; index < this.rulerValue; index++){
+      this.displayRuler.push(index);
+    }
     return conversionRate;
   }
 

@@ -55,11 +55,8 @@
     <span>
 
         
-        <label><strong>Equivalent Bananas </strong></label>
+        <label><strong>Equivalent Apples </strong></label>
         <input readonly [(ngModel)]="appleValue">
-        <span>
-            <i></i>
-        </span>
 
         <span>
             <button class="buttonEnergy" (click)="energyConversion()"><strong>Go</strong></button>
@@ -68,3 +65,6 @@
 
     </span>
 </div>
+<span>
+    <app-icon-displayer [iconArray]="displayApples" [iconName]="appleIconName"></app-icon-displayer>
+</span>

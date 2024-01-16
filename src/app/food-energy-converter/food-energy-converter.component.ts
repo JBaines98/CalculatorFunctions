@@ -15,6 +15,8 @@ export class FoodEnergyConverterComponent {
   appleValue: number = 0;
   displayConversionRate: number = 0;
   displayAppleConversionRate: number = 0;
+  displayApples: number[] = [];
+  appleIconName: string = 'fa-solid fa-apple-whole';
 
   private readonly foodCaloriesToJoules: number = 4184;
   private readonly foodCaloriesToKiloJoules: number = 4.184;
@@ -32,12 +34,12 @@ export class FoodEnergyConverterComponent {
       switch(this.energySystem){
         case 'Joules': {
           this.displayConversionRate = this.convertToEnergy(this.foodCaloriesToJoules);
-          this.convertToBananas(this.foodCaloriesToApples);
+          this.convertToApples(this.foodCaloriesToApples);
           break;
         }
         case 'KiloJoules': {
           this.displayConversionRate = this.convertToEnergy(this.foodCaloriesToKiloJoules);
-          this.convertToBananas(this.foodCaloriesToApples);
+          this.convertToApples(this.foodCaloriesToApples);
           break;
         }
       }
@@ -49,8 +51,12 @@ export class FoodEnergyConverterComponent {
     return conversionRate;
   }
 
-  convertToBananas(conversionRate: number){
+  convertToApples(conversionRate: number){
     this.appleValue = this.foodValue * conversionRate;
+    this.displayApples = [];
+    for(let index = 0; index < this.appleValue; index++){
+      this.displayApples.push(index);
+    }
     return conversionRate;
   }
 
@@ -62,5 +68,6 @@ export class FoodEnergyConverterComponent {
     this.appleValue = 0;
     this.displayAppleConversionRate = 0;
     this.displayConversionRate = 0;
+    this.displayApples = [];
   }
 }

@@ -8,7 +8,7 @@
         <select name="metricVolumes" id="metricVolumes" [(ngModel)]="metricSystem">
             <option value="Milliliters">Milliliters</option>
             <option value="Centiliters">Centiliters</option>
-            <option value="Ounces">Ounces</option>
+            <option value="Liters">Liters</option>
         </select>
 
         <label for="americanMeasurements"><strong> Choose an American volume: </strong></label>
@@ -50,6 +50,13 @@
             <button class="buttonVolume" (click)="volumeConversion()"><strong>Go</strong></button>
             <button class="buttonVolumeClear" (click)="clearVolumes()"><strong>Clear</strong></button>
         </span>
+
+    </span>
+</div>
+<div>
+    <span>
+
+        <app-icon-displayer [iconArray]="displayLiters" [iconName]="litreIconName"></app-icon-displayer>
 
     </span>
 </div>

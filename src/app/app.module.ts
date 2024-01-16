@@ -15,6 +15,10 @@ import { WeightConverterComponent } from './weight-converter/weight-converter.co
 import { DateTimeComponent } from './date-time/date-time.component';
 import { VolumeConverterComponent } from './volume-converter/volume-converter.component';
 import { FoodEnergyConverterComponent } from './food-energy-converter/food-energy-converter.component';
+import { SpeedConverterComponent } from './speed-converter/speed-converter.component';
+import { IconDisplayerComponent } from './icon-displayer/icon-displayer.component';
+import { TemperatureConverterComponent } from './temperature-converter/temperature-converter.component';
+
 
 @NgModule({
   declarations: [
@@ -31,11 +35,15 @@ import { FoodEnergyConverterComponent } from './food-energy-converter/food-energ
     DateTimeComponent,
     VolumeConverterComponent,
     FoodEnergyConverterComponent,
+    SpeedConverterComponent,
+    IconDisplayerComponent,
+    TemperatureConverterComponent
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

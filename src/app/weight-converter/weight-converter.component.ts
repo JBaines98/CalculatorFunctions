@@ -19,6 +19,10 @@ dumbBellIconName: string = 'fa-solid fa-dumbbell';
 displayConversionRate: number = 0;
 displayDumbBellRate: number = 0;
 
+iconValue: number = 1;
+iconUnit: string = 'Kg';
+iconFirstAddition: number = 1;
+
 private readonly gramsToOunces: number = 0.035274;
 private readonly gramsToPounds: number = 0.00220462;
 private readonly kilogramsToOunces: number = 35.274;

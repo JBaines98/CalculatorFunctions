@@ -7,7 +7,7 @@
         <label><strong> Metric Speed: </strong></label>
         <select name="metricQuantity" id="americanQuantity" [(ngModel)]="metricSystem">
             <option value="Meters per second">Meters per second</option>
-            <option value="Kilometers per second">Kilometers per second</option>
+            <option value="Kilometers per hour">Kilometers per hour</option>
         </select>
 
         <label><strong> American Speed: </strong></label>
@@ -54,6 +54,13 @@
             <button class="buttonSpeed" (click)="speedConversion()"><strong>Go</strong></button>
             <button class="buttonClear" (click)="clearSpeed()"><strong>Clear</strong></button>
         </span>
+
+    </span>
+</div>
+<div>
+    <span>
+
+        <app-icon-displayer [iconArray]="displaySpeed" [iconName]="speedIconName" [iconValue]="iconValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
 
     </span>
 </div>

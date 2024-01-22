@@ -18,6 +18,10 @@ export class FoodEnergyConverterComponent {
   displayApples: number[] = [];
   appleIconName: string = 'fa-solid fa-apple-whole';
 
+  iconValue: number = 327;
+  iconUnit: string = 'Kj'
+  iconFirstAddition: number = 327;
+
   private readonly foodCaloriesToJoules: number = 4184;
   private readonly foodCaloriesToKiloJoules: number = 4.184;
   private readonly foodCaloriesToApples: number = 0.0105708245243129;

@@ -1,5 +1,19 @@
-<span *ngFor="let icon of iconArray">
-    <span class="icon" [title]="iconArray.length">
-        <i [class]="iconName"> </i>
+<!-- <div>
+    <span>
+        {{iconOverallKey.iconName}}{{iconOveralKey.iconKey}}
+    </span>
+</div> -->
+
+
+<span *ngFor="let icon of iconArray; index as i">
+    <span *ngIf="(i%2) ==0">
+        <span class="icon" [title]="getIndex(i)" >
+            <i [class]="iconName"> </i>
+        </span>
+    </span>
+    <span *ngIf="(i%2) !==0">
+        <span class="icon2" [title]="getIndex(i)" >
+            <i [class]="iconName"></i>
+        </span>
     </span>
 </span>

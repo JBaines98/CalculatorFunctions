@@ -22,6 +22,10 @@ export class VolumeConverterComponent {
   displayConversionRate: number = 0;
   displayWaterBottleConversionRate: number = 0;
 
+  iconValue: number = 50;
+  iconUnit: string = 'cl';
+  iconFirstAddition: number = 50;
+
   private readonly millilitersToTeaspoons: number = 0.202884;
   private readonly millilitersToTablespoons: number = 0.06763;
   private readonly millilitersToOunces: number = 0.0351950797;
@@ -134,6 +138,7 @@ export class VolumeConverterComponent {
     this.metricValue = 0;
     this.americanValue = 0;
     this.displayConversionRate = 0;
+    this.displayLiters = [];
   }
 
 }

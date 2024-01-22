@@ -19,6 +19,10 @@ export class LengthConverterComponent {
   displayConversionRate: number = 0;
   displayRulerConversionRate: number = 0;
 
+  iconValue: number = 33;
+  iconUnit: string = 'cm';
+  iconFirstAddition: number = 33;
+
 
   private readonly centermetersToInches: number = 0.393701;
   private readonly centermetersToFeet: number = 0.0328084;
@@ -134,6 +138,7 @@ export class LengthConverterComponent {
     this.americanSystem = '';
     this.metricSystem = '';
     this.displayConversionRate = 0;
+    this.displayRuler = [];
   }
 
 

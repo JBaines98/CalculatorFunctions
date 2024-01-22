@@ -18,6 +18,7 @@ import { FoodEnergyConverterComponent } from './food-energy-converter/food-energ
 import { SpeedConverterComponent } from './speed-converter/speed-converter.component';
 import { IconDisplayerComponent } from './icon-displayer/icon-displayer.component';
 import { TemperatureConverterComponent } from './temperature-converter/temperature-converter.component';
+import { PressureComponent } from './pressure/pressure.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { TemperatureConverterComponent } from './temperature-converter/temperatu
     FoodEnergyConverterComponent,
     SpeedConverterComponent,
     IconDisplayerComponent,
-    TemperatureConverterComponent
+    TemperatureConverterComponent,
+    PressureComponent
 
   ],
   imports: [

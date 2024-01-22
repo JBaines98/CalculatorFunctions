@@ -50,10 +50,20 @@
 <div>
     <span>
 
+        <label><strong>Conversion rate for Icons: </strong></label>
+        <input readonly [(ngModel)]="displayTenDegreeRate">
+
         <span>
             <button class="buttonTemperature" (click)="temperatureConversion()"><strong>Go</strong></button>
             <button class="buttonClear" (click)="clearTemperature()"><strong>Clear</strong></button>
         </span>
+
+    </span>
+</div>
+<div>
+    <span>
+
+        <app-icon-displayer [iconArray]="displayTenDegree" [iconName]="tenDegreeIconName" [iconUnit]="iconUnit" [iconValue]="iconValue" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
 
     </span>
 </div>

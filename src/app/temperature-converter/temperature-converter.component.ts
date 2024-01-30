@@ -20,12 +20,18 @@ export class TemperatureConverterComponent {
   tenDegreeIconName: string = '';
   tenDegreeIconNameHot: string = 'fa-solid fa-fire';
   tenDegreeIconNameCold: string = 'fa-solid fa-snowflake';
+  tenDegreeIconNameFrozen: string = 'fa-solid fa-snowplow';
 
   iconUnit: string = '°C';
   iconValue: number = 10;
   iconFirstAddition: number = 10;
 
-  private readonly celciusToFahrenheit: number = 0;
+  displayTemperatureComponent: boolean = true;
+  iconDisplayerValue: number = 0;
+  isCelcius: boolean | null = null;
+  showHotOrCold: string = '';
+
+  private readonly celciusToFahrenheit: number = 33.8;
   private readonly fahrenheitToCelcius: number = 0;
 
   private readonly celciusToTenDegrees: number = 0.1;
@@ -43,18 +49,42 @@ export class TemperatureConverterComponent {
 
   temperatureConversion(){
 
+    if(this.fromSystem === 'Celcius'){
+      this.isCelcius = true;
+    }else{
+      this.isCelcius = false;
+    };
+
+    if(this.fromValue >= 59 && !this.isCelcius){
+      this.showHotOrCold = 'hotFahrenheit';
+    };
+    if(this.fromValue >= 15 && this.isCelcius){
+      this.showHotOrCold = 'hotCelcius';
+    };
+    if(this.fromValue < 59 && !this.isCelcius){
+      this.showHotOrCold = 'coldFahrenheit';
+    };
+    if(this.fromValue < 15 && this.isCelcius){
+      this.showHotOrCold = 'coldCelcius';
+    };
+    if(this.fromValue < 0 && this.isCelcius){
+      this.showHotOrCold = 'frozenCelcius';
+    };
+    if(this.fromValue < 32 && !this.isCelcius){
+      this.showHotOrCold = 'frozenFahrenheit';
+    };
+
     if(this.fromSystem === this.toSystem){
       window.alert("Cannot convert to the same unit. Please choose a different unit.")
       console.log("Cannot convert to the same unit.");
     }else{
 
-      if(this.fromValue > 15){
+      if(this.showHotOrCold === 'hotFahrenheit' || this.showHotOrCold === 'hotCelcius'){
         switch(this.fromSystem){
           case 'Celcius': {
             switch(this.toSystem){
               case 'Fahrenheit': {
-                this.displayConversionRate = this.convertTo(this.celciusToFahrenheit);
-                this.displayTenDegreeRate = this.convertToHeatIcon(this.celciusToTenDegrees);
+                this.displayTenDegreeRate = this.convertToHeatIconC2F(this.celciusToTenDegrees);
                 break;
               }
             }
@@ -63,21 +93,20 @@ export class TemperatureConverterComponent {
           case 'Fahrenheit': {
             switch(this.toSystem){
               case 'Celcius': {
-                this.displayConversionRate = this.convertTo(this.fahrenheitToCelcius);
-                this.displayTenDegreeRate = this.convertToHeatIcon(this.fahrenheitToTenDegrees);
+                this.displayTenDegreeRate = this.convertToHeatIconF2C(this.fahrenheitToTenDegrees);
                 break;
               }
             }
             break;
           }
         }
-      }else{
+      }
+      if(this.showHotOrCold === 'coldFahrenheit' || this.showHotOrCold === 'coldCelcius'){
         switch(this.fromSystem){
           case 'Celcius': {
             switch(this.toSystem){
               case 'Fahrenheit': {
-                this.displayConversionRate = this.convertTo(this.celciusToFahrenheit);
-                this.displayTenDegreeRate = this.convertToColdIcon(this.celciusToTenDegrees);
+                this.displayTenDegreeRate = this.convertToColdIconC2F(this.celciusToTenDegrees);
                 break;
               }
             }
@@ -86,8 +115,30 @@ export class TemperatureConverterComponent {
           case 'Fahrenheit': {
             switch(this.toSystem){
               case 'Celcius': {
-                this.displayConversionRate = this.convertTo(this.fahrenheitToCelcius);
-                this.displayTenDegreeRate = this.convertToColdIcon(this.fahrenheitToTenDegrees);
+                this.displayTenDegreeRate = this.convertToColdIconF2C(this.fahrenheitToTenDegrees);
+                break;
+              }
+            }
+            break;
+          }
+        }
+
+      }
+      if(this.showHotOrCold === 'frozenCelcius' || this.showHotOrCold === 'frozenFahrenheit'){
+        switch(this.fromSystem){
+          case 'Celcius': {
+            switch(this.toSystem){
+              case 'Fahrenheit': {
+                this.displayTenDegreeRate = this.convertToFrozenIconC2F(this.celciusToTenDegrees);
+                break;
+              }
+            }
+            break;
+          }
+          case 'Fahrenheit': {
+            switch(this.toSystem){
+              case 'Celcius': {
+                this.displayTenDegreeRate = this.convertToFrozenIconF2C(this.fahrenheitToTenDegrees);
                 break;
               }
             }
@@ -96,38 +147,95 @@ export class TemperatureConverterComponent {
         }
       }
 
-
-
-
-
-
-
+      this.iconDisplayerValue = 10;
+      this.iconFirstAddition = 10;
     }
-
   }
 
-  convertTo(conversionRate: number){
-    this.toValue = this.fromValue * conversionRate;
-    return conversionRate;
+  // convertTo(conversionRate: number){
+  //   this.toValue = this.fromValue * conversionRate;
+  //   return conversionRate;
+  // }
+
+
+  convertC2F(){
+    let toCalc = this.fromValue * 1.8;
+    let convertedNum = toCalc + 32;
+    this.toValue = convertedNum;
+    return convertedNum;
   }
 
-  convertToHeatIcon(conversionRate: number){
-    this.tenDegreeValue = this.fromValue * conversionRate;
+  convertF2C(){
+    let toCalc = this.fromValue - 32;
+    let pointFiveFive = 5 / 9;
+    let convertedNum = toCalc * pointFiveFive;
+    this.toValue = convertedNum;
+    return convertedNum;
+  }
+
+  convertToHeatIconC2F(conversionRate: number){
+    this.tenDegreeValue = this.convertC2F();
+    this.iconDisplayerValue = Math.trunc(this.tenDegreeValue);
     this.displayTenDegree = [];
-    for(let index=0; index < this.tenDegreeValue; index++){
+    for(let index=0; index < this.iconDisplayerValue; index++){
       this.displayTenDegree.push(index);
-    }
+    };
     this.tenDegreeIconName = this.tenDegreeIconNameHot;
     return conversionRate;
   }
 
-  convertToColdIcon(conversionRate: number){
-    this.tenDegreeValue = this.fromValue * conversionRate;
+  convertToHeatIconF2C(conversionRate: number){
+    this.tenDegreeValue = this.convertF2C();
+    this.iconDisplayerValue = Math.trunc(this.tenDegreeValue);
     this.displayTenDegree = [];
-    for(let index = 0; index < this.tenDegreeValue; index++){
+    for(let index=0; index < this.iconDisplayerValue; index++){
       this.displayTenDegree.push(index);
-    }
+    };
+    this.tenDegreeIconName = this.tenDegreeIconNameHot;
+    return conversionRate;
+  }
+
+  convertToColdIconC2F(conversionRate: number){
+    this.tenDegreeValue = this.convertC2F();
+    this.iconDisplayerValue = Math.trunc(this.tenDegreeValue);
+    this.displayTenDegree = [];
+    for(let index = 0; index < this.iconDisplayerValue; index++){
+      this.displayTenDegree.push(index);
+    };
     this.tenDegreeIconName = this.tenDegreeIconNameCold;
+    return conversionRate;
+  }
+
+  convertToColdIconF2C(conversionRate: number){
+    this.tenDegreeValue = this.convertF2C();
+    this.iconDisplayerValue = Math.trunc(this.tenDegreeValue);
+    this.displayTenDegree = [];
+    for(let index = 0; index < this.iconDisplayerValue; index++){
+      this.displayTenDegree.push(index);
+    };
+    this.tenDegreeIconName = this.tenDegreeIconNameCold;
+    return conversionRate;
+  }
+
+  convertToFrozenIconC2F(conversionRate: number){
+    this.tenDegreeValue = this.convertC2F();
+    this.iconDisplayerValue = Math.trunc(this.tenDegreeValue);
+    this.displayTenDegree = [];
+    for(let index = 0; index < this.iconDisplayerValue; index++){
+      this.displayTenDegree.push(index);
+    };
+    this.tenDegreeIconName = this.tenDegreeIconNameFrozen;
+    return conversionRate;
+  }
+
+  convertToFrozenIconF2C(conversionRate: number){
+    this.tenDegreeValue = this.convertF2C();
+    this.iconDisplayerValue = Math.trunc(this.tenDegreeValue);
+    this.displayTenDegree = [];
+    for(let index = 0; index < this.iconDisplayerValue; index++){
+      this.displayTenDegree.push(index);
+    };
+    this.tenDegreeIconName  =this.tenDegreeIconNameFrozen;
     return conversionRate;
   }
 
@@ -140,7 +248,7 @@ export class TemperatureConverterComponent {
     this.tenDegreeValue = 0;
     this.displayTenDegree = [];
     this.displayTenDegreeRate = 0;
-
   }
+  
 
 }

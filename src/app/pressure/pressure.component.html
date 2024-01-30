@@ -1,64 +1,58 @@
-<div class="pressureTitle">
-    <h4>Pressure Converter <i class="fa-solid fa-gauge"></i></h4>
-</div>
-<div>
-    <span>
-
-        <label><strong> First unit of pressure: </strong></label>
-        <select name="fromQuantity" id="fromQuantity" [(ngModel)]="firstSystem">
-            <option value="Atmospheres">Atmospheres</option>
-            <option value="Bars">Bars</option>
-        </select>
-
-        <label><strong> Second unit of pressure: </strong></label>
-        <select name="toQuantity" id="toQuantity" [(ngModel)]="secondSystem">
-            <option value="Bars">Bars</option>
-            <option value="Atmospheres">Atmospheres</option>
-        </select>
-
+<div class="flex-container">
+    <span class="pressureTitle">
+        <h4>Pressure Converter <i class="fa-solid fa-gauge"></i></h4>
     </span>
+</div>
+<div class="flex-container">
+    <div>
+        <div> 
+            <label><strong> First unit of pressure: </strong></label>
+            <select name="fromQuantity" id="fromQuantity" [(ngModel)]="firstSystem">
+                <option value="Atmospheres">Atmospheres</option>
+                <option value="Bars">Bars</option>
+            </select>
+        </div>
+        <div>
+            <label><strong> Second unit of pressure: </strong></label>
+            <select name="toQuantity" id="toQuantity" [(ngModel)]="secondSystem">
+                <option value="Bars">Bars</option>
+                <option value="Atmospheres">Atmospheres</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <span>
+                <label><strong>Pressure</strong></label>
+                <input [(ngModel)]="firstValue">
+                <strong>{{firstSystem}}</strong>
+            </span>
+        </div>
+        <div>
+            <span>
+                <label><strong>Pressure</strong></label>
+                <input readonly [(ngModel)]="secondValue">
+                <strong>{{secondSystem}}</strong>
+            </span>
+        </div>
+        <br>
+        <div>
+            <span>
+                <label><strong>Conversion rate: </strong></label>
+                <input readonly [(ngModel)]="displayConversionRate">
+            </span>
+        </div>
+    </div>
+    <div>
+        <span>
+            <button class="buttonPressure" (click)="pressureConversion()"><strong>Go</strong></button>
+            <button class="buttonClear" (click)="clearPressure()"><strong>Clear</strong></button>
+        </span>
+    </div>
 </div>
 <br>
-<div>
+<div class="flex-container">
     <span>
-
-        <label><strong>Pressure</strong></label>
-        <input [(ngModel)]="firstValue">
-        <strong>{{firstSystem}}</strong>
-
+        <app-icon-displayer [iconArray]="displayPlanetEarth" [iconName]="planetEarthIconName" [iconValue]="planetEarthValue" [iconUnit]="planetEarthUnit" [iconFirstAddition]="planetEarthIconFirstAddition" [displayPressureComponent]="displayPressureComponent"></app-icon-displayer>
     </span>
 </div>
-<br>
-<div>
-    <span>
 
-        <label><strong>Pressure</strong></label>
-        <input readonly [(ngModel)]="secondValue">
-        <strong>{{secondSystem}}</strong>
-
-    </span>
-</div>
-<br>
-<div>
-    <span>
-
-        <label><strong>Conversion rate: </strong></label>
-        <input readonly [(ngModel)]="displayConversionRate">
-
-    </span>
-</div>
-<div>
-    <span>
-
-        <button class="buttonPressure" (click)="pressureConversion()"><strong>Go</strong></button>
-        <button class="buttonClear" (click)="clearPressure()"><strong>Clear</strong></button>
-
-    </span>
-</div>
-<div>
-    <span>
-
-        <app-icon-displayer [iconArray]="displayPlanetEarth" [iconName]="planetEarthIconName" [iconValue]="planetEarthValue" [iconUnit]="planetEarthUnit" [iconFirstAddition]="planetEarthIconFirstAddition"></app-icon-displayer>
-
-    </span>
-</div>

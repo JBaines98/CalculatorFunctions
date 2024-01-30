@@ -1,69 +1,59 @@
-<div class="temperatureTitle">
-    <h4>Temperature Converter <i class="fa-solid fa-temperature-three-quarters"></i></h4>
-</div>
-<div>
-    <span>
-
-        <label><strong> Starting Temperature: </strong></label>
-        <select name="fromQuantity" id="fromQuantity" [(ngModel)]="fromSystem">
-            <option value="Celcius">Celcius</option>
-            <option value="Fahrenheit">Fahrenheit</option>
-        </select>
-
-        <label><strong> Converted Temperature: </strong></label>
-        <select name="toQuantity" id="toQuantity" [(ngModel)]="toSystem">
-            <option value="Fahrenheit">Fahrenheit</option>
-            <option value="Celcius">Celcius</option>
-        </select>
-
+<div class="flex-container">
+    <span class="temperatureTitle">
+        <h4>Temperature Converter <i class="fa-solid fa-temperature-three-quarters"></i></h4>
     </span>
 </div>
-<br>
-<div>
-    <span>
+<div class="flex-container">
 
-        <label><strong>Temperature</strong></label>
-        <input [(ngModel)]="fromValue">
-        <strong>{{fromSystem}}</strong>
-
-    </span>
-</div>
-<br>
-<div>
-    <span>
-
-        <label><strong>Temperature</strong></label>
-        <input [(ngModel)]="toValue">
-        <strong>{{toSystem}}</strong>
-
-    </span>
-</div>
-<br>
-<div>
-    <span>
-
-        <label><strong>Conversion rate : </strong></label>
-        <input readonly [(ngModel)]="displayConversionRate">
-
-    </span>
-</div>
-<div>
-    <span>
-
-        <label><strong>Conversion rate for Icons: </strong></label>
-        <input readonly [(ngModel)]="displayTenDegreeRate">
-
+    <div>
+        <div>
+    
+            <label><strong> Starting Temperature: </strong></label>
+            <select name="fromQuantity" id="fromQuantity" [(ngModel)]="fromSystem">
+                <option value="Celcius">Celcius</option>
+                <option value="Fahrenheit">Fahrenheit</option>
+            </select>
+        </div>
+        <div>
+            <label><strong> Converted Temperature: </strong></label>
+            <select name="toQuantity" id="toQuantity" [(ngModel)]="toSystem">
+                <option value="Fahrenheit">Fahrenheit</option>
+                <option value="Celcius">Celcius</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <span>
+                <label><strong>Temperature</strong></label>
+                <input [(ngModel)]="fromValue">
+                <strong>{{fromSystem}}</strong>
+            </span>
+        </div>
+        <div>
+            <span>
+                <label><strong>Temperature</strong></label>
+                <input [(ngModel)]="toValue">
+                <strong>{{toSystem}}</strong>
+            </span>
+        </div>
+        <br>
+        <div>
+            <span>
+                <label><strong>Conversion rate : </strong></label>
+                <input readonly [(ngModel)]="displayConversionRate">
+            </span>
+        </div>
+    </div>
+    <div>
         <span>
             <button class="buttonTemperature" (click)="temperatureConversion()"><strong>Go</strong></button>
             <button class="buttonClear" (click)="clearTemperature()"><strong>Clear</strong></button>
         </span>
-
-    </span>
+    </div>
 </div>
-<div>
+<br>
+<div class="flex-container">
     <span>
-
-        <app-icon-displayer [iconArray]="displayTenDegree" [iconName]="tenDegreeIconName" [iconUnit]="iconUnit" [iconValue]="iconValue" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
-
+        <app-icon-displayer [iconArray]="displayTenDegree" [iconName]="tenDegreeIconName" [iconUnit]="iconUnit" [iconValue]="iconDisplayerValue" [iconFirstAddition]="iconFirstAddition" [displayTemperatureComponent]="displayTemperatureComponent"></app-icon-displayer>
     </span>
 </div>

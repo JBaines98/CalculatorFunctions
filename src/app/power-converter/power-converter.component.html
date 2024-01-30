@@ -1,0 +1,59 @@
+<div class="flex-container">
+    <span class="powerTitle">
+        <h4>Power Converter <i class="fa-solid fa-battery-half"></i></h4>
+    </span>
+</div>
+<div class="flex-container">
+    <div>
+        <div>
+            <label><strong> Choose a power unit: </strong></label>
+            <select name="firstQuantity" id="firstQuantity" [(ngModel)]="firstSystem">
+                <option value="Horse Power">Horse Power</option>
+                <option value="Kilowatt">Kilowatt</option>
+            </select>
+        </div>
+        <div>
+            <label><strong> Choose a power unit to convert to: </strong></label>
+            <select name="secondQuantity" id="secondQuantity" [(ngModel)]="secondSystem">
+                <option value="Kilowatt">Kilowatt</option>
+                <option value="Horse Power">Horse Power</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <span>
+                <label><strong>First </strong></label>
+                <mat-slider min="0" max="100" step="1" showTickMarks discrete>
+                    <input matSliderThumb [(ngModel)]="firstValue">
+                </mat-slider>
+                <strong>{{firstSystem}}</strong>
+            </span>
+        </div>
+        <div>
+            <span>
+                <label><strong>Second </strong></label>
+                <input readonly [(ngModel)]="secondValue">
+                <strong>{{secondSystem}}</strong>       
+            </span>
+        </div>
+        <br>
+        <div>
+            <span>
+                <label><strong>ConversionRate : </strong></label>
+                <input readonly [(ngModel)]="displayConversionRate">
+            </span>
+        </div>
+    </div>
+    <div>
+        <span>
+            <button class="buttonPower" (click)="powerConversion()"><strong>Go</strong></button>
+            <button class="buttonPowerClear" (click)="clearPowers()"><strong>Clear</strong></button>
+        </span>
+    </div>
+</div>
+<br>
+<div class="flex-container">
+    <span>
+        <app-icon-displayer [iconArray]="displayIcons" [iconName]="iconName" [iconUnit]="iconUnit" [iconValue]="iconValue" [iconFirstAddition]="iconFirstAddition" [displayPowerComponent]="displayPowerComponent"></app-icon-displayer>
+    </span>
+</div>

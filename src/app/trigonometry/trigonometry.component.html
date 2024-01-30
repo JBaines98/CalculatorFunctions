@@ -1,45 +1,54 @@
-<div>
-    <h4 class="trigonometryTitle">
-        Trigonometry
-        <i class="fa-solid fa-shapes"></i>
-    </h4>
-    <div class="inputTrigonometry">
-        <strong>Angle: </strong>
-        <input [(ngModel)]="angleInput">
+<div class="flex-container">
+    <span>
+        <h4 class="trigonometryTitle">
+            Trigonometry
+            <i class="fa-solid fa-shapes"></i>
+        </h4>
+    </span>
+</div>
+<div class="flex-container">
+    <div style="flex-grow: 3">
+        <div class="inputTrigonometry">
+            <strong>Angle: </strong>
+            <input [(ngModel)]="angleInput">
+        </div>
+        <div class="inputTrigonometry">
+            <strong>Hypotenuse: </strong>
+            <input [(ngModel)]="hypotenuse">
+        </div>
+        <div class="inputTrigonometry">
+            <strong>Opposite: </strong>
+            <input [(ngModel)]="opposite">
+        </div>
+        <div class="inputTrigonometry">
+            <strong>Adjacent: </strong>
+            <input [(ngModel)]="adjacent">
+        </div>
     </div>
-    <div class="inputTrigonometry">
-        <strong>Hypotenuse: </strong>
-        <input [(ngModel)]="hypotenuse">
-    </div>
-    <div class="inputTrigonometry">
-        <strong>Opposite: </strong>
-        <input [(ngModel)]="opposite">
-    </div>
-    <div class="inputTrigonometry">
-        <strong>Adjacent: </strong>
-        <input [(ngModel)]="adjacent">
+    <div>
+        <span>
+            <button (click)="trigonometrySin()" class="buttonGo">
+                <strong>Go</strong>
+            </button>
+            <button (click)="clearTrigonometry()" class="buttonClear">
+                <strong>Clear</strong>
+            </button>
+        </span>
     </div>
 </div>
 <br>
-<div>
+<div class="flex-container">
     <span>
-        <button (click)="trigonometrySin()" class="buttonGo">
-            <strong>Go</strong>
+        <button (click)="trigonometrySin()" class="buttonTrigonometry">
+            <strong>Sin</strong>
         </button>
-        <button (click)="clearTrigonometry()" class="buttonClear">
-            <strong>Clear</strong>
+        <button (click)="trigonometryCos()" class="buttonTrigonometry">
+            <strong>Cos</strong>
+        </button>
+        <button (click)="trigonometryTan()" class="buttonTrigonometry">
+            <strong>Tan</strong>
         </button>
     </span>
 </div>
-<br>
-<div>
-    <button (click)="trigonometrySin()" class="buttonTrigonometry">
-        <strong>Sin</strong>
-    </button>
-    <button (click)="trigonometryCos()" class="buttonTrigonometry">
-        <strong>Cos</strong>
-    </button>
-    <button (click)="trigonometryTan()" class="buttonTrigonometry">
-        <strong>Tan</strong>
-    </button>
-</div>
+
+

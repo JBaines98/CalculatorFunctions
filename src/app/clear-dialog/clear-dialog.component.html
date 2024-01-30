@@ -1,0 +1,23 @@
+<mat-card class="card">
+    <mat-card-content>
+        <div>
+            <span>
+                <h3>Confirm Action <i class="fa-solid fa-xmark" mat-dialog-close></i></h3>
+
+            </span>
+        </div>
+        <div>
+            {{data.message}}
+        </div>
+        <div>
+            {{data.converterType}}
+        </div>
+        <br>
+        <div>
+            <span>
+                <button class="buttonClear" mat-dialog-close (click)="confirmationNo()"><strong>No</strong></button>
+                <button class="buttonGo" (click)="confirmationYes()"><strong>Yes</strong></button>
+            </span>
+        </div>
+    </mat-card-content>
+</mat-card>

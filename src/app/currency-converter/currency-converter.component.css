@@ -21,3 +21,6 @@
 .iconSize{
     font-size: x-large;
 }
+.flex-container {
+    display: flex;
+}

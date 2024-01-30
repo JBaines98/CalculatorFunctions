@@ -12,7 +12,7 @@
     font-family: 'Times New Roman', Times, serif;
     height: 50px;
     width: 100px;
-    margin-left: 460px;
+    margin-left: 150px;
     background-color: greenyellow;
 }
 .buttonClear{
@@ -26,4 +26,7 @@
     width: 100px;
     margin-left: 10px;
     background-color: lightcoral;
+}
+.flex-container {
+    display: flex;
 }

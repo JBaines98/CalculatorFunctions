@@ -8,3 +8,7 @@ export interface IconKey {
     iconName?: string;
     iconKey?: number;
 }
+export interface dialogData {
+    converterType: string;
+    messege: string;
+}

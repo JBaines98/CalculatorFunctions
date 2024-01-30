@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { dialogData } from '../models/calculationHistory.model';
+import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 
 @Component({
   selector: 'app-pressure',
@@ -21,6 +24,7 @@ export class PressureComponent {
   planetEarthIconValue: number = 1;
   planetEarthUnit: string = 'of Earths atmosphere';
   planetEarthIconFirstAddition: number = 1;
+  displayPressureComponent: boolean = false;
 
   fromQuantity: string[] = [
     'Atmospheres',
@@ -35,6 +39,14 @@ export class PressureComponent {
   private readonly barsToAtmospheric: number = 1.01325;
   private readonly atmosphericToElephants: number = 0.735;
   private readonly barsToElephants: number = 0.725388405;
+
+  constructor(
+    public dialogRef: MatDialogRef<PressureComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: dialogData = {
+      converterType: 'pressure-converter',
+      messege: 'Are you sure you want to clear pressure-converter?'
+    },
+    public dialog: MatDialog){};
 
 
   pressureConversion(){
@@ -86,15 +98,22 @@ export class PressureComponent {
   }
 
   clearPressure(){
-    this.firstSystem = '';
-    this.secondSystem = '';
-    this.firstValue = 0;
-    this.secondValue = 0;
-    this.displayConversionRate = 0;
-    this.displayElephantRate = 0;
-    this.displayPlanetEarth = [];
-    this.planetEarthValue = 0;
+    const dialogRef = this.dialog.open(ClearDialogComponent, {
+      width: 'fit-content',
+      height: 'fit-content',
+      data: this.data
+    });
+    if(dialogRef){
+      this.firstSystem = '';
+      this.secondSystem = '';
+      this.firstValue = 0;
+      this.secondValue = 0;
+      this.displayConversionRate = 0;
+      this.displayElephantRate = 0;
+      this.displayPlanetEarth = [];
+      this.planetEarthValue = 0;
+    }else{
+      console.log("Not cleared.")
+    };
   }
-
-
 }

@@ -30,3 +30,6 @@
 .apples{
     margin-left: 10px;
 }
+.flex-container {
+    display: flex;
+}

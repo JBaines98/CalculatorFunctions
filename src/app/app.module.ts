@@ -19,7 +19,11 @@ import { SpeedConverterComponent } from './speed-converter/speed-converter.compo
 import { IconDisplayerComponent } from './icon-displayer/icon-displayer.component';
 import { TemperatureConverterComponent } from './temperature-converter/temperature-converter.component';
 import { PressureComponent } from './pressure/pressure.component';
-
+import { PowerConverterComponent } from './power-converter/power-converter.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { ClearDialogComponent } from './clear-dialog/clear-dialog.component';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -39,15 +43,23 @@ import { PressureComponent } from './pressure/pressure.component';
     SpeedConverterComponent,
     IconDisplayerComponent,
     TemperatureConverterComponent,
-    PressureComponent
+    PressureComponent,
+    PowerConverterComponent,
+    ClearDialogComponent
 
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatSliderModule,
+    MatDialogModule,
+    MatCardModule
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_DIALOG_DATA, useValue: {}},
+    {provide: MatDialogRef, useValue: {}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

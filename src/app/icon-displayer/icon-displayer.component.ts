@@ -15,6 +15,10 @@ export class IconDisplayerComponent {
   @Input() public iconValue: number = 0;
   @Input() public iconUnit: string = '';
   @Input() public iconFirstAddition: number = 0;
+  @Input() public displaySpeedComponent: boolean = false;
+  @Input() public displayTemperatureComponent: boolean = false;
+  @Input() public displayPowerComponent: boolean = false;
+  @Input() public displayPressureComponent: boolean = false;
   incrementalValue: any | undefined = undefined;
 
   // @Input() public iconOverallKey: IconKey = {
@@ -39,14 +43,5 @@ export class IconDisplayerComponent {
     this.incrementalValue = incrementalValue + this.iconFirstAddition;
     return this.incrementalValue
   }
-
-
-
-
-
-
-
-
-
 
 }

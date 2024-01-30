@@ -1,0 +1,31 @@
+.card {
+    background-color: lightskyblue;
+    border-width: 2px;
+    border-color: black;
+}
+.buttonGo {
+    margin-left: 5px;
+    margin-right: 5px;
+    border-width: 2px;
+    border-color: black;
+    background-color: aquamarine;
+    border-radius: 5px;
+    font-family: 'Times New Roman', Times, serif;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.buttonClear {
+    margin-left: 5px;
+    margin-right: 5px;
+    border-width: 2px;
+    border-color: black;
+    background-color: lightcoral;
+    border-radius: 5px;
+    font-family: 'Times New Roman', Times, serif;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

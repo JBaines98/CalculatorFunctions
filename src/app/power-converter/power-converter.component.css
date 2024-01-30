@@ -1,9 +1,9 @@
-.volumeTitle{
+.powerTitle{
     margin-left: 280px;
     font-size: larger;
 }
 
-.buttonVolume{
+.buttonPower{
     border-radius: 5px;
     padding-left: 15px;
     padding-right: 15px;
@@ -15,7 +15,7 @@
     margin-left: 150px;
     background-color: greenyellow;
 }
-.buttonVolumeClear{
+.buttonPowerClear{
     border-radius: 5px;
     padding-left: 15px;
     padding-right: 15px;

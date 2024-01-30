@@ -1,11 +1,38 @@
-<div class="titlePosition">
-    <h4>Date & Time <i class="fa-regular fa-calendar-days"></i>  <i class="fa-regular fa-clock"></i></h4>
+<div class="flex-container">
+    <span class="titlePosition">
+        <h4>Date & Time <i class="fa-regular fa-calendar-days"></i>  <i class="fa-regular fa-clock"></i></h4>
+    </span>
 </div>
-<div>
+<div class="flex-container">
     <div>
-        <strong>
-            GMT:    <input readonly [(ngModel)]="dateGMT" class="textBox">
-        </strong>
+        <div>
+            <strong>
+                GMT:    <input readonly [(ngModel)]="dateGMT" class="textBox">
+            </strong>
+        </div>
+        <br>
+        <div>
+            <strong>
+                New York:    <input readonly [(ngModel)]="dateEST" class="textBox">
+            </strong>
+        </div>
+        <div>
+            <strong>
+                India:    <input readonly [(ngModel)]="dateIST" class="textBox">
+            </strong>
+        </div>
+        <div>
+            <strong>
+                Japan:    <input readonly [(ngModel)]="dateJST" class="textBox">
+            </strong>
+        </div>
+        <div>
+            <strong>
+                Moscow:    <input readonly [(ngModel)]="dateMSK" class="textBox">
+            </strong>
+        </div>
+    </div>
+    <div>
         <span>
             <button class="dateTimeButton" (click)="getAllTimes()">
                 <strong>Get Times</strong>
@@ -15,28 +42,6 @@
             </button>
         </span>
     </div>
-    <br>
-    <div>
-        <strong>
-            New York:    <input readonly [(ngModel)]="dateEST" class="textBox">
-        </strong>
-    </div>
-    <br>
-    <div>
-        <strong>
-            India:    <input readonly [(ngModel)]="dateIST" class="textBox">
-        </strong>
-    </div>
-    <br>
-    <div>
-        <strong>
-            Japan:    <input readonly [(ngModel)]="dateJST" class="textBox">
-        </strong>
-    </div>
-    <br>
-    <div>
-        <strong>
-            Moscow:    <input readonly [(ngModel)]="dateMSK" class="textBox">
-        </strong>
-    </div>
+
 </div>
+

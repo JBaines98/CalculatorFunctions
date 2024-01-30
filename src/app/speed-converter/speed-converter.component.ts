@@ -28,6 +28,11 @@ export class SpeedConverterComponent {
 
   isMetersPerSecond: boolean | null = null;
   showSlowMediumFast: string = '';
+
+  iconDisplayerValue: number = 0;
+  displaySpeedComponent: boolean = true;
+
+
   
   private readonly metersPerSecondToFeetPerSecond: number = 3.28084;
   private readonly metersPerSecondToMilesPerHour: number = 2.23694;
@@ -84,12 +89,12 @@ export class SpeedConverterComponent {
           switch(this.americanSystem){
             case 'Feet per second': {
               this.displayConversionRate = this.convertToAmerican(this.metersPerSecondToFeetPerSecond);
-              this.displaySpeedConversionRate = this.convertToSlowIcon(this.metersPerSecondToTenMilesPerHour);
+              this.displaySpeedConversionRate = this.convertToSlowIcon(this.metersPerSecondToMilesPerHour);
               break;
             }
             case 'Miles per hour': {
               this.displayConversionRate = this.convertToAmerican(this.metersPerSecondToMilesPerHour);
-              this.displaySpeedConversionRate = this.convertToSlowIcon(this.metersPerSecondToTenMilesPerHour);
+              this.displaySpeedConversionRate = this.convertToSlowIcon(this.metersPerSecondToMilesPerHour);
               break;
             }
           };
@@ -101,12 +106,12 @@ export class SpeedConverterComponent {
           switch(this.americanSystem){
             case 'Feet per second': {
               this.displayConversionRate = this.convertToAmerican(this.kilometersPerHourToFeetPerSecond);
-              this.displaySpeedConversionRate = this.convertToSlowIcon(this.kilometersPerHourToTenMilesPerHour);
+              this.displaySpeedConversionRate = this.convertToSlowIcon(this.kilometersPerHourToMilesPerHour);
               break;
             }
             case 'Miles per hour': {
               this.displayConversionRate = this.convertToAmerican(this.kilometersPerHourToMilesPerHour);
-              this.displaySpeedConversionRate = this.convertToSlowIcon(this.kilometersPerHourToTenMilesPerHour);
+              this.displaySpeedConversionRate = this.convertToSlowIcon(this.kilometersPerHourToMilesPerHour);
               break;
             }
           };
@@ -132,8 +137,8 @@ export class SpeedConverterComponent {
               break;
             }
           };
-          this.iconValue = 20;
-          this.iconFirstAddition = 20;
+          this.iconValue = 10;
+          this.iconFirstAddition = 10;
           break;
         }
         case 'Kilometers per hour': {
@@ -149,8 +154,8 @@ export class SpeedConverterComponent {
               break;
             }
           };
-          this.iconValue = 20;
-          this.iconFirstAddition = 20;
+          this.iconValue = 10;
+          this.iconFirstAddition = 10;
           break;
         }
       }
@@ -202,32 +207,39 @@ export class SpeedConverterComponent {
   };
 
   convertToSlowIcon(conversionRate: number){
-    this.speedValue = this.metricValue * conversionRate;
+    this.speedValue = this.americanValue / 1;
+    this.iconDisplayerValue = Math.trunc(this.speedValue);
     this.displaySpeed = [];
-    for(let index=0; index < this.speedValue; index++){
+    for(let index=0; index < this.iconDisplayerValue; index++){
       this.displaySpeed.push(index);
     };
     this.speedIconName = this.speedIconSlow;
+    this.iconDisplayerValue = 0;
     return conversionRate;
   };
 
   convertToMediumIcon(conversionRate: number){
-    this.speedValue = this.metricValue * conversionRate;
+    this.speedValue = this.americanValue / 10;
+    this.iconDisplayerValue = Math.trunc(this.speedValue);
+    // this.speedValue = this.metricValue / 10;
     this.displaySpeed = [];
-    for(let index=0; index < this.speedValue; index++){
+    for(let index=0; index < this.iconDisplayerValue; index++){3
       this.displaySpeed.push(index);
     };
     this.speedIconName = this.speedIconMedium;
+    this.iconDisplayerValue = 0;
     return conversionRate;
   };
 
   convertToFastIcon(conversionRate: number){
-    this.speedValue = this.metricValue * conversionRate;
+    this.speedValue = this.metricValue / 60;
+    this.iconDisplayerValue = Math.trunc(this.speedValue);
     this.displaySpeed = [];
-    for(let index=0; index < this.speedValue; index++){
+    for(let index=0; index < this.iconDisplayerValue; index++){
       this.displaySpeed.push(index);
     };
     this.speedIconName = this.speedIconFast;
+    this.iconDisplayerValue = 0;
     return conversionRate;
   };
 
@@ -240,6 +252,7 @@ export class SpeedConverterComponent {
     this.displaySpeed = []
     this.speedValue = 0;
     this.speedIconName = '';
+    this.iconDisplayerValue = 0;
   };
 
 }

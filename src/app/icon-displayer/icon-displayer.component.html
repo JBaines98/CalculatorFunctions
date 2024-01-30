@@ -4,16 +4,86 @@
     </span>
 </div> -->
 
+<div>
+    <span *ngIf="!displaySpeedComponent && !displayTemperatureComponent && !displayPowerComponent">
+        <strong>
+            Key : <i [class]="iconName"></i> = {{iconValue}} {{iconUnit}}
+        </strong>
+    </span>
+</div>
+<div *ngIf="displaySpeedComponent">
+    <div>
+        <strong>
+            Key : <i class="fa-solid fa-person-walking"></i> = 1 {{iconUnit}} || 3.2 Feet Per Second
+        </strong>
+    </div>
+    <div>
+        <strong>
+            Key : <i class="fa-solid fa-truck-fast"></i> = 10 {{iconUnit}} || 32.8 Feet Per Second
+        </strong>
+    </div>
+    <div>
+        <strong>
+            Key : <i class="fa-solid fa-jet-fighter"></i> = 60 {{iconUnit}} || 196.85 Feet Per Second
+        </strong>
+    </div>
+</div>
+<div *ngIf="displayTemperatureComponent">
+    <div>
+        <strong>
+            Key : <i class="fa-solid fa-fire"></i> = +10 {{iconUnit}}
+        </strong>
+    </div>
+    <div>
+        <strong>
+            Key : <i class="fa-solid fa-snowflake"></i> = -10 {{iconUnit}}
+        </strong>
+    </div>
+</div>
+<div *ngIf="displayPowerComponent">
+    <div>
+        <strong>
+            Key : <i class="fa-solid fa-horse"></i> = 1 {{iconUnit}}
+        </strong>
+    </div>
+    <div>
+        <strong>
+            Key : <i class="fa-solid fa-plug"></i> = 1 {{iconUnit}}
+        </strong>
+    </div>
+</div>
+<div *ngIf="displayPressureComponent">
+    <div>
+        <strong>
+            Key : <i></i> {{iconUnit}}
+        </strong>
+    </div>
+    <div>
+        <strong>
+            Key : <i></i> {{iconUnit}}
+        </strong>
+    </div>
+</div>
+<div>
+    <div>
+        <strong>
+            Key : <i></i> {{iconUnit}}
+        </strong>
+    </div>
+</div>
 
-<span *ngFor="let icon of iconArray; index as i">
-    <span *ngIf="(i%2) ==0">
-        <span class="icon" [title]="getIndex(i)" >
-            <i [class]="iconName"> </i>
+
+<span *ngFor="let icon of iconArray; index as title">
+    <span *ngIf="(title%2) ==0">
+        <span class="icon" [title]="getIndex(title)" >
+            <i [class]="iconName"></i>
         </span>
     </span>
-    <span *ngIf="(i%2) !==0">
-        <span class="icon2" [title]="getIndex(i)" >
+    <span *ngIf="(title%2) !==0">
+        <span class="icon2" [title]="getIndex(title)" >
             <i [class]="iconName"></i>
         </span>
     </span>
 </span>
+
+

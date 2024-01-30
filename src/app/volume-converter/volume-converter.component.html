@@ -1,62 +1,62 @@
-<div class="volumeTitle">
-    <h4>Volume Converter <i class="fa-solid fa-layer-group"></i></h4>
-</div>
-<div>
-    <span>
-
-        <label for="metricVolumes"><strong> Choose a metric volume: </strong></label>
-        <select name="metricVolumes" id="metricVolumes" [(ngModel)]="metricSystem">
-            <option value="Milliliters">Milliliters</option>
-            <option value="Centiliters">Centiliters</option>
-            <option value="Liters">Liters</option>
-        </select>
-
-        <label for="americanMeasurements"><strong> Choose an American volume: </strong></label>
-        <select name="americanVolumes" id="americanVolumes" [(ngModel)]="americanSystem">
-            <option value="Teaspoons">Teaspoons</option>
-            <option value="Tablespoons">Tablespoons</option>
-            <option value="Ounces">Ounces</option>
-        </select>
-
+<div class="flex-container">
+    <span class="volumeTitle">
+        <h4>Volume Converter <i class="fa-solid fa-layer-group"></i></h4>
     </span>
 </div>
-<br>
-<div>
-    <span>
+<div class="flex-container">
 
-        <label><strong>Metric </strong></label>
-        <input [(ngModel)]="metricValue">
-        <strong>{{metricSystem}}</strong>
-
-    </span>
-</div>
-<br>
-<div>
-    <span>
-
-        <label><strong>American </strong></label>
-        <input readonly [(ngModel)]="americanValue">
-        <strong>{{americanSystem}}</strong>
-
-    </span>
-</div>
-<br>
-<div>
-    <span>
-
-        <label><strong>Conversion rate : </strong></label>
-        <input readonly [(ngModel)]="displayConversionRate">
+    <div>
+        <div>
+            <label for="metricVolumes"><strong> Choose a metric volume: </strong></label>
+            <select name="metricVolumes" id="metricVolumes" [(ngModel)]="metricSystem">
+                <option value="Milliliters">Milliliters</option>
+                <option value="Centiliters">Centiliters</option>
+                <option value="Liters">Liters</option>
+            </select>
+        </div>
+        <div>
+            <label for="americanMeasurements"><strong> Choose an American volume: </strong></label>
+            <select name="americanVolumes" id="americanVolumes" [(ngModel)]="americanSystem">
+                <option value="Teaspoons">Teaspoons</option>
+                <option value="Tablespoons">Tablespoons</option>
+                <option value="Ounces">Ounces</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <span>
+                <label><strong>Metric </strong></label>
+                <input [(ngModel)]="metricValue">
+                <strong>{{metricSystem}}</strong>
+            </span>
+        </div>
+        <div>
+            <span>
+                <label><strong>American </strong></label>
+                <input readonly [(ngModel)]="americanValue">
+                <strong>{{americanSystem}}</strong>
+            </span>
+        </div>
+        <br>
+        <div>
+            <span>
+                <label><strong>Conversion rate : </strong></label>
+                <input readonly [(ngModel)]="displayConversionRate">
+            </span>
+        </div>
+    </div>
+    <br>
+    <div>
         <span>
             <button class="buttonVolume" (click)="volumeConversion()"><strong>Go</strong></button>
             <button class="buttonVolumeClear" (click)="clearVolumes()"><strong>Clear</strong></button>
         </span>
+    </div>
 
-    </span>
 </div>
-<div>
+<br>
+<div class="flex-container">
     <span>
-
-        <app-icon-displayer [iconArray]="displayLiters" [iconName]="litreIconName" [iconUnit]="iconUnit" [iconValue]="iconValue" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
-
+        <app-icon-displayer [iconArray]="displayLiters" [iconName]="litreIconName" [iconUnit]="iconUnit" [iconValue]="iconValue" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer> 
     </span>
 </div>

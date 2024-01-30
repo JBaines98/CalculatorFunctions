@@ -1,66 +1,58 @@
-<div class="speedTitle">
-    <h4>Speed Converter <i class="fa-solid fa-gauge"></i></h4>
-</div>
-<div>
-    <span>
-
-        <label><strong> Metric Speed: </strong></label>
-        <select name="metricQuantity" id="americanQuantity" [(ngModel)]="metricSystem">
-            <option value="Meters per second">Meters per second</option>
-            <option value="Kilometers per hour">Kilometers per hour</option>
-        </select>
-
-        <label><strong> American Speed: </strong></label>
-        <select name="americanQuantity" id="americanQuantity" [(ngModel)]="americanSystem">
-            <option value="Feet per second">Feet per second</option>
-            <option value="Miles per hour">Miles per hour</option>
-        </select>
-
+<div class="flex-container">
+    <span class="speedTitle">
+        <h4>Speed Converter <i class="fa-solid fa-gauge"></i></h4>
     </span>
 </div>
-<br>
-<div>
-    <span>
 
-        <label><strong>Speed </strong></label>
-        <input [(ngModel)]="metricValue">
-        <strong>{{metricSystem}}</strong>
 
-    </span>
-</div>
-<br>
-<div>
-    <span>
-
-        <label><strong>Speed </strong></label>
-        <input readonly [(ngModel)]="americanValue">
-        <strong>{{americanSystem}}</strong>
-
-    </span>
-</div>
-<br>
-<div>
-    <span>
-
-        <label><strong>Conversion rate : </strong></label>
-        <input readonly [(ngModel)]="displayConversionRate">
-
-    </span>
-</div>
-<div>
-    <span>
-
+<div class="flex-container">
+    <div>
+        <div>
+    
+            <label><strong> Metric Speed: </strong></label>
+            <select name="metricQuantity" id="americanQuantity" [(ngModel)]="metricSystem">
+                <option value="Meters per second">Meters per second</option>
+                <option value="Kilometers per hour">Kilometers per hour</option>
+            </select>
+        </div>
+        <div>
+            <label><strong> American Speed: </strong></label>
+            <select name="americanQuantity" id="americanQuantity" [(ngModel)]="americanSystem">
+                <option value="Feet per second">Feet per second</option>
+                <option value="Miles per hour">Miles per hour</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <span>
+                <label><strong>Speed </strong></label>
+                <input [(ngModel)]="metricValue">
+                <strong>{{metricSystem}}</strong>
+            </span>
+        </div>
+        <div>
+            <span>
+                <label><strong>Speed </strong></label>
+                <input readonly [(ngModel)]="americanValue">
+                <strong>{{americanSystem}}</strong>
+            </span>
+        </div>
+        <br>
+        <div>
+            <label><strong>Conversion rate : </strong></label>
+            <input readonly [(ngModel)]="displayConversionRate">
+        </div>
+    </div>
+    <div>
         <span>
             <button class="buttonSpeed" (click)="speedConversion()"><strong>Go</strong></button>
             <button class="buttonClear" (click)="clearSpeed()"><strong>Clear</strong></button>
         </span>
-
-    </span>
+    </div>
 </div>
-<div>
+<br>
+<div class="flex-container">
     <span>
-
-        <app-icon-displayer [iconArray]="displaySpeed" [iconName]="speedIconName" [iconValue]="iconValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
-
+        <app-icon-displayer [iconArray]="displaySpeed" [iconName]="speedIconName" [iconValue]="iconDisplayerValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition" [displaySpeedComponent]="displaySpeedComponent"></app-icon-displayer>
     </span>
 </div>

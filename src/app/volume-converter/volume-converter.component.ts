@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { dialogData } from '../models/calculationHistory.model';
+import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 
 @Component({
   selector: 'app-volume-converter',
@@ -52,6 +55,14 @@ export class VolumeConverterComponent {
     "Ounces"
   ];
 
+
+  constructor(
+    public dialogRef: MatDialogRef<VolumeConverterComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: dialogData = {
+      converterType: 'volume-converter',
+      messege: 'Are you sure you want to clear volume-converter?'
+    },
+    public dialog: MatDialog){}
 
   volumeConversion(){
     switch(this.metricSystem){
@@ -132,6 +143,21 @@ export class VolumeConverterComponent {
     return conversionRate;
   }
 
+  clearVolumesClicked(){
+    const dialogRef = this.dialog.open(ClearDialogComponent, {
+      width: 'fit-content',
+      height: 'fit-content',
+      data: this.data
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result === true){
+        this.clearVolumes();
+      }else{
+        console.log("Not cleared.");
+      }
+    });
+  }
+
   clearVolumes(){
     this.metricSystem = '';
     this.americanSystem = '';
@@ -139,6 +165,7 @@ export class VolumeConverterComponent {
     this.americanValue = 0;
     this.displayConversionRate = 0;
     this.displayLiters = [];
+    console.log("Cleared.");
   }
 
 }

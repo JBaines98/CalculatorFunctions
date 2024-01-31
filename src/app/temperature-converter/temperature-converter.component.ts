@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { dialogData } from '../models/calculationHistory.model';
+import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 
 @Component({
   selector: 'app-temperature-converter',
@@ -47,8 +50,15 @@ export class TemperatureConverterComponent {
     "Celcius"
   ]
 
-  temperatureConversion(){
+  constructor(
+    public dialogRef: MatDialogRef<TemperatureConverterComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: dialogData = {
+      converterType: 'Temperature-converter',
+      messege: 'Are you sure you want to clear temperature-converter?'
+    },
+    public dialog: MatDialog){}
 
+  temperatureConversion(){
     if(this.fromSystem === 'Celcius'){
       this.isCelcius = true;
     }else{
@@ -239,16 +249,30 @@ export class TemperatureConverterComponent {
     return conversionRate;
   }
 
-  clearTemperature(){
-    this.fromValue = 0;
-    this.toValue = 0;
-    this.fromSystem = '';
-    this.toSystem = '';
-    this.displayConversionRate = 0;
-    this.tenDegreeValue = 0;
-    this.displayTenDegree = [];
-    this.displayTenDegreeRate = 0;
+  clearTemperatureClicked(){
+    const dialogRef = this.dialog.open(ClearDialogComponent, {
+      width: 'fit-content',
+      height: 'fit-content',
+      data: this.data
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result === true){
+        this.clearTemperature();
+      }else{
+        console.log("Not cleared.");
+      }
+    })
   }
-  
 
+  clearTemperature(){
+      this.fromValue = 0;
+      this.toValue = 0;
+      this.fromSystem = '';
+      this.toSystem = '';
+      this.displayConversionRate = 0;
+      this.tenDegreeValue = 0;
+      this.displayTenDegree = [];
+      this.displayTenDegreeRate = 0;
+      console.log("Cleared");
+   }
 }

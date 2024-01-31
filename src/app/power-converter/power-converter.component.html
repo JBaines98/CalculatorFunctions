@@ -47,13 +47,13 @@
     <div>
         <span>
             <button class="buttonPower" (click)="powerConversion()"><strong>Go</strong></button>
-            <button class="buttonPowerClear" (click)="clearPowers()"><strong>Clear</strong></button>
+            <button class="buttonPowerClear" (click)="clearPowersClicked()"><strong>Clear</strong></button>
         </span>
     </div>
 </div>
 <br>
 <div class="flex-container">
     <span>
-        <app-icon-displayer [iconArray]="displayIcons" [iconName]="iconName" [iconUnit]="iconUnit" [iconValue]="iconValue" [iconFirstAddition]="iconFirstAddition" [displayPowerComponent]="displayPowerComponent"></app-icon-displayer>
+        <app-icon-displayer [iconArray]="displayIcons" [iconName]="iconName" [iconUnit]="iconUnit" [iconValue]="iconValue" [iconFirstAddition]="iconFirstAddition" [displayPowerComponent]="displayPowerComponent" ></app-icon-displayer>
     </span>
 </div>

@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { dialogData } from '../models/calculationHistory.model';
+import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 
 @Component({
   selector: 'app-food-energy-converter',
@@ -33,6 +36,14 @@ export class FoodEnergyConverterComponent {
     "KiloJoules"
   ];
 
+  constructor(
+    public dialogRef: MatDialogRef<FoodEnergyConverterComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: dialogData = {
+      converterType: 'food-coverter',
+      messege: 'Are you sure you want to clear food-converter?'
+    },
+    public dialog: MatDialog){}
+
   energyConversion(){
     if(this.foodSystem === 'Food Calories'){
       switch(this.energySystem){
@@ -64,6 +75,21 @@ export class FoodEnergyConverterComponent {
     return conversionRate;
   }
 
+  clearQuantitiesClicked(){
+    const dialogRef = this.dialog.open(ClearDialogComponent, {
+      width: 'fit-content',
+      height: 'fit-content',
+      data: this.data
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result === true){
+        this.clearQuantities();
+      }else{
+        console.log("Not cleared.");
+      }
+    })
+  }
+
   clearQuantities(){
     this.foodSystem = '';
     this.energySystem = '';
@@ -73,5 +99,6 @@ export class FoodEnergyConverterComponent {
     this.displayAppleConversionRate = 0;
     this.displayConversionRate = 0;
     this.displayApples = [];
+    console.log("Cleared.");
   }
 }

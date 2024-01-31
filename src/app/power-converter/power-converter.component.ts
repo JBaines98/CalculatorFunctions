@@ -11,6 +11,8 @@ import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 })
 export class PowerConverterComponent {
 
+  
+
   firstSystem: string = '';
   secondSystem: string = '';
   firstValue: number = 0;
@@ -28,6 +30,7 @@ export class PowerConverterComponent {
   horsepowerIconValue: number = 1;
   kilowattIconValue: number = 1;
   displayPowerComponent: boolean = false;
+  clearPowerValue: boolean = false;
  
   private readonly horsePowerToKilowatt: number = 1.341;
   private readonly kilowattToHorsePower: number = 1.341;
@@ -133,13 +136,24 @@ export class PowerConverterComponent {
     return conversionRate;
   }
 
-  clearPowers(){
+  clearPowersClicked(){
     const dialogRef = this.dialog.open(ClearDialogComponent, {
+      
       width: 'fit-content',
       height: 'fit-content',
       data: this.data
+      
     });
-    if(dialogRef){
+    dialogRef.afterClosed().subscribe(result => {
+      if(result === true){
+        this.clearPowers();
+      }else{
+        console.log("Not cleared.");
+      }
+    });
+  }
+
+  clearPowers(){
       this.firstSystem = '';
       this.secondSystem = '';
       this.firstValue = 0;
@@ -147,10 +161,7 @@ export class PowerConverterComponent {
       this.displayConversionRate = 0;
       this.displayIcons = [];
       this.displayPowerComponent = false;
-    }else{
-      console.log("Not cleared.")
-    }
-
+      console.log("Cleared.");
   }
 
 }

@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { dialogData } from '../models/calculationHistory.model';
+import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 
 @Component({
   selector: 'app-trigonometry',
@@ -12,6 +15,14 @@ export class TrigonometryComponent {
   opposite: number  = 0;
   adjacent: number  = 0;
 
+  constructor(
+    public dialogRef: MatDialogRef<TrigonometryComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: dialogData = {
+      converterType: 'trigonometry calculator',
+      messege: 'Are you sure you want to clear trigonometry values?'
+    },
+    public dialog: MatDialog){}
+
   trigonometrySin(){
     this.opposite = Math.sin(this.angleInput) * this.hypotenuse;
     this.trigonometryCos();
@@ -24,6 +35,21 @@ export class TrigonometryComponent {
 
   trigonometryTan(){
     this.adjacent = this.opposite / Math.tan(this.angleInput);
+  }
+
+  clearTrigonometryClciked(){
+    const dialogRef = this.dialog.open(ClearDialogComponent, {
+      width: 'fit-content',
+      height: 'fit-content',
+      data: this.data
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result === true){
+        this.clearTrigonometry();
+      }else{
+        console.log("Not cleared.");
+      }
+    });
   }
 
   clearTrigonometry(){

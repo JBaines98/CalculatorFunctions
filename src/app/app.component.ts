@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { CalculatorService } from './calculator.service';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { dialogData } from './models/calculationHistory.model';
+import { ClearDialogComponent } from './clear-dialog/clear-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -17,10 +20,17 @@ export class AppComponent {
   showButton: boolean = false;
   displaySumHistory: boolean = false;
 
+  constructor(    
+    public calculatorService: CalculatorService,
+    public dialogRef: MatDialogRef<AppComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: dialogData = {
+      converterType: 'calculator',
+      messege: 'Are you sure you want to clear calculator?'
+    },
+    public dialog: MatDialog){}
 
 
 
-  constructor(public calculatorService: CalculatorService){}
 
 
 
@@ -63,7 +73,18 @@ export class AppComponent {
 
   onClearClicked()
   {
-    this.calculatorService.clearClicked();
+    const dialogRef = this.dialog.open(ClearDialogComponent, {
+      width: 'fit-content',
+      height: 'fit-content'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result === true){
+        this.calculatorService.clearClicked();
+      }else{
+        console.log("Not cleared.");
+      }
+    });
+
   }
 
   onBackSpaceClicked()

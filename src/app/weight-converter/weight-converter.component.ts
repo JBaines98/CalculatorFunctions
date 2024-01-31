@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { dialogData } from '../models/calculationHistory.model';
+import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 
 @Component({
   selector: 'app-weight-converter',
@@ -34,12 +37,20 @@ private readonly kiloGramsTo1kgDumbBells: number = 1;
 metricWeights: string[] = [
   "Grams",
   "Kilograms"
-]
+];
 
 americanWeights: string[] = [
   "Ounces",
   "Pounds"
-]
+];
+
+constructor(
+  public dialogRef: MatDialogRef<WeightConverterComponent>,
+  @Inject(MAT_DIALOG_DATA) public data: dialogData = {
+    converterType: 'weight-converter',
+    messege: 'Are you sure you want to clear weight-converter?'
+  },
+  public dialog: MatDialog){}
 
 weightConverter(){
   switch(this.gramSystem){
@@ -90,12 +101,28 @@ weightConverter(){
     return conversionRate;
   }
 
+  clearWeightsClicked(){
+    const dialogRef = this.dialog.open(ClearDialogComponent, {
+      width: 'fit-content',
+      height: 'fit-content',
+      data: this.data
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result === true){
+        this.clearWeights();
+      }else{
+        console.log("Not cleared.");
+      }
+    });
+  }
+
   clearWeights(){
     this.gramValue = 0;
     this.poundValue = 0;
     this.displayConversionRate = 0;
     this.gramSystem = '';
     this.poundSystem = '';
+    console.log("Cleared");
   }
 
 }

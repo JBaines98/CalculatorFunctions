@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Output } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { dialogData } from '../models/calculationHistory.model';
 
 @Component({
   selector: 'app-function-button',
@@ -14,6 +16,8 @@ export class FunctionButtonComponent {
 
 
 
+
+
   onClicked(event: string)
   {
     if (event)
@@ -26,6 +30,8 @@ export class FunctionButtonComponent {
   {
     this.equalClicked.emit(event);
   }
+
+  clearCalculator(){}
 
   onClearClicked(event: string)
   {

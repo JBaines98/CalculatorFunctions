@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { dialogData } from '../models/calculationHistory.model';
 
 @Component({
   selector: 'app-speed-converter',
@@ -48,12 +51,19 @@ export class SpeedConverterComponent {
   metricQuantity: string[] = [
     "Meters per second",
     "Kilometers per hour"
-  ]
+  ];
 
   americanQuantity: string[] = [
     "Feet per second",
     "Miles per hour"
-  ]
+  ];
+
+  constructor(public dialogRef: MatDialogRef<SpeedConverterComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: dialogData = {
+      converterType: 'speed-converter',
+      messege: 'Are you sure you want to clear speed-converter?'
+    },
+    public dialog: MatDialog){}
 
   speedConversion(){
 
@@ -243,6 +253,20 @@ export class SpeedConverterComponent {
     return conversionRate;
   };
 
+  clearSpeedClicked(){
+    const dialogRef = this.dialog.open(ClearDialogComponent, {
+      width: 'fit-content',
+      height: 'fit-content',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result === true){
+        this.clearSpeed();
+      }else{
+        console.log("Not cleared.");
+      }
+    });
+  }
+
   clearSpeed(){
     this.metricSystem = '';
     this.americanSystem = '';
@@ -253,6 +277,7 @@ export class SpeedConverterComponent {
     this.speedValue = 0;
     this.speedIconName = '';
     this.iconDisplayerValue = 0;
+    console.log("Cleared.");
   };
 
 }

@@ -25,6 +25,7 @@ export class PressureComponent {
   planetEarthUnit: string = 'of Earths atmosphere';
   planetEarthIconFirstAddition: number = 1;
   displayPressureComponent: boolean = false;
+  clearPressureValue: boolean = false;
 
   fromQuantity: string[] = [
     'Atmospheres',
@@ -97,13 +98,22 @@ export class PressureComponent {
     return conversionRate;
   }
 
-  clearPressure(){
+  clearPressureClicked(){
     const dialogRef = this.dialog.open(ClearDialogComponent, {
       width: 'fit-content',
       height: 'fit-content',
       data: this.data
     });
-    if(dialogRef){
+    dialogRef.afterClosed().subscribe(result => {
+      if(result === true){
+        this.clearPressure();
+      }else{
+        console.log("Not cleared.");
+      }
+    });
+  }
+
+  clearPressure(){
       this.firstSystem = '';
       this.secondSystem = '';
       this.firstValue = 0;
@@ -112,8 +122,7 @@ export class PressureComponent {
       this.displayElephantRate = 0;
       this.displayPlanetEarth = [];
       this.planetEarthValue = 0;
-    }else{
-      console.log("Not cleared.")
     };
-  }
+ 
 }
+

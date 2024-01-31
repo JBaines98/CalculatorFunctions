@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { dialogData } from '../models/calculationHistory.model';
+import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 
 @Component({
   selector: 'app-length-converter',
@@ -44,13 +47,21 @@ export class LengthConverterComponent {
     "Centermeters",
     "Meters",
     "Kilometers"
-  ]
+  ];
 
   americanMeasurements: string[] = [
     "Inches",
     "Feet",
     "Miles"
-  ]
+  ];
+
+  constructor(
+    public dialogRef: MatDialogRef<LengthConverterComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: dialogData = {
+      converterType: 'length-converter',
+      messege: 'Are you sure you want to clear length-converter?'
+    },
+    public dialog: MatDialog){}
 
   lengthConverter(){
     switch(this.metricSystem){
@@ -132,6 +143,21 @@ export class LengthConverterComponent {
     return conversionRate;
   }
 
+  clearLengthsClicked(){
+    const dialogRef = this.dialog.open(ClearDialogComponent, {
+      width: 'fit-content',
+      height: 'fit-conetent',
+      data: this.data
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result === true){
+        this.clearLengths();
+      }else{
+        console.log("Not cleared.");
+      }
+    });
+  }
+
   clearLengths(){
     this.americanValue = 0;
     this.metricValue = 0;
@@ -139,6 +165,7 @@ export class LengthConverterComponent {
     this.metricSystem = '';
     this.displayConversionRate = 0;
     this.displayRuler = [];
+    console.log("Cleared.");
   }
 
 

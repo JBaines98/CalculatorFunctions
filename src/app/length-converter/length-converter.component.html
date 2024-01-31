@@ -50,20 +50,15 @@
     <div>
         <span>
             <button class="buttonLength" (click)="lengthConverter()"><strong>Go</strong></button>
-            <button class="buttonLengthClear" (click)="clearLengths()"><strong>Clear</strong></button>
+            <button class="buttonLengthClear" (click)="clearLengthsClicked()"><strong>Clear</strong></button>
         </span>
     </div>
-
 </div>
-
 <br>
-
 <div class="flex-container">
-
     <span>
         <app-icon-displayer [iconArray]="displayRuler" [iconName]="rulerIconName" [iconValue]="iconValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
     </span>
-
 </div>
 
 

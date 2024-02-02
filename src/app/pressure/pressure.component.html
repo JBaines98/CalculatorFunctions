@@ -68,11 +68,20 @@
             </span>
         </div>
         <br>
-        <div class="margin">
-            <span class="icon">
-                <app-icon-displayer [iconArray]="displayPlanetEarth" [iconName]="planetEarthIconName" [iconValue]="planetEarthValue" [iconUnit]="planetEarthUnit" [iconFirstAddition]="planetEarthIconFirstAddition" [displayPressureComponent]="displayPressureComponent"></app-icon-displayer>
+        <!-- <div>
+            <span>
+                <button class="buttonShowPressureKey" (click)="pressureShowIcon()"><strong>Show Icons <i *ngIf="showPressureKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!showPressureKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
             </span>
+        </div> -->
+        <br>
+        <div *ngIf="showPressureKey">
+            <div class="margin">
+                <span class="icon">
+                    <app-icon-displayer [iconArray]="displayPlanetEarth" [iconName]="planetEarthIconName" [iconValue]="planetEarthValue" [iconUnit]="planetEarthUnit" [iconFirstAddition]="planetEarthIconFirstAddition" [displayPressureComponent]="displayPressureComponent"></app-icon-displayer>
+                </span>
+            </div>
         </div>
+
     </div>
 </div>
 

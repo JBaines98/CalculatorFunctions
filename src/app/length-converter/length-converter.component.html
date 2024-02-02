@@ -71,10 +71,18 @@
             </span>
         </div>
         <br>
-        <div class="margin">
-            <span class="icon">
-                <app-icon-displayer [iconArray]="displayRuler" [iconName]="rulerIconName" [iconValue]="iconValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
+        <!-- <div>
+            <span>
+                <button class="buttonShowLengthKey" (click)="lengthShowIcon()"><strong>Show Icons <i *ngIf="showLengthKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!showLengthKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
             </span>
+        </div> -->
+        <br>
+        <div *ngIf="showLengthKey">
+            <div class="margin">
+                <span class="icon">
+                    <app-icon-displayer [iconArray]="displayRuler" [iconName]="rulerIconName" [iconValue]="iconValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
+                </span>
+            </div>
         </div>
     </div>
 </div>

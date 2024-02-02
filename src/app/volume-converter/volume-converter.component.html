@@ -72,10 +72,18 @@
             </span>
         </div>
         <br>
-        <div class="margin">
-            <span class="icon">
-                <app-icon-displayer [iconArray]="displayLiters" [iconName]="litreIconName" [iconUnit]="iconUnit" [iconValue]="iconValue" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer> 
+        <!-- <div>
+            <span>
+                <button class="buttonShowVolumeKey" (click)="volumeShowIcon()"><strong>Show Icons <i *ngIf="showVolumeKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!showVolumeKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
             </span>
+        </div> -->
+        <br>
+        <div *ngIf="showVolumeKey">
+            <div class="margin">
+                <span class="icon">
+                    <app-icon-displayer [iconArray]="displayLiters" [iconName]="litreIconName" [iconUnit]="iconUnit" [iconValue]="iconValue" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer> 
+                </span>
+            </div>
         </div>
     </div>
 </div>

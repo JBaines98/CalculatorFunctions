@@ -69,11 +69,20 @@
             </span>
         </div>
         <br>
-        <div class="margin">
-            <span class="icon">
-                <app-icon-displayer [iconArray]="displayDumbBell" [iconName]="dumbBellIconName" [iconValue]="iconValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
+        <!-- <div>
+            <span>
+                <button class="buttonShowWeightKey" (click)="weightShowIcon()"><strong>Show Icons <i *ngIf="showWeightKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!showWeightKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
             </span>
+        </div> -->
+        <br>
+        <div *ngIf="showWeightKey">
+            <div class="margin">
+                <span class="icon">
+                    <app-icon-displayer [iconArray]="displayDumbBell" [iconName]="dumbBellIconName" [iconValue]="iconValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
+                </span>
+            </div>
         </div>
+
     </div>
 </div>
 

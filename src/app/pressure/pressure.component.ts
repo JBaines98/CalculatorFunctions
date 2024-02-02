@@ -26,6 +26,7 @@ export class PressureComponent {
   planetEarthIconFirstAddition: number = 1;
   displayPressureComponent: boolean = false;
   clearPressureValue: boolean = false;
+  showPressureKey: boolean = false;
 
   fromQuantity: string[] = [
     'Atmospheres',
@@ -81,6 +82,7 @@ export class PressureComponent {
         break;
       }
     }
+    this.showPressureKey = true;
   }
 
   convertPressure(conversionRate: number){
@@ -98,6 +100,16 @@ export class PressureComponent {
     return conversionRate;
   }
 
+  // pressureShowIcon(){
+  //   if(this.showPressureKey === false){
+  //     this.showPressureKey = true;
+  //     this.showPressureKeyCheck = true;
+  //   }else{
+  //     this.showPressureKey = false;
+  //     this.showPressureKeyCheck = false;
+  //   };
+  // }
+
   clearPressureClicked(){
     const dialogRef = this.dialog.open(ClearDialogComponent, {
       width: 'fit-content',
@@ -111,6 +123,7 @@ export class PressureComponent {
         console.log("Not cleared.");
       }
     });
+    this.showPressureKey = false;
   }
 
   clearPressure(){

@@ -25,6 +25,8 @@ displayDumbBellRate: number = 0;
 iconValue: number = 1;
 iconUnit: string = 'Kg';
 iconFirstAddition: number = 1;
+showWeightKey: boolean = false;
+showWeightKeyCheck: boolean = false;
 
 private readonly gramsToOunces: number = 0.035274;
 private readonly gramsToPounds: number = 0.00220462;
@@ -85,6 +87,7 @@ weightConverter(){
       break;
     }
   }
+  this.showWeightKey = true;
 }
 
   convertToAmerican(conversionRate: number){
@@ -101,6 +104,16 @@ weightConverter(){
     return conversionRate;
   }
 
+  // weightShowIcon(){
+  //   if(this.showWeightKey === false){
+  //     this.showWeightKey = true;
+  //     this.showWeightKeyCheck = true;
+  //   }else{
+  //     this.showWeightKey = false;
+  //     this.showWeightKeyCheck = false;
+  //   };
+  // }
+
   clearWeightsClicked(){
     const dialogRef = this.dialog.open(ClearDialogComponent, {
       width: 'fit-content',
@@ -114,6 +127,7 @@ weightConverter(){
         console.log("Not cleared.");
       }
     });
+    this.showWeightKey = false;
   }
 
   clearWeights(){

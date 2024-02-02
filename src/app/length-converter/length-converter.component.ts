@@ -25,6 +25,7 @@ export class LengthConverterComponent {
   iconValue: number = 33;
   iconUnit: string = 'cm';
   iconFirstAddition: number = 33;
+  showLengthKey: boolean = false;
 
 
   private readonly centermetersToInches: number = 0.393701;
@@ -126,6 +127,7 @@ export class LengthConverterComponent {
         break;
       }
     }
+    this.showLengthKey = true;
     
   }
 
@@ -143,6 +145,16 @@ export class LengthConverterComponent {
     return conversionRate;
   }
 
+  // lengthShowIcon(){
+  //   if(this.showLengthKey == false){
+  //     this.showLengthKey = true;
+  //     this.showLengthKeyCheck = true;
+  //   }else{
+  //     this.showLengthKey = false;
+  //     this.showLengthKeyCheck = false;
+  //   };
+  // }
+
   clearLengthsClicked(){
     const dialogRef = this.dialog.open(ClearDialogComponent, {
       width: 'fit-content',
@@ -156,6 +168,7 @@ export class LengthConverterComponent {
         console.log("Not cleared.");
       }
     });
+    this.showLengthKey = false;
   }
 
   clearLengths(){

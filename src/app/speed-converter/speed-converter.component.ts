@@ -34,6 +34,8 @@ export class SpeedConverterComponent {
 
   iconDisplayerValue: number = 0;
   displaySpeedComponent: boolean = true;
+  showSpeedKey: boolean = false;
+  showSpeedKeyCheck: boolean = false;
 
 
   
@@ -209,6 +211,7 @@ export class SpeedConverterComponent {
         }
       }
     };
+    this.showSpeedKey = true;
   };
 
   convertToAmerican(conversionRate: number){
@@ -253,6 +256,16 @@ export class SpeedConverterComponent {
     return conversionRate;
   };
 
+  // speedShowIcon(){
+  //   if(this.showSpeedKey === false){
+  //     this.showSpeedKey = true;
+  //     this.showSpeedKeyCheck = true;
+  //   }else{
+  //     this.showSpeedKey = false;
+  //     this.showSpeedKeyCheck = false;
+  //   }
+  // }
+
   clearSpeedClicked(){
     const dialogRef = this.dialog.open(ClearDialogComponent, {
       width: 'fit-content',
@@ -265,6 +278,7 @@ export class SpeedConverterComponent {
         console.log("Not cleared.");
       }
     });
+    this.showSpeedKey = false;
   }
 
   clearSpeed(){

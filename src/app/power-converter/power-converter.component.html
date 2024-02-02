@@ -70,10 +70,18 @@
             </span>
         </div>
         <br>
-        <div class="margin">
-            <span class="icon">
-                <app-icon-displayer [iconArray]="displayIcons" [iconName]="iconName" [iconUnit]="iconUnit" [iconValue]="iconValue" [iconFirstAddition]="iconFirstAddition" [displayPowerComponent]="displayPowerComponent" ></app-icon-displayer>
+        <!-- <div>
+            <span>
+                <button class="buttonShowPowerKey" (click)="powerShowIcon()"><strong>Show Icons <i *ngIf="showPowerKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!showPowerKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
             </span>
+        </div> -->
+        <br>
+        <div *ngIf="showPowerKey">
+            <div class="margin">
+                <span class="icon">
+                    <app-icon-displayer [iconArray]="displayIcons" [iconName]="iconName" [iconUnit]="iconUnit" [iconValue]="iconValue" [iconFirstAddition]="iconFirstAddition" [displayPowerComponent]="displayPowerComponent" ></app-icon-displayer>
+                </span>
+            </div>
         </div>
     </div>
 </div>

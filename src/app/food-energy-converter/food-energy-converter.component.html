@@ -79,12 +79,20 @@
             </span>
         </div>
         <br>
-        <br>
-        <div class="margin">
-            <span class="icon">
-                <app-icon-displayer [iconArray]="displayApples" [iconName]="appleIconName" [iconValue]="iconValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
+        <!-- <div>
+            <span>
+                <button class="buttonShowFoodKey" (click)="foodShowIcon()"><strong>Show Icons <i *ngIf="showFoodKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!showFoodKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
             </span>
+        </div> -->
+        <br>
+        <div *ngIf="showFoodKey">
+            <div class="margin">
+                <span class="icon">
+                    <app-icon-displayer [iconArray]="displayApples" [iconName]="appleIconName" [iconValue]="iconValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
+                </span>
+            </div>
         </div>
+
     </div>
 </div>
 

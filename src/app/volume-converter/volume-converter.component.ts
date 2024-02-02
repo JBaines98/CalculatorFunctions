@@ -28,6 +28,7 @@ export class VolumeConverterComponent {
   iconValue: number = 50;
   iconUnit: string = 'cl';
   iconFirstAddition: number = 50;
+  showVolumeKey: boolean = false;
 
   private readonly millilitersToTeaspoons: number = 0.202884;
   private readonly millilitersToTablespoons: number = 0.06763;
@@ -127,6 +128,7 @@ export class VolumeConverterComponent {
         break;
       }
     }
+    this.showVolumeKey = true;
   }
 
   convertToAmerican(conversionRate: number){
@@ -143,6 +145,16 @@ export class VolumeConverterComponent {
     return conversionRate;
   }
 
+  // volumeShowIcon(){
+  //   if(this.showVolumeKey === false){
+  //     this.showVolumeKey = true;
+  //     this.showVolumeKeyCheck = true;
+  //   }else{
+  //     this.showVolumeKey = false;
+  //     this.showVolumeKeyCheck = false;
+  //   }
+  // }
+
   clearVolumesClicked(){
     const dialogRef = this.dialog.open(ClearDialogComponent, {
       width: 'fit-content',
@@ -156,6 +168,7 @@ export class VolumeConverterComponent {
         console.log("Not cleared.");
       }
     });
+    this.showVolumeKey = false;
   }
 
   clearVolumes(){

@@ -24,6 +24,8 @@ export class FoodEnergyConverterComponent {
   iconValue: number = 327;
   iconUnit: string = 'Kj'
   iconFirstAddition: number = 327;
+  showFoodKey: boolean = false;
+  showFoodKeyCheck: boolean = false;
 
   private readonly foodCaloriesToJoules: number = 4184;
   private readonly foodCaloriesToKiloJoules: number = 4.184;
@@ -59,6 +61,7 @@ export class FoodEnergyConverterComponent {
         }
       }
     }
+    this.showFoodKey = true;
   }
 
   convertToEnergy(conversionRate: number){
@@ -75,6 +78,16 @@ export class FoodEnergyConverterComponent {
     return conversionRate;
   }
 
+  // foodShowIcon(){
+  //   if(this.showFoodKey === false){
+  //     this.showFoodKey = true;
+  //     this.showFoodKeyCheck = true;
+  //   }else{
+  //     this.showFoodKey = false;
+  //     this.showFoodKeyCheck = false;
+  //   };
+  // }
+
   clearQuantitiesClicked(){
     const dialogRef = this.dialog.open(ClearDialogComponent, {
       width: 'fit-content',
@@ -87,7 +100,8 @@ export class FoodEnergyConverterComponent {
       }else{
         console.log("Not cleared.");
       }
-    })
+    });
+    this.showFoodKey = false;
   }
 
   clearQuantities(){

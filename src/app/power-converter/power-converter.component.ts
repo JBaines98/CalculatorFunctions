@@ -31,6 +31,7 @@ export class PowerConverterComponent {
   kilowattIconValue: number = 1;
   displayPowerComponent: boolean = false;
   clearPowerValue: boolean = false;
+  showPowerKey: boolean = false;
  
   private readonly horsePowerToKilowatt: number = 1.341;
   private readonly kilowattToHorsePower: number = 1.341;
@@ -106,6 +107,7 @@ export class PowerConverterComponent {
         break;
       }
     }
+    this.showPowerKey = true;
   }
   
 
@@ -136,6 +138,16 @@ export class PowerConverterComponent {
     return conversionRate;
   }
 
+  // powerShowIcon(){
+  //   if(this.showPowerKey === false){
+  //     this.showPowerKey = true;
+  //     this.showPowerKeyCheck = true;
+  //   }else{
+  //     this.showPowerKey = false;
+  //     this.showPowerKeyCheck = false;
+  //   };
+  // }
+
   clearPowersClicked(){
     const dialogRef = this.dialog.open(ClearDialogComponent, {
       
@@ -151,6 +163,7 @@ export class PowerConverterComponent {
         console.log("Not cleared.");
       }
     });
+    this.showPowerKey = false;
   }
 
   clearPowers(){

@@ -33,6 +33,7 @@ export class TemperatureConverterComponent {
   iconDisplayerValue: number = 0;
   isCelcius: boolean | null = null;
   showHotOrCold: string = '';
+  showTempKey: boolean = false;
 
   private readonly celciusToFahrenheit: number = 33.8;
   private readonly fahrenheitToCelcius: number = 0;
@@ -159,6 +160,7 @@ export class TemperatureConverterComponent {
 
       this.iconDisplayerValue = 10;
       this.iconFirstAddition = 10;
+      this.showTempKey = true;
     }
   }
 
@@ -249,6 +251,16 @@ export class TemperatureConverterComponent {
     return conversionRate;
   }
 
+  // tempShowIcon(){
+  //   if(this.showTempKey === false){
+  //     this.showTempKey = true;
+  //     this.ShowTempKeyCheck = true;
+  //   }else{
+  //     this.showTempKey = false;
+  //     this.ShowTempKeyCheck = false;
+  //   };
+  // }
+
   clearTemperatureClicked(){
     const dialogRef = this.dialog.open(ClearDialogComponent, {
       width: 'fit-content',
@@ -261,7 +273,8 @@ export class TemperatureConverterComponent {
       }else{
         console.log("Not cleared.");
       }
-    })
+    });
+    this.showTempKey = false;
   }
 
   clearTemperature(){

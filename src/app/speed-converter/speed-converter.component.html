@@ -66,11 +66,20 @@
             </span>
         </div>
         <br>
-        <div class="margin">
-            <span class="icon">
-                <app-icon-displayer [iconArray]="displaySpeed" [iconName]="speedIconName" [iconValue]="iconDisplayerValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition" [displaySpeedComponent]="displaySpeedComponent"></app-icon-displayer>
+        <!-- <div>
+            <span>
+                <button class="buttonShowSpeedKey" (click)="speedShowIcon()"><strong>Show Icons <i *ngIf="showSpeedKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!showSpeedKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
             </span>
+        </div> -->
+        <br>
+        <div *ngIf="showSpeedKey">
+            <div class="margin">
+                <span class="icon">
+                    <app-icon-displayer [iconArray]="displaySpeed" [iconName]="speedIconName" [iconValue]="iconDisplayerValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition" [displaySpeedComponent]="displaySpeedComponent"></app-icon-displayer>
+                </span>
+            </div>
         </div>
+
     </div>
 </div>
 

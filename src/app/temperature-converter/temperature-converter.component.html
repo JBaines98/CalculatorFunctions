@@ -70,10 +70,18 @@
             </span>
         </div>
         <br>
-        <div class="margin">
-            <span class="icon">
-                <app-icon-displayer [iconArray]="displayTenDegree" [iconName]="tenDegreeIconName" [iconUnit]="iconUnit" [iconValue]="iconDisplayerValue" [iconFirstAddition]="iconFirstAddition" [displayTemperatureComponent]="displayTemperatureComponent"></app-icon-displayer>
+        <!-- <div>
+            <span>
+                <button class="buttonShowTempKey" (click)="tempShowIcon()"><strong>Show Icons <i *ngIf="ShowTempKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!ShowTempKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
             </span>
+        </div> -->
+        <br>
+        <div *ngIf="showTempKey">
+            <div class="margin">
+                <span class="icon">
+                    <app-icon-displayer [iconArray]="displayTenDegree" [iconName]="tenDegreeIconName" [iconUnit]="iconUnit" [iconValue]="iconDisplayerValue" [iconFirstAddition]="iconFirstAddition" [displayTemperatureComponent]="displayTemperatureComponent"></app-icon-displayer>
+                </span>
+            </div>
         </div>
     </div>
 </div>

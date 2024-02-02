@@ -1,68 +1,91 @@
-<div class="flex-container">
-    <span class="energyTitle">
-        <h4>Food Calorie Converter <i class="fa-solid fa-burger"></i></h4>
-    </span>
+<div  class="bg-slate-500 py-3 ">
+    <div class="flex-container">
+        <span class="energyTitle">
+            <br>
+            <h1 class="text-white textSize px-2">Food Calorie Converter <i class="fa-solid fa-burger"></i></h1>
+        </span>
+    </div>
 </div>
+<br>
 <div class="flex-container">
-    <div>
-        <div>
+    <div class="width">
+        <div class="inputFood">
             <label><strong> Food Calories: </strong></label>
-            <select name="foodQuantity" id="foodQuantity" [(ngModel)]="foodSystem">
+        </div>
+        <div class="inputFood">
+            <select class="w-full" name="foodQuantity" id="foodQuantity" [(ngModel)]="foodSystem">
                 <option value="Food Calories">
                     Food Calories
                 </option>
             </select>
         </div>
-        <div>
+        <div class="inputFood">
             <label for="energyQuantity"><strong> Choose an energy unit: </strong></label>
-            <select name="energyQuantity" id="energyQuantity" [(ngModel)]="energySystem">
+        </div>
+        <div class="inputFood">
+            <select class="w-full" name="energyQuantity" id="energyQuantity" [(ngModel)]="energySystem">
                 <option value="Joules">Joules</option>
                 <option value="KiloJoules">KiloJoules</option>
             </select>
         </div>
         <br>
-        <div>
-            <span>
+        <div class="inputFood">
+            <div>
                 <label><strong>Calories </strong></label>
-                <input [(ngModel)]="foodValue">
+            </div>
+            <div>
+                <input class="w-full" [(ngModel)]="foodValue">
+            </div>
+            <div>
                 <strong>{{foodSystem}}</strong>
-            </span>
+            </div>
         </div>
-        <div>
-            <span>
+        <div class="inputFood">
+            <div>
                 <label><strong>Energy </strong></label>
-                <input readonly [(ngModel)]="energyValue">
+            </div>
+            <div>
+                <input class="w-full" readonly [(ngModel)]="energyValue">
+            </div>
+            <div>
                 <strong>{{energySystem}}</strong>
-            </span>
+            </div>
         </div>
         <br>
-        <div>
-            <span>
+        <div class="inputFood">
+            <div>
                 <label>
                     <strong>Conversion rate : </strong>
                 </label>
-                <input readonly [(ngModel)]="displayConversionRate">
-            </span>
+            </div>
+            <div>
+                <input class="w-full" readonly [(ngModel)]="displayConversionRate">
+            </div>
         </div>
-        <div>
-            <span>
+        <div class="inputFood">
+            <div>
                 <label><strong>Equivalent Apples </strong></label>
-                <input readonly [(ngModel)]="appleValue">
-            </span>
+            </div>
+            <div>
+                <input class="w-full" readonly [(ngModel)]="appleValue">
+            </div>
         </div>
     </div>
     <div>
-        <span>
-            <button class="buttonEnergy" (click)="energyConversion()"><strong>Go</strong></button>
-            <button class="buttonEnergyClear" (click)="clearQuantitiesClicked()"><strong>Clear</strong></button>
-        </span>
+        <div>
+            <span>
+                <button class="buttonEnergy" (click)="energyConversion()"><strong>Go</strong></button>
+                <button class="buttonEnergyClear" (click)="clearQuantitiesClicked()"><strong>Clear</strong></button>
+            </span>
+        </div>
+        <br>
+        <br>
+        <div class="margin">
+            <span class="icon">
+                <app-icon-displayer [iconArray]="displayApples" [iconName]="appleIconName" [iconValue]="iconValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
+            </span>
+        </div>
     </div>
-    
 </div>
-<br>
-<div class="flex-container">
-    <span>
-        <app-icon-displayer [iconArray]="displayApples" [iconName]="appleIconName" [iconValue]="iconValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
-    </span>
-</div>
+
 

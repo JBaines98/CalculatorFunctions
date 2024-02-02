@@ -1,35 +1,54 @@
-<div class="flex-container">
-    <span class="titlePosition">
-        <h4>Date & Time <i class="fa-regular fa-calendar-days"></i>  <i class="fa-regular fa-clock"></i></h4>
-    </span>
+<div class="bg-slate-500 py-3">
+    <div class="flex-container">
+        <span class="titlePosition">
+            <br>
+            <h1 class="text-white textSize px-2">Date & Time <i class="fa-regular fa-calendar-days"></i>  <i class="fa-regular fa-clock"></i></h1>
+        </span>
+    </div>
 </div>
+<br>
 <div class="flex-container">
-    <div>
-        <div>
-            <strong>
-                GMT:    <input readonly [(ngModel)]="dateGMT" class="textBox">
+    <div class="width">
+        <div class="inputDateTime">
+            <strong >
+                GMT:    
             </strong>
+            <div>
+                <input class="w-full" readonly [(ngModel)]="dateGMT">
+            </div>
         </div>
         <br>
-        <div>
+        <div class="inputDateTime">
             <strong>
-                New York:    <input readonly [(ngModel)]="dateEST" class="textBox">
+                New York:    
             </strong>
+            <div>
+                <input class="w-full" readonly [(ngModel)]="dateEST">
+            </div>
         </div>
-        <div>
+        <div class="inputDateTime">
             <strong>
-                India:    <input readonly [(ngModel)]="dateIST" class="textBox">
+                India:    
             </strong>
+            <div>
+                <input class="w-full" readonly [(ngModel)]="dateIST">
+            </div>
         </div>
-        <div>
+        <div class="inputDateTime">
             <strong>
-                Japan:    <input readonly [(ngModel)]="dateJST" class="textBox">
+                Japan:    
             </strong>
+            <div>
+                <input class="w-full" readonly [(ngModel)]="dateJST">
+            </div>
         </div>
-        <div>
+        <div class="inputDateTime">
             <strong>
-                Moscow:    <input readonly [(ngModel)]="dateMSK" class="textBox">
+                Moscow:    
             </strong>
+            <div>
+                <input class="w-full" readonly [(ngModel)]="dateMSK">
+            </div>
         </div>
     </div>
     <div>

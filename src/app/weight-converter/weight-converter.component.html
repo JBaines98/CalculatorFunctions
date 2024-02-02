@@ -1,68 +1,83 @@
-<div class="flex-container">
-
-    <span class="weightTitle">
-        <h4>Weight Converter <i class="fa-solid fa-weight-hanging"></i></h4>
-    </span>
-
+<div class="bg-slate-500 py-3">
+    <div class="flex-container">
+        <span class="weightTitle">
+            <br>
+            <h1 class="text-white textSize px-2">Weight Converter <i class="fa-solid fa-weight-hanging"></i></h1>
+        </span>
+    </div>
 </div>
-
+<br>
 <div class="flex-container">
-
-    <div>
+    <div class="width">
         <div>
             <label for="gramMeasurements"><strong> Choose a metric weight: </strong></label>
-            <select name="gramMeasurements" id="gramMeasurements" [(ngModel)]="gramSystem">
+        </div>
+        <div>
+            <select class="w-full pxy-2" name="gramMeasurements" id="gramMeasurements" [(ngModel)]="gramSystem">
                 <option value="Grams">Grams</option>
                 <option value="Kilograms">Kilograms</option>
             </select>
         </div>
         <div>
             <label for="poundMeasurements"><strong> Choose an American weight: </strong></label>
-            <select name="poundMeasurements" id="poundMeasurements" [(ngModel)]="poundSystem">
+        </div>
+        <div>
+            <select class="w-full pxy-2" name="poundMeasurements" id="poundMeasurements" [(ngModel)]="poundSystem">
                 <option value="Ounces">Ounces</option>
                 <option value="Pounds">Pounds</option>
             </select>
         </div>
         <br>
         <div>
-            <span>
+            <div>
                 <label><strong>Metric </strong></label>
-                <input [(ngModel)]="gramValue">
+            </div>
+            <div>
+                <input class="w-full pxy-2" [(ngModel)]="gramValue">
+            </div>
+            <div>
                 <strong>{{gramSystem}}</strong>
-            </span>
+            </div>
         </div>
         <div>
-            <span>
+            <div>
                 <label><strong>American </strong></label>
-                <input [(ngModel)]="poundValue">
-                <strong>{{poundSystem}}</strong>
-            </span>
+            </div>
+            <div>
+                <input class="w-full pxy-2" [(ngModel)]="poundValue">
+            </div>
+            <div>
+                <strong>{{poundSystem}}</strong> 
+            </div>
         </div>
         <br>
         <div>
-            <span>
+            <div>
                 <label><strong>Conversion rate : </strong></label>
-                <input readonly [(ngModel)]="displayConversionRate">
-            </span>
+            </div>
+            <div>
+                <input class="w-full pxy-2" readonly [(ngModel)]="displayConversionRate">
+            </div>
         </div>
     </div>
     <br>
     <div>
-        <span>
-            <button class="weightLength" (click)="weightConverter()"><strong>Go</strong></button>
-            <button class="weightClear" (click)="clearWeightsClicked()"><strong>Clear</strong></button>
-        </span>
+        <div>
+            <span>
+                <button class="weightLength" (click)="weightConverter()"><strong>Go</strong></button>
+                <button class="weightClear" (click)="clearWeightsClicked()"><strong>Clear</strong></button>
+            </span>
+        </div>
+        <br>
+        <div class="margin">
+            <span class="icon">
+                <app-icon-displayer [iconArray]="displayDumbBell" [iconName]="dumbBellIconName" [iconValue]="iconValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
+            </span>
+        </div>
     </div>
-
 </div>
-<br>
-<div class="flex-container">
 
-    <span>
-        <app-icon-displayer [iconArray]="displayDumbBell" [iconName]="dumbBellIconName" [iconValue]="iconValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
-    </span>
 
-</div>
 
 
 

@@ -1,5 +1,5 @@
 .speedTitle{
-    margin-left: 280px;
+    margin-left: 10px;
     font-size: larger;
 }
 
@@ -12,8 +12,8 @@
     font-family: 'Times New Roman', Times, serif;
     height: 50px;
     width: 100px;
-    margin-left: 150px;
-    background-color: greenyellow;
+    margin-left: 40px;
+    background-color: aquamarine;
 }
 .buttonClear{
     border-radius: 5px;
@@ -29,4 +29,20 @@
 }
 .flex-container {
     display: flex;
+}
+.icon{
+    margin-left: 40px;
+}
+.textSize{
+    font-size: xx-large;
+}
+.margin {
+    margin-left: 30px;
+}
+.width {
+    width: 400px;
+}
+.inputSpeed{
+    margin-left: 10px;
+    width: 100%;
 }

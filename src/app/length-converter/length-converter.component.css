@@ -1,5 +1,5 @@
 .lengthTitle{
-    margin-left: 280px;
+    margin-left: 10px;
     font-size: larger;
 }
 
@@ -12,8 +12,8 @@
     font-family: 'Times New Roman', Times, serif;
     height: 50px;
     width: 100px;
-    margin-left: 150px;
-    background-color: greenyellow;
+    margin-left: 40px;
+    background-color: aquamarine;
 }
 .buttonLengthClear{
     border-radius: 5px;
@@ -29,4 +29,20 @@
 }
 .flex-container {
     display: flex;
+}
+.inputLength {
+    margin-left: 10px;
+    width: 100%;
+}
+.icon{
+    margin-left: 40px;
+}
+.textSize{
+    font-size: xx-large;
+}
+.width{
+    width: 400px;
+}
+.margin{
+    margin-left: 40px;
 }

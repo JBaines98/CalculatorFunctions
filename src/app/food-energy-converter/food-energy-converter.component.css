@@ -1,6 +1,7 @@
 .energyTitle{
-    margin-left: 280px;
+
     font-size: larger;
+    margin-left: 10px;
 }
 
 .buttonEnergy{
@@ -12,8 +13,8 @@
     font-family: 'Times New Roman', Times, serif;
     height: 50px;
     width: 100px;
-    margin-left: 150px;
-    background-color: greenyellow;
+    margin-left: 40px;
+    background-color: aquamarine;
 }
 .buttonEnergyClear{
     border-radius: 5px;
@@ -32,4 +33,18 @@
 }
 .flex-container {
     display: flex;
+}
+
+.textSize{
+    font-size: xx-large;
+}
+.margin {
+    margin-left: 40px;
+}
+.width {
+    width: 400px;
+}
+.inputFood{
+    margin-left: 10px;
+    width: 100%;
 }

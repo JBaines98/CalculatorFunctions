@@ -12,7 +12,7 @@
     background-color: bisque;
 }
 .currencyTitle{
-    margin-left: 280px;
+    margin-left: 10px;
     font-size: larger;
 }
 .inputCurrency{
@@ -23,4 +23,7 @@
 }
 .flex-container {
     display: flex;
+}
+.textSize{
+    font-size: xx-large;
 }

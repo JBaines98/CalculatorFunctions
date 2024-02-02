@@ -1,14 +1,24 @@
+<div class="bg-slate-500 py-3">
+  <div class="flex-container">
+    <span class="currencyTitle">
+      <br>
+      <h1 class="text-white textSize px-2">
+        Currency Converter
+        <i class="fa-solid fa-coins"></i>
+      </h1>
+    </span>
+  </div>
+</div>
+<br>
 <div>
-  <h4 class="currencyTitle">
-    Currency Converter
-    <i class="fa-solid fa-coins"></i>
-  </h4>
   <span class="inputCurrency">
     <i [class]="currency"></i>
     <strong> : </strong>
     <input [(ngModel)]="sterlingValue"/>
   </span>
 </div>
+
+
 <br />
 <div>
   <button class="buttonCurrency" (click)="dollarExchange()" title="US Dollar">

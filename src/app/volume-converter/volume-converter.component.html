@@ -1,14 +1,20 @@
-<div class="flex-container">
-    <span class="volumeTitle">
-        <h4>Volume Converter <i class="fa-solid fa-layer-group"></i></h4>
-    </span>
+<div class="bg-slate-500 py-3">
+    <div class="flex-container">
+        <span class="volumeTitle">
+            <br>
+            <h1 class="text-white textSize px-2">Volume Converter <i class="fa-solid fa-layer-group"></i></h1>
+        </span>
+    </div>
 </div>
+<br>
 <div class="flex-container">
 
-    <div>
-        <div>
+    <div class="width">
+        <div class="inputVolume">
             <label for="metricVolumes"><strong> Choose a metric volume: </strong></label>
-            <select name="metricVolumes" id="metricVolumes" [(ngModel)]="metricSystem">
+        </div>
+        <div class="inputVolume">
+            <select class="w-full pxy-2" name="metricVolumes" id="metricVolumes" [(ngModel)]="metricSystem">
                 <option value="Milliliters">Milliliters</option>
                 <option value="Centiliters">Centiliters</option>
                 <option value="Liters">Liters</option>
@@ -16,7 +22,9 @@
         </div>
         <div>
             <label for="americanMeasurements"><strong> Choose an American volume: </strong></label>
-            <select name="americanVolumes" id="americanVolumes" [(ngModel)]="americanSystem">
+        </div>
+        <div>
+            <select class="w-full" name="americanVolumes" id="americanVolumes" [(ngModel)]="americanSystem">
                 <option value="Teaspoons">Teaspoons</option>
                 <option value="Tablespoons">Tablespoons</option>
                 <option value="Ounces">Ounces</option>
@@ -24,39 +32,50 @@
         </div>
         <br>
         <div>
-            <span>
+            <div>
                 <label><strong>Metric </strong></label>
-                <input [(ngModel)]="metricValue">
+            </div>
+            <div>
+                <input class="w-full" [(ngModel)]="metricValue">
+            </div>
+            <div>
                 <strong>{{metricSystem}}</strong>
-            </span>
+            </div>
         </div>
         <div>
-            <span>
+            <div>
                 <label><strong>American </strong></label>
-                <input readonly [(ngModel)]="americanValue">
+            </div>
+            <div>
+                <input class="w-full" readonly [(ngModel)]="americanValue">
+            </div>
+            <div>
                 <strong>{{americanSystem}}</strong>
-            </span>
+            </div>
         </div>
         <br>
         <div>
-            <span>
+            <div>
                 <label><strong>Conversion rate : </strong></label>
-                <input readonly [(ngModel)]="displayConversionRate">
-            </span>
+            </div>
+            <div>
+                <input class="w-full" readonly [(ngModel)]="displayConversionRate">
+            </div>
         </div>
     </div>
     <br>
     <div>
-        <span>
-            <button class="buttonVolume" (click)="volumeConversion()"><strong>Go</strong></button>
-            <button class="buttonVolumeClear" (click)="clearVolumesClicked()"><strong>Clear</strong></button>
-        </span>
+        <div>
+            <span>
+                <button class="buttonVolume" (click)="volumeConversion()"><strong>Go</strong></button>
+                <button class="buttonVolumeClear" (click)="clearVolumesClicked()"><strong>Clear</strong></button>
+            </span>
+        </div>
+        <br>
+        <div class="margin">
+            <span class="icon">
+                <app-icon-displayer [iconArray]="displayLiters" [iconName]="litreIconName" [iconUnit]="iconUnit" [iconValue]="iconValue" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer> 
+            </span>
+        </div>
     </div>
-
-</div>
-<br>
-<div class="flex-container">
-    <span>
-        <app-icon-displayer [iconArray]="displayLiters" [iconName]="litreIconName" [iconUnit]="iconUnit" [iconValue]="iconValue" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer> 
-    </span>
 </div>

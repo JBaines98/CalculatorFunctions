@@ -1,59 +1,80 @@
-<div class="flex-container">
-    <span class="temperatureTitle">
-        <h4>Temperature Converter <i class="fa-solid fa-temperature-three-quarters"></i></h4>
-    </span>
-</div>
-<div class="flex-container">
-
-    <div>
-        <div>
-    
-            <label><strong> Starting Temperature: </strong></label>
-            <select name="fromQuantity" id="fromQuantity" [(ngModel)]="fromSystem">
-                <option value="Celcius">Celcius</option>
-                <option value="Fahrenheit">Fahrenheit</option>
-            </select>
-        </div>
-        <div>
-            <label><strong> Converted Temperature: </strong></label>
-            <select name="toQuantity" id="toQuantity" [(ngModel)]="toSystem">
-                <option value="Fahrenheit">Fahrenheit</option>
-                <option value="Celcius">Celcius</option>
-            </select>
-        </div>
-        <br>
-        <div>
-            <span>
-                <label><strong>Temperature</strong></label>
-                <input [(ngModel)]="fromValue">
-                <strong>{{fromSystem}}</strong>
-            </span>
-        </div>
-        <div>
-            <span>
-                <label><strong>Temperature</strong></label>
-                <input [(ngModel)]="toValue">
-                <strong>{{toSystem}}</strong>
-            </span>
-        </div>
-        <br>
-        <div>
-            <span>
-                <label><strong>Conversion rate : </strong></label>
-                <input readonly [(ngModel)]="displayConversionRate">
-            </span>
-        </div>
-    </div>
-    <div>
-        <span>
-            <button class="buttonTemperature" (click)="temperatureConversion()"><strong>Go</strong></button>
-            <button class="buttonClear" (click)="clearTemperatureClicked()"><strong>Clear</strong></button>
+<div class="bg-slate-500 py-3">
+    <div class="flex-container">
+        <span class="temperatureTitle">
+            <br>
+            <h1 class="text-white textSize px-2">Temperature Converter <i class="fa-solid fa-temperature-three-quarters"></i></h1>
         </span>
     </div>
 </div>
 <br>
 <div class="flex-container">
-    <span>
-        <app-icon-displayer [iconArray]="displayTenDegree" [iconName]="tenDegreeIconName" [iconUnit]="iconUnit" [iconValue]="iconDisplayerValue" [iconFirstAddition]="iconFirstAddition" [displayTemperatureComponent]="displayTemperatureComponent"></app-icon-displayer>
-    </span>
+
+    <div class="width">
+        <div class="inputTemp">
+    
+            <label><strong> Starting Temperature: </strong></label>
+        </div>
+        <div class="inputTemp">
+            <select class="w-full" name="fromQuantity" id="fromQuantity" [(ngModel)]="fromSystem">
+                <option value="Celcius">Celcius</option>
+                <option value="Fahrenheit">Fahrenheit</option>
+            </select>
+        </div>
+        <div class="inputTemp">
+            <label><strong> Converted Temperature: </strong></label>
+        </div>
+        <div class="inputTemp">
+            <select class="w-full" name="toQuantity" id="toQuantity" [(ngModel)]="toSystem">
+                <option value="Fahrenheit">Fahrenheit</option>
+                <option value="Celcius">Celcius</option>
+            </select>
+        </div>
+        <br>
+        <div>
+            <div class="inputTemp">
+                <label><strong>Temperature</strong></label>
+            </div>
+            <div class="inputTemp">
+                <input class="w-full" [(ngModel)]="fromValue">
+            </div>
+            <div class="inputTemp">
+                <strong>{{fromSystem}}</strong>
+            </div>
+        </div>
+        <div>
+            <div class="inputTemp">
+                <label><strong>Temperature</strong></label>
+            </div>
+            <div class="inputTemp">
+                <input class="w-full" [(ngModel)]="toValue">
+            </div>
+            <div class="inputTemp">
+                <strong>{{toSystem}}</strong>
+            </div>
+        </div>
+        <br>
+        <div>
+            <div class="inputTemp">
+                <label><strong>Conversion rate : </strong></label>
+            </div>
+            <div class="inputTemp">
+                <input class="w-full" readonly [(ngModel)]="displayConversionRate">
+            </div>
+        </div>
+    </div>
+    <div>
+        <div>
+            <span>
+                <button class="buttonTemperature" (click)="temperatureConversion()"><strong>Go</strong></button>
+                <button class="buttonClear" (click)="clearTemperatureClicked()"><strong>Clear</strong></button>
+            </span>
+        </div>
+        <br>
+        <div class="margin">
+            <span class="icon">
+                <app-icon-displayer [iconArray]="displayTenDegree" [iconName]="tenDegreeIconName" [iconUnit]="iconUnit" [iconValue]="iconDisplayerValue" [iconFirstAddition]="iconFirstAddition" [displayTemperatureComponent]="displayTemperatureComponent"></app-icon-displayer>
+            </span>
+        </div>
+    </div>
 </div>
+

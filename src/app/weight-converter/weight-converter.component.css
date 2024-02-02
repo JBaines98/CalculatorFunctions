@@ -1,5 +1,5 @@
 .weightTitle{
-    margin-left: 280px;
+    margin-left: 10px;
     font-size: larger;
 }
 
@@ -12,8 +12,8 @@
     font-family: 'Times New Roman', Times, serif;
     height: 50px;
     width: 100px;
-    margin-left: 150px;
-    background-color: greenyellow;
+    margin-left: 30px;
+    background-color: aquamarine;
 }
 .weightClear{
     border-radius: 5px;
@@ -29,4 +29,21 @@
 }
 .flex-container {
     display: flex;
+    margin-left: 10px;
+}
+.icon{
+    margin-left: 40%;
+}
+.textSize{
+    font-size: xx-large;
+}
+.width {
+    width: 400px;
+}
+.inputWeight {
+    margin-left: 10px;
+    width: 100%;
+}
+.margin {
+    margin-left: 30px;
 }

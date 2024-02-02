@@ -1,9 +1,10 @@
 .titlePosition{
-    margin-left: 280px;
+    margin-left: 10px;
     font-size: larger;
 }
 .dateTimeButton{
     border-radius: 5px;
+
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 10px;
@@ -11,8 +12,8 @@
     font-family: 'Times New Roman', Times, serif;
     height: 50px;
     width: 100px;
-    margin-left: 220px;
-    background-color: greenyellow;
+    margin-left: 60px;
+    background-color: aquamarine;
 }
 .textBox {
     width: fit-content;
@@ -31,4 +32,17 @@
 }
 .flex-container {
     display: flex;
+}
+.textSize{
+    font-size: xx-large;
+}
+.width {
+    width: 400px;
+}
+.inputDateTime {
+    margin-left: 10px;
+    width: 100%;
+}
+.margin {
+    margin-left: 30px;
 }

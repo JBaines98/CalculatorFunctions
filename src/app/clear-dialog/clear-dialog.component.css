@@ -2,6 +2,8 @@
     background-color: lightskyblue;
     border-width: 2px;
     border-color: black;
+    width: 'fit-content';
+    height: 'fit-content';
 }
 .buttonGo {
     margin-left: 5px;
@@ -28,4 +30,7 @@
     padding-right: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+.right {
+    float: right;
 }

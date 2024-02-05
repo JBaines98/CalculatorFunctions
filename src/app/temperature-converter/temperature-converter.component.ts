@@ -54,8 +54,9 @@ export class TemperatureConverterComponent {
   constructor(
     public dialogRef: MatDialogRef<TemperatureConverterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: dialogData = {
-      converterType: 'Temperature-converter',
-      messege: 'Are you sure you want to clear temperature-converter?'
+      converterType: '',
+      messege: '',
+      iconString: ''
     },
     public dialog: MatDialog){}
 
@@ -265,7 +266,11 @@ export class TemperatureConverterComponent {
     const dialogRef = this.dialog.open(ClearDialogComponent, {
       width: 'fit-content',
       height: 'fit-content',
-      data: this.data
+      data: {
+        converterType: 'Temperature-converter',
+        message: 'Are you sure you want to clear temperature-converter',
+        iconString: 'fa-solid fa-temperature-three-quarters'
+      }
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result === true){

@@ -62,8 +62,9 @@ export class SpeedConverterComponent {
 
   constructor(public dialogRef: MatDialogRef<SpeedConverterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: dialogData = {
-      converterType: 'speed-converter',
-      messege: 'Are you sure you want to clear speed-converter?'
+      converterType: '',
+      messege: '',
+      iconString: ''
     },
     public dialog: MatDialog){}
 
@@ -270,6 +271,11 @@ export class SpeedConverterComponent {
     const dialogRef = this.dialog.open(ClearDialogComponent, {
       width: 'fit-content',
       height: 'fit-content',
+      data: {
+        converterType: 'Speed-converter',
+        message: 'Are you sure you want to clear speed-converter?',
+        iconString: 'fa-solid fa-gauge'
+      }
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result === true){

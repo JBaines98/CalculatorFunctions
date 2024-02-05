@@ -11,4 +11,5 @@ export interface IconKey {
 export interface dialogData {
     converterType: string;
     messege: string;
+    iconString?: string;
 }

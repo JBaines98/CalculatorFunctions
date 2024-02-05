@@ -18,8 +18,9 @@ export class TrigonometryComponent {
   constructor(
     public dialogRef: MatDialogRef<TrigonometryComponent>,
     @Inject(MAT_DIALOG_DATA) public data: dialogData = {
-      converterType: 'trigonometry calculator',
-      messege: 'Are you sure you want to clear trigonometry values?'
+      converterType: '',
+      messege: '',
+      iconString: ''
     },
     public dialog: MatDialog){}
 
@@ -41,7 +42,11 @@ export class TrigonometryComponent {
     const dialogRef = this.dialog.open(ClearDialogComponent, {
       width: 'fit-content',
       height: 'fit-content',
-      data: this.data
+      data: {
+        converterType: 'Trigonometry Calculator',
+        message: 'Are you sure you want to clear trigonometry calculator?',
+        iconString: 'fa-solid fa-shapes'
+      }
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result === true){

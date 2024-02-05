@@ -60,8 +60,9 @@ export class VolumeConverterComponent {
   constructor(
     public dialogRef: MatDialogRef<VolumeConverterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: dialogData = {
-      converterType: 'volume-converter',
-      messege: 'Are you sure you want to clear volume-converter?'
+      converterType: '',
+      messege: '',
+      iconString: ''
     },
     public dialog: MatDialog){}
 
@@ -159,7 +160,11 @@ export class VolumeConverterComponent {
     const dialogRef = this.dialog.open(ClearDialogComponent, {
       width: 'fit-content',
       height: 'fit-content',
-      data: this.data
+      data: {
+        converterType: 'Volume-converter', 
+        message: 'Are you sure you want to clear volume-converter?',
+        iconString: 'fa-solid fa-layer-group'
+      }
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result === true){

@@ -41,8 +41,9 @@ export class FoodEnergyConverterComponent {
   constructor(
     public dialogRef: MatDialogRef<FoodEnergyConverterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: dialogData = {
-      converterType: 'food-coverter',
-      messege: 'Are you sure you want to clear food-converter?'
+      converterType: '',
+      messege: '',
+      iconString: ''
     },
     public dialog: MatDialog){}
 
@@ -92,7 +93,11 @@ export class FoodEnergyConverterComponent {
     const dialogRef = this.dialog.open(ClearDialogComponent, {
       width: 'fit-content',
       height: 'fit-content',
-      data: this.data
+      data: {
+        converterType: 'Food-converter',
+        message: 'Are you sure you want to clear food-converter?',
+        iconString: 'fa-solid fa-burger'
+      }
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result === true){

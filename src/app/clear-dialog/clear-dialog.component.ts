@@ -9,7 +9,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class ClearDialogComponent {
 
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {converterType: string, message: string},
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {converterType: string, message: string, iconString: string},
     public dialogRef: MatDialogRef<ClearDialogComponent>){}
 
     confirmationYes(){

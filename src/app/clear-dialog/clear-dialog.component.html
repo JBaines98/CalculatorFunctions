@@ -2,15 +2,13 @@
     <mat-card-content>
         <div>
             <span>
-                <h3>Confirm Action <i class="fa-solid fa-xmark" mat-dialog-close></i></h3>
-
+                <h3><strong>{{data.converterType}} <i [class]="data.iconString ? data.iconString : 'fa-solid fa-face-smile'" ></i></strong> <span class="right"><i class="fa-solid fa-xmark" mat-dialog-close></i></span></h3>
             </span>
         </div>
         <div>
-            {{data.message}}
-        </div>
-        <div>
-            {{data.converterType}}
+            <strong>
+                {{data.message}}
+            </strong>
         </div>
         <br>
         <div>

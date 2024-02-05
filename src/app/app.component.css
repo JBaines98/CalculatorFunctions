@@ -19,12 +19,11 @@
     height: fit-content;
 
 }
-/* .displayBox {
-    margin-left: 20%;
-    margin-right: 20%;
+.displayBox {
+    width: 100%;
 
 
-} */
+}
 .zeroButton{
     margin-left: 240px;
 }
@@ -47,4 +46,7 @@
 }
 .textSize{
     font-size: xx-large;
+}
+.tabs{
+    color: white;
 }

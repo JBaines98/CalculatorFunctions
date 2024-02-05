@@ -51,8 +51,9 @@ export class PowerConverterComponent {
   constructor(
     public dialogRef: MatDialogRef<PowerConverterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: dialogData = {
-      converterType: 'power-converter',
-      messege: 'Are you sure you want to clear power-converter?'
+      converterType: '',
+      messege: '',
+      iconString: ''
     },
     public dialog: MatDialog){}
 
@@ -153,7 +154,11 @@ export class PowerConverterComponent {
       
       width: 'fit-content',
       height: 'fit-content',
-      data: this.data
+      data: {
+        converterType: 'Power-converter',
+        message: 'Are you sure you want to clear power-converter?',
+        iconString: 'fa-solid fa-battery-half'
+      }
       
     });
     dialogRef.afterClosed().subscribe(result => {

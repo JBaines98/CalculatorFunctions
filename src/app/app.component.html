@@ -39,6 +39,7 @@
       <h1 class="text-white px-2 textSize">Calculator <i class="fa-solid fa-calculator"></i></h1>
     </span>
   </div>
+
   <br>
   <div class="displayBox">
     <app-display-result></app-display-result>
@@ -86,58 +87,42 @@
     <app-sum-history></app-sum-history>
   </div>
   <br>
+  <hr>
   <br>
   <div>
-    <app-currency-converter></app-currency-converter>
+    <mat-tab-group>
+      <mat-tab label="Currency Converter">
+        <app-currency-converter></app-currency-converter>
+      </mat-tab>
+      <mat-tab label="Trigonometry Calculator">
+        <app-trigonometry></app-trigonometry>
+      </mat-tab>
+      <mat-tab label="Length Converter">
+        <app-length-converter></app-length-converter>
+      </mat-tab>
+      <mat-tab label="Weight Converter">
+        <app-weight-converter ></app-weight-converter>
+      </mat-tab>
+      <mat-tab label="Volume Converter">
+        <app-volume-converter></app-volume-converter>
+      </mat-tab>
+      <mat-tab label="Food Calorie Converter">
+        <app-food-energy-converter></app-food-energy-converter>
+      </mat-tab>
+      <mat-tab label="Speed Converter">
+        <app-speed-converter></app-speed-converter>
+      </mat-tab>
+      <mat-tab label="Temperature Converter">
+        <app-temperature-converter></app-temperature-converter>
+      </mat-tab>
+      <mat-tab label="Pressure Converter">
+        <app-pressure></app-pressure>
+      </mat-tab>
+      <mat-tab label="Power Converter">
+        <app-power-converter></app-power-converter>
+      </mat-tab>
+      <mat-tab label="Date & Time">
+        <app-date-time></app-date-time>
+      </mat-tab>
+    </mat-tab-group>
   </div>
-  <br>
-  <br>
-  <div>
-    <app-trigonometry></app-trigonometry>
-  </div>
-  <br>
-  <br>
-  <div>
-    <app-length-converter></app-length-converter>
-  </div>
-  <br>
-  <br>
-  <div>
-    <app-weight-converter ></app-weight-converter>
-  </div>
-  <br>
-  <br>
-  <div>
-    <app-volume-converter></app-volume-converter>
-  </div>
-  <br>
-  <br>
-  <div>
-    <app-food-energy-converter></app-food-energy-converter>
-  </div>
-  <br>
-  <br>
-  <div>
-    <app-speed-converter></app-speed-converter>
-  </div>
-  <br>
-  <br>
-  <div>
-    <app-temperature-converter></app-temperature-converter>
-  </div>
-  <br>
-  <br>
-  <div>
-    <app-pressure></app-pressure>
-  </div>
-  <br>
-  <br>
-  <div>
-    <app-power-converter></app-power-converter>
-  </div>
-  <br>
-  <br>
-  <div>
-    <app-date-time></app-date-time>
-  </div>
-</div>

@@ -59,8 +59,9 @@ export class LengthConverterComponent {
   constructor(
     public dialogRef: MatDialogRef<LengthConverterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: dialogData = {
-      converterType: 'length-converter',
-      messege: 'Are you sure you want to clear length-converter?'
+      converterType: '',
+      messege: '',
+      iconString: '',
     },
     public dialog: MatDialog){}
 
@@ -159,7 +160,11 @@ export class LengthConverterComponent {
     const dialogRef = this.dialog.open(ClearDialogComponent, {
       width: 'fit-content',
       height: 'fit-conetent',
-      data: this.data
+      data: {
+        converterType: 'Length-converter',
+        message: 'Are you sure you want to clear length-converter?',
+        iconString: 'fa-solid fa-ruler-horizontal'
+      }
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result === true){

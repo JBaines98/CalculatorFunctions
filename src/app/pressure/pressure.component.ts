@@ -45,8 +45,9 @@ export class PressureComponent {
   constructor(
     public dialogRef: MatDialogRef<PressureComponent>,
     @Inject(MAT_DIALOG_DATA) public data: dialogData = {
-      converterType: 'pressure-converter',
-      messege: 'Are you sure you want to clear pressure-converter?'
+      converterType: '',
+      messege: '',
+      iconString: ''
     },
     public dialog: MatDialog){};
 
@@ -114,7 +115,11 @@ export class PressureComponent {
     const dialogRef = this.dialog.open(ClearDialogComponent, {
       width: 'fit-content',
       height: 'fit-content',
-      data: this.data
+      data: {
+        converterType: 'Pressure-converter',
+        message: 'Are you sure you want to clear pressure-converter?',
+        iconString: 'fa-solid fa-gauge'
+      }
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result === true){

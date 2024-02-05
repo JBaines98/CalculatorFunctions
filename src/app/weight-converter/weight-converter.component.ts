@@ -49,8 +49,9 @@ americanWeights: string[] = [
 constructor(
   public dialogRef: MatDialogRef<WeightConverterComponent>,
   @Inject(MAT_DIALOG_DATA) public data: dialogData = {
-    converterType: 'weight-converter',
-    messege: 'Are you sure you want to clear weight-converter?'
+    converterType: '',
+    messege: '',
+    iconString: '',
   },
   public dialog: MatDialog){}
 
@@ -118,7 +119,7 @@ weightConverter(){
     const dialogRef = this.dialog.open(ClearDialogComponent, {
       width: 'fit-content',
       height: 'fit-content',
-      data: this.data
+      data: {converterType: 'Weight-converter', message: 'Are you sure you want to clear weight-converter?', iconString: 'fa-solid fa-dumbbell'}
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result === true){

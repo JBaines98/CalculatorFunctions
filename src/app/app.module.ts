@@ -24,6 +24,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { ClearDialogComponent } from './clear-dialog/clear-dialog.component';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { MatCardModule } from '@angular/material/card';
     AppRoutingModule,
     MatSliderModule,
     MatDialogModule,
-    MatCardModule
+    MatCardModule,
+    MatTabsModule,
+    BrowserAnimationsModule 
   ],
   providers: [
     {provide: MAT_DIALOG_DATA, useValue: {}},

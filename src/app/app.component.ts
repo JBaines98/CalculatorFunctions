@@ -24,8 +24,9 @@ export class AppComponent {
     public calculatorService: CalculatorService,
     public dialogRef: MatDialogRef<AppComponent>,
     @Inject(MAT_DIALOG_DATA) public data: dialogData = {
-      converterType: 'calculator',
-      messege: 'Are you sure you want to clear calculator?'
+      converterType: '',
+      messege: '',
+      iconString: '',
     },
     public dialog: MatDialog){}
 
@@ -75,7 +76,12 @@ export class AppComponent {
   {
     const dialogRef = this.dialog.open(ClearDialogComponent, {
       width: 'fit-content',
-      height: 'fit-content'
+      height: 'fit-content',
+      data: {
+        converterType: 'Standard Calculator',
+        message: 'Are you sure you want to clear the standard calculator?',
+        iconString: 'fa-solid fa-calculator'
+      }
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result === true){

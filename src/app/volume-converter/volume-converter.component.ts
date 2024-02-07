@@ -29,6 +29,8 @@ export class VolumeConverterComponent {
   iconUnit: string = 'cl';
   iconFirstAddition: number = 50;
   showVolumeKey: boolean = false;
+  iconName: string = 'fa-solid fa-layer-group';
+  titleString: string = 'Volume-converter';
 
   private readonly millilitersToTeaspoons: number = 0.202884;
   private readonly millilitersToTablespoons: number = 0.06763;

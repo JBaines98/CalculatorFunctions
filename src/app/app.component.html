@@ -34,58 +34,81 @@
   <br>
   <hr> -->
 
-  <div class="bg-slate-500 py-3">
+  <!-- <div class="bg-slate-500 py-3">
     <span class="title">
       <h1 class="text-white px-2 textSize">Calculator <i class="fa-solid fa-calculator"></i></h1>
     </span>
-  </div>
+  </div> -->
+  <app-title-banner [iconName]="iconName" [titleString]="titleString"></app-title-banner>
 
   <br>
-  <div class="displayBox">
-    <app-display-result></app-display-result>
+  <div>
+    <mat-accordion>
+      <mat-expansion-panel class="expansion" (opened)="calculatorPanelState = true" (closed)="calculatorPanelState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <strong>
+              Calculator
+            </strong>
+          </mat-panel-title>
+          <mat-panel-description>
+            <strong>
+              Currently I am {{calculatorPanelState ? 'open' : 'closed'}}
+            </strong>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
 
-  </div>
-  <br>
+          <div>
+            <app-display-result></app-display-result>
+          </div>
+          <br>
+          <div class="flex">
+            <app-number-button key="1" class="button" (numberClicked)="onNumberClicked($event)"></app-number-button>
+            <app-number-button key="2" class="button" (numberClicked)="onNumberClicked($event)"></app-number-button>
+            <app-number-button key="3" class="button" (numberClicked)="onNumberClicked($event)"></app-number-button>
+          </div>
+          <br>
+          <div class="flex">
+            <app-number-button key="4" class="button" (numberClicked)="onNumberClicked($event)"></app-number-button>
+            <app-number-button key="5" class="button" (numberClicked)="onNumberClicked($event)"></app-number-button>
+            <app-number-button key="6" class="button" (numberClicked)="onNumberClicked($event)"></app-number-button>
+          </div>
+          <br>
+          <div class="flex">
+            <app-number-button key="7" class="button" (numberClicked)="onNumberClicked($event)"></app-number-button>
+            <app-number-button key="8" class="button" (numberClicked)="onNumberClicked($event)"></app-number-button>
+            <app-number-button key="9" class="button" (numberClicked)="onNumberClicked($event)"></app-number-button>
+          </div>
+          <br>
+          <div class="flex">
+            <app-number-button key="0" class="button" (numberClicked)="onNumberClicked($event)" class="zeroButton"></app-number-button>
+          </div>
+          <br>
+          <hr>
+          <br>
+          <div>
+            <app-function-button (functionClicked)="onFunctionClicked($event)" (equalClicked)="onEqualClicked()" (clearClicked)="onClearClicked()" (backSpaceClicked)="onBackSpaceClicked()"></app-function-button>
+          </div>
+          <br>
+          <div>
+            <app-memory></app-memory>
+          </div>
+          <br>
+          <div>
+            <button class="buttonHistory" (click)="showSumHistory()"><strong>Show sum history:</strong></button>
+          </div>
+          <br>
+          <div *ngIf="displaySumHistory">
+            <app-sum-history></app-sum-history>
+          </div>
+          <br>
 
-  <div>
-    <app-number-button key="1" (numberClicked)="onNumberClicked($event)"></app-number-button>
-    <app-number-button key="2" (numberClicked)="onNumberClicked($event)"></app-number-button>
-    <app-number-button key="3" (numberClicked)="onNumberClicked($event)"></app-number-button>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
-  <br>
-  <div>
-    <app-number-button key="4" (numberClicked)="onNumberClicked($event)"></app-number-button>
-    <app-number-button key="5" (numberClicked)="onNumberClicked($event)"></app-number-button>
-    <app-number-button key="6" (numberClicked)="onNumberClicked($event)"></app-number-button>
-  </div>
-  <br>
-  <div>
-    <app-number-button key="7" (numberClicked)="onNumberClicked($event)"></app-number-button>
-    <app-number-button key="8" (numberClicked)="onNumberClicked($event)"></app-number-button>
-    <app-number-button key="9" (numberClicked)="onNumberClicked($event)"></app-number-button>
-  </div>
-  <br>
-  <div>
-    <app-number-button key="0" (numberClicked)="onNumberClicked($event)" class="zeroButton"></app-number-button>
-  </div>
-  <br>
-  <hr>
-  <br>
-  <div>
-    <app-function-button (functionClicked)="onFunctionClicked($event)" (equalClicked)="onEqualClicked()" (clearClicked)="onClearClicked()" (backSpaceClicked)="onBackSpaceClicked()"></app-function-button>
-  </div>
-  <br>
-  <div>
-    <app-memory></app-memory>
-  </div>
-  <br>
-  <div>
-    <button class="buttonHistory" (click)="showSumHistory()"><strong>Show sum history:</strong></button>
-  </div>
-  <br>
-  <div *ngIf="displaySumHistory">
-    <app-sum-history></app-sum-history>
-  </div>
+
   <br>
   <hr>
   <br>

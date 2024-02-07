@@ -27,6 +27,8 @@ export class PressureComponent {
   displayPressureComponent: boolean = false;
   clearPressureValue: boolean = false;
   showPressureKey: boolean = false;
+  iconName: string = 'fa-solid fa-guage';
+  titleString: string = 'Pressure-converter';
 
   fromQuantity: string[] = [
     'Atmospheres',

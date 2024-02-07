@@ -26,6 +26,8 @@ export class FoodEnergyConverterComponent {
   iconFirstAddition: number = 327;
   showFoodKey: boolean = false;
   showFoodKeyCheck: boolean = false;
+  iconName: string = 'fa-solid fa-burger';
+  titleString: string = 'Food Calorie-converter';
 
   private readonly foodCaloriesToJoules: number = 4184;
   private readonly foodCaloriesToKiloJoules: number = 4.184;

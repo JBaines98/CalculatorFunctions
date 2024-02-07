@@ -34,6 +34,8 @@ export class TemperatureConverterComponent {
   isCelcius: boolean | null = null;
   showHotOrCold: string = '';
   showTempKey: boolean = false;
+  iconName: string = 'fa-solid fa-temperature-three-quarters';
+  titleString: string = 'Temperature-converter';
 
   private readonly celciusToFahrenheit: number = 33.8;
   private readonly fahrenheitToCelcius: number = 0;

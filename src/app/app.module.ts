@@ -26,6 +26,8 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materia
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TitleBannerComponent } from './title-banner/title-banner.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TemperatureConverterComponent,
     PressureComponent,
     PowerConverterComponent,
-    ClearDialogComponent
+    ClearDialogComponent,
+    TitleBannerComponent
 
   ],
   imports: [
@@ -58,7 +61,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatDialogModule,
     MatCardModule,
     MatTabsModule,
-    BrowserAnimationsModule 
+    BrowserAnimationsModule,
+    MatExpansionModule
   ],
   providers: [
     {provide: MAT_DIALOG_DATA, useValue: {}},

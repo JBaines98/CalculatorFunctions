@@ -7,23 +7,44 @@
     font-family: 'Times New Roman', Times, serif;
     height: 50px;
     width: 100px;
-    margin-left: 70px;
-    margin-right: 70px;
+    margin-left: 10%;
+    margin-right: 10%;
+    flex-direction: row;
     background-color: bisque;
+}
+.buttonClear{
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 50px;
+    width: 100px;
+    margin-left: 10%;
+    margin-right: 10%;
+    flex-direction: row;
+    background-color: lightcoral;
 }
 .currencyTitle{
     margin-left: 10px;
     font-size: larger;
 }
-.inputCurrency{
-    margin-left: 260px;
+.inputCurrency2{
+    margin-left: 15%;
 }
 .iconSize{
     font-size: x-large;
 }
 .flex-container {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 .textSize{
     font-size: xx-large;
+}
+.arrow{
+    margin-left: 20px;
 }

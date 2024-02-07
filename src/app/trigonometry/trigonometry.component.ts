@@ -14,6 +14,8 @@ export class TrigonometryComponent {
   hypotenuse: number = 0;
   opposite: number  = 0;
   adjacent: number  = 0;
+  iconName: string = 'fa-solid fa-shapes';
+  titleString: string = 'Trigonometry';
 
   constructor(
     public dialogRef: MatDialogRef<TrigonometryComponent>,

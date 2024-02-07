@@ -1,27 +1,22 @@
-<div>
-    <div>
-        <button (click)="onClicked('+')" class="buttonFunction"><i class="fa-solid fa-plus"></i></button>
-        <button (click)="onClicked('-')" class="buttonFunction"><i class="fa-solid fa-minus"></i></button>
-        <button (click)="onClicked('*')" class="buttonFunction"><i class="fa-solid fa-xmark"></i></button>
-    </div>
-    <br>
-    <div>
-        <button (click)="onClicked('/')" class="buttonFunction"><i class="fa-solid fa-divide"></i></button>
-        <button (click)="onClicked('^2')" class="buttonFunction"><i class="fa-solid fa-superscript"></i></button>
-        <button (click)="onClicked('sqRT')" class="buttonFunction"><i class="fa-solid fa-square-root-variable"></i></button>
-    </div>
+<div class="flex">
+    <button (click)="onClicked('+')" class="buttonFunction"><i class="fa-solid fa-plus"></i></button>
+    <button (click)="onClicked('-')" class="buttonFunction"><i class="fa-solid fa-minus"></i></button>
+    <button (click)="onClicked('*')" class="buttonFunction"><i class="fa-solid fa-xmark"></i></button>
 </div>
 <br>
-<div>
-    <span>
+<div class="flex">
+    <button (click)="onClicked('/')" class="buttonFunction"><i class="fa-solid fa-divide"></i></button>
+    <button (click)="onClicked('^2')" class="buttonFunction"><i class="fa-solid fa-superscript"></i></button>
+    <button (click)="onClicked('sqRT')" class="buttonFunction"><i class="fa-solid fa-square-root-variable"></i></button>
+</div>
+<br>
+<div class="flex">
     <button (click)="onEqualClicked('=')" class="buttonFunctionEqual"><i class="fa-solid fa-equals"></i></button>
     <button (click)="onClearClicked('')" class="buttonFunctionClear"><strong> Clear </strong></button>
     <button (click)="onBackSpaceClicked('')" class="buttonFunctionBackSpace"><i class="fa-solid fa-arrow-left"></i><i class="fa-solid fa-pipe"></i></button>
     <!-- <a class="casio" href="https://https://www.casio.co.uk/watches-clocks/all-watches?gad_source=1&gclid=EAIaIQobChMIwZS4xsPBgwMVmZSDBx3XSQuMEAAYASAAEgL5pvD_BwE">
         <img class="casioImage" src="assets/Casio.png">
     </a> -->
-    </span>
-
 </div>
 
 

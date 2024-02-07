@@ -2,14 +2,23 @@
     border-radius: 5px;
     padding-left: 15px;
     padding-right: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     font-family: 'Times New Roman', Times, serif;
     height: 50px;
     width: 100px;
-    margin-left: 70px;
-    margin-right: 70px;
+    margin-left: 10%;
+    margin-right: 10%;
+    flex-direction: row;
     background-color: lightskyblue;
+}
+.button{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 .buttonFunctionEqual{
     border-radius: 5px;
@@ -20,8 +29,9 @@
     font-family: 'Times New Roman', Times, serif;
     height: 50px;
     width: 100px;
-    margin-left: 70px;
-    margin-right: 70px;
+    margin-left: 10%;
+    margin-right: 10%;
+    flex-direction: row;
     background-color: aquamarine;
 }
 .buttonFunctionClear{
@@ -33,8 +43,9 @@
     font-family: 'Times New Roman', Times, serif;
     height: 50px;
     width: 100px;
-    margin-left: 70px;
-    margin-right: 70px;
+    margin-left: 10%;
+    margin-right: 10%;
+    flex-direction: row;
     background-color: lightcoral;
 }
 .casio{
@@ -46,8 +57,9 @@
     font-family: 'Times New Roman', Times, serif;
     height: 50px;
     width: 100px;
-    margin-left: 70px;
-    margin-right: 70px;
+    margin-left: 10%;
+    margin-right: 10%;
+    flex-direction: row;
 }
 .casioImage{
     height: 50px;
@@ -63,7 +75,13 @@
     font-family: 'Times New Roman', Times, serif;
     height: 50px;
     width: 100px;
-    margin-left: 70px;
-    margin-right: 70px;
+    margin-left: 10%;
+    margin-right: 10%;
+    flex-direction: row;
     background-color: rgb(231, 58, 58);
+}
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

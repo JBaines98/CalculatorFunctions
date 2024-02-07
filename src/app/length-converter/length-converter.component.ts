@@ -26,7 +26,8 @@ export class LengthConverterComponent {
   iconUnit: string = 'cm';
   iconFirstAddition: number = 33;
   showLengthKey: boolean = false;
-
+  iconName: string = 'fa-solid fa-ruler';
+  titleString: string = 'Length-converter';
 
   private readonly centermetersToInches: number = 0.393701;
   private readonly centermetersToFeet: number = 0.0328084;

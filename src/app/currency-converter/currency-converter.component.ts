@@ -10,6 +10,7 @@ export class CurrencyConverterComponent {
   sterlingValue: number = 0;
   exchangedValue: number = 0;
   currency: string = 'fa-solid fa-sterling-sign';
+  title: string = 'Currency-converter';
 
   constructor(public calculatorService: CalculatorService) {}
 
@@ -36,5 +37,11 @@ export class CurrencyConverterComponent {
   pesoExchange() {
     this.exchangedValue = this.sterlingValue * 21.48;
     this.currency = 'fa-solid fa-peso-sign';
+  }
+
+  clearExchange(){
+    this.sterlingValue = 0;
+    this.exchangedValue = 0;
+    this.currency = 'fa-solid fa-sterling-sign';
   }
 }

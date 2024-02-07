@@ -41,6 +41,9 @@
 }
 .flex-container {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 .icon{
     margin-left: 40%;

@@ -36,6 +36,8 @@ export class SpeedConverterComponent {
   displaySpeedComponent: boolean = true;
   showSpeedKey: boolean = false;
   showSpeedKeyCheck: boolean = false;
+  iconName: string = 'fa-solid fa-gauge';
+  titleString: string = 'Speed-converter';
 
 
   

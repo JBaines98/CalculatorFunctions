@@ -27,6 +27,8 @@ iconUnit: string = 'Kg';
 iconFirstAddition: number = 1;
 showWeightKey: boolean = false;
 showWeightKeyCheck: boolean = false;
+iconName: string = 'fa-solid fa-weight-hanging';
+titleString: string = 'Weight-converter';
 
 private readonly gramsToOunces: number = 0.035274;
 private readonly gramsToPounds: number = 0.00220462;

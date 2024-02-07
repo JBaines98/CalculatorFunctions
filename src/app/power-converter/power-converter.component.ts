@@ -32,6 +32,8 @@ export class PowerConverterComponent {
   displayPowerComponent: boolean = false;
   clearPowerValue: boolean = false;
   showPowerKey: boolean = false;
+  iconNameTitle: string = 'fa-solid fa-battery-half';
+  titleString: string = 'Power-converter';
  
   private readonly horsePowerToKilowatt: number = 1.341;
   private readonly kilowattToHorsePower: number = 1.341;

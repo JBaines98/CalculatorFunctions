@@ -14,6 +14,8 @@ export class DateTimeComponent {
   public dateIST : Date | undefined = undefined;
   public dateJST : Date | undefined = undefined;
   public dateMSK : Date | undefined = undefined;
+  public iconName: string = 'fa-regular fa-calendar-days';
+  public titleString: string = 'Date & Time';
 
   timeGetGMT(){
    this.dateGMT = new Date();

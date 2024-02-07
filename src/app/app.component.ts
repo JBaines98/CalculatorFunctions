@@ -4,6 +4,7 @@ import { CalculatorService } from './calculator.service';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { dialogData } from './models/calculationHistory.model';
 import { ClearDialogComponent } from './clear-dialog/clear-dialog.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,9 @@ export class AppComponent {
   reverseArray: string[] = [];
   showButton: boolean = false;
   displaySumHistory: boolean = false;
+  iconName: string = 'fa-solid fa-calculator';
+  titleString: string = 'Calculator';
+  calculatorPanelState: boolean = true;
 
   constructor(    
     public calculatorService: CalculatorService,

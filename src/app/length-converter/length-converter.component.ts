@@ -1,7 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { dialogData } from '../models/calculationHistory.model';
+import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
+import { LogCalculationsService } from '../logCalculations.service';
 
 @Component({
   selector: 'app-length-converter',
@@ -28,6 +29,7 @@ export class LengthConverterComponent {
   showLengthKey: boolean = false;
   iconName: string = 'fa-solid fa-ruler';
   titleString: string = 'Length-converter';
+  lengthPanelState: boolean = false;
 
   private readonly centermetersToInches: number = 0.393701;
   private readonly centermetersToFeet: number = 0.0328084;
@@ -58,8 +60,9 @@ export class LengthConverterComponent {
   ];
 
   constructor(
+    public logCalculations: LogCalculationsService,
     public dialogRef: MatDialogRef<LengthConverterComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: dialogData = {
+    @Inject(MAT_DIALOG_DATA) public data: DialogData = {
       converterType: '',
       messege: '',
       iconString: '',
@@ -130,6 +133,7 @@ export class LengthConverterComponent {
       }
     }
     this.showLengthKey = true;
+    this.saveLengthClicked();
     
   }
 
@@ -155,6 +159,18 @@ export class LengthConverterComponent {
   //     this.showLengthKey = false;
   //     this.showLengthKeyCheck = false;
   //   };
+  // }
+
+  saveLengthClicked(){
+    let converterCalculation: ConverterCalculation = {};
+    converterCalculation.number1 = this.metricValue;
+    converterCalculation.result = this.americanValue;
+    converterCalculation.fromSystem = this.metricSystem;
+    converterCalculation.toSystem = this.americanSystem;
+    this.logCalculations.addCalculation(converterCalculation);
+  }
+  // displaySavedLengths(){
+  //   this.logCalculations.
   // }
 
   clearLengthsClicked(){

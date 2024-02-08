@@ -8,93 +8,117 @@
 </div> -->
 <app-title-banner [iconName]="iconName" [titleString]="titleString"></app-title-banner>
 <br>
-<div class="flex-container">
-    <div class="width">
-        <div class="inputFood">
-            <label><strong> Food Calories: </strong></label>
-        </div>
-        <div class="inputFood">
-            <select class="w-full" name="foodQuantity" id="foodQuantity" [(ngModel)]="foodSystem">
-                <option value="Food Calories">
-                    Food Calories
-                </option>
-            </select>
-        </div>
-        <div class="inputFood">
-            <label for="energyQuantity"><strong> Choose an energy unit: </strong></label>
-        </div>
-        <div class="inputFood">
-            <select class="w-full" name="energyQuantity" id="energyQuantity" [(ngModel)]="energySystem">
-                <option value="Joules">Joules</option>
-                <option value="KiloJoules">KiloJoules</option>
-            </select>
-        </div>
-        <br>
-        <div class="inputFood">
-            <div>
-                <label><strong>Calories </strong></label>
-            </div>
-            <div>
-                <input class="w-full" [(ngModel)]="foodValue">
-            </div>
-            <div>
-                <strong>{{foodSystem}}</strong>
-            </div>
-        </div>
-        <div class="inputFood">
-            <div>
-                <label><strong>Energy </strong></label>
-            </div>
-            <div>
-                <input class="w-full" readonly [(ngModel)]="energyValue">
-            </div>
-            <div>
-                <strong>{{energySystem}}</strong>
-            </div>
-        </div>
-        <br>
-        <div class="inputFood">
-            <div>
-                <label>
-                    <strong>Conversion rate : </strong>
-                </label>
-            </div>
-            <div>
-                <input class="w-full" readonly [(ngModel)]="displayConversionRate">
-            </div>
-        </div>
-        <div class="inputFood">
-            <div>
-                <label><strong>Equivalent Apples </strong></label>
-            </div>
-            <div>
-                <input class="w-full" readonly [(ngModel)]="appleValue">
-            </div>
-        </div>
-    </div>
-    <div>
-        <div>
-            <span>
-                <button class="buttonEnergy" (click)="energyConversion()"><strong>Go</strong></button>
-                <button class="buttonEnergyClear" (click)="clearQuantitiesClicked()"><strong>Clear</strong></button>
-            </span>
-        </div>
-        <br>
-        <!-- <div>
-            <span>
-                <button class="buttonShowFoodKey" (click)="foodShowIcon()"><strong>Show Icons <i *ngIf="showFoodKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!showFoodKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
-            </span>
-        </div> -->
-        <br>
-        <div *ngIf="showFoodKey">
-            <div class="margin">
-                <span class="icon">
-                    <app-icon-displayer [iconArray]="displayApples" [iconName]="appleIconName" [iconValue]="iconValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
-                </span>
-            </div>
-        </div>
+<div>
 
-    </div>
+    <mat-accordion>
+        <mat-expansion-panel class="expansion" (opened)="foodPanelState = true" (closed)="foodPanelState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <strong>
+                        Food Calorie-converter
+                    </strong>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <strong>
+                        Currently I am {{foodPanelState ? 'open' : 'closed'}}
+                    </strong>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="flex-container">
+
+                <div class="width">
+                    <div class="inputFood">
+                        <label><strong> Food Calories: </strong></label>
+                    </div>
+                    <div class="inputFood">
+                        <select class="w-full" name="foodQuantity" id="foodQuantity" [(ngModel)]="foodSystem">
+                            <option value="Food Calories">
+                                Food Calories
+                            </option>
+                        </select>
+                    </div>
+                    <div class="inputFood">
+                        <label for="energyQuantity"><strong> Choose an energy unit: </strong></label>
+                    </div>
+                    <div class="inputFood">
+                        <select class="w-full" name="energyQuantity" id="energyQuantity" [(ngModel)]="energySystem">
+                            <option value="Joules">Joules</option>
+                            <option value="KiloJoules">KiloJoules</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="inputFood">
+                        <div>
+                            <label><strong>Calories </strong></label>
+                        </div>
+                        <div>
+                            <input class="w-full" [(ngModel)]="foodValue">
+                        </div>
+                        <div>
+                            <strong>{{foodSystem}}</strong>
+                        </div>
+                    </div>
+                    <div class="inputFood">
+                        <div>
+                            <label><strong>Energy </strong></label>
+                        </div>
+                        <div>
+                            <input class="w-full" readonly [(ngModel)]="energyValue">
+                        </div>
+                        <div>
+                            <strong>{{energySystem}}</strong>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="inputFood">
+                        <div>
+                            <label>
+                                <strong>Conversion rate : </strong>
+                            </label>
+                        </div>
+                        <div>
+                            <input class="w-full" readonly [(ngModel)]="displayConversionRate">
+                        </div>
+                    </div>
+                    <div class="inputFood">
+                        <div>
+                            <label><strong>Equivalent Apples </strong></label>
+                        </div>
+                        <div>
+                            <input class="w-full" readonly [(ngModel)]="appleValue">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <span>
+                            <button class="buttonEnergy" (click)="energyConversion()"><strong>Go</strong></button>
+                            <button class="buttonEnergyClear" (click)="clearQuantitiesClicked()"><strong>Clear</strong></button>
+                        </span>
+                    </div>
+                    <br>
+                    <!-- <div>
+                        <span>
+                            <button class="buttonShowFoodKey" (click)="foodShowIcon()"><strong>Show Icons <i *ngIf="showFoodKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!showFoodKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
+                        </span>
+                    </div> -->
+                    <br>
+                    <div *ngIf="showFoodKey">
+                        <div class="margin">
+                            <span class="icon">
+                                <app-icon-displayer [iconArray]="displayApples" [iconName]="appleIconName" [iconValue]="iconValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
+                            </span>
+                        </div>
+                    </div>
+            
+                </div>
+
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+
+    
 </div>
 
 

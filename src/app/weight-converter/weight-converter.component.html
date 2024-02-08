@@ -8,83 +8,110 @@
 </div> -->
 <app-title-banner [iconName]="iconName" [titleString]="titleString"></app-title-banner>
 <br>
-<div class="flex-container">
-    <div class="width">
-        <div>
-            <label for="gramMeasurements"><strong> Choose a metric weight: </strong></label>
-        </div>
-        <div>
-            <select class="w-full pxy-2" name="gramMeasurements" id="gramMeasurements" [(ngModel)]="gramSystem">
-                <option value="Grams">Grams</option>
-                <option value="Kilograms">Kilograms</option>
-            </select>
-        </div>
-        <div>
-            <label for="poundMeasurements"><strong> Choose an American weight: </strong></label>
-        </div>
-        <div>
-            <select class="w-full pxy-2" name="poundMeasurements" id="poundMeasurements" [(ngModel)]="poundSystem">
-                <option value="Ounces">Ounces</option>
-                <option value="Pounds">Pounds</option>
-            </select>
-        </div>
-        <br>
-        <div>
-            <div>
-                <label><strong>Metric </strong></label>
-            </div>
-            <div>
-                <input class="w-full pxy-2" [(ngModel)]="gramValue">
-            </div>
-            <div>
-                <strong>{{gramSystem}}</strong>
-            </div>
-        </div>
-        <div>
-            <div>
-                <label><strong>American </strong></label>
-            </div>
-            <div>
-                <input class="w-full pxy-2" [(ngModel)]="poundValue">
-            </div>
-            <div>
-                <strong>{{poundSystem}}</strong> 
-            </div>
-        </div>
-        <br>
-        <div>
-            <div>
-                <label><strong>Conversion rate : </strong></label>
-            </div>
-            <div>
-                <input class="w-full pxy-2" readonly [(ngModel)]="displayConversionRate">
-            </div>
-        </div>
-    </div>
-    <br>
-    <div>
-        <div>
-            <span>
-                <button class="weightLength" (click)="weightConverter()"><strong>Go</strong></button>
-                <button class="weightClear" (click)="clearWeightsClicked()"><strong>Clear</strong></button>
-            </span>
-        </div>
-        <br>
-        <!-- <div>
-            <span>
-                <button class="buttonShowWeightKey" (click)="weightShowIcon()"><strong>Show Icons <i *ngIf="showWeightKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!showWeightKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
-            </span>
-        </div> -->
-        <br>
-        <div *ngIf="showWeightKey">
-            <div class="margin">
-                <span class="icon">
-                    <app-icon-displayer [iconArray]="displayDumbBell" [iconName]="dumbBellIconName" [iconValue]="iconValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
-                </span>
-            </div>
-        </div>
+<div>
+    <mat-accordion>
+        <mat-expansion-panel class="expansion">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <strong>
+                        Weight-converter
+                    </strong>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <strong>
+                        Currently I am {{weightPanelState ? 'open' : 'closed'}}
+                    </strong>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div  class="flex-container">
 
-    </div>
+                <div class="width">
+                    <div>
+                        <label for="gramMeasurements"><strong> Choose a metric weight: </strong></label>
+                    </div>
+                    <div>
+                        <select class="w-full pxy-2" name="gramMeasurements" id="gramMeasurements" [(ngModel)]="gramSystem">
+                            <option value="Grams">Grams</option>
+                            <option value="Kilograms">Kilograms</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="poundMeasurements"><strong> Choose an American weight: </strong></label>
+                    </div>
+                    <div>
+                        <select class="w-full pxy-2" name="poundMeasurements" id="poundMeasurements" [(ngModel)]="poundSystem">
+                            <option value="Ounces">Ounces</option>
+                            <option value="Pounds">Pounds</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <div>
+                            <label><strong>Metric </strong></label>
+                        </div>
+                        <div>
+                            <input class="w-full pxy-2" [(ngModel)]="gramValue">
+                        </div>
+                        <div>
+                            <strong>{{gramSystem}}</strong>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label><strong>American </strong></label>
+                        </div>
+                        <div>
+                            <input class="w-full pxy-2" [(ngModel)]="poundValue">
+                        </div>
+                        <div>
+                            <strong>{{poundSystem}}</strong> 
+                        </div>
+                    </div>
+                    <br>
+                    <div>
+                        <div>
+                            <label><strong>Conversion rate : </strong></label>
+                        </div>
+                        <div>
+                            <input class="w-full pxy-2" readonly [(ngModel)]="displayConversionRate">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <div>
+                        <span>
+                            <button class="weightLength" (click)="weightConverter()"><strong>Go</strong></button>
+                            <button class="weightClear" (click)="clearWeightsClicked()"><strong>Clear</strong></button>
+                        </span>
+                    </div>
+                    <br>
+                    <!-- <div>
+                        <span>
+                            <button class="buttonShowWeightKey" (click)="weightShowIcon()"><strong>Show Icons <i *ngIf="showWeightKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!showWeightKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
+                        </span>
+                    </div> -->
+                    <br>
+                    <div *ngIf="showWeightKey">
+                        <div class="margin">
+                            <span class="icon">
+                                <app-icon-displayer [iconArray]="displayDumbBell" [iconName]="dumbBellIconName" [iconValue]="iconValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
+                            </span>
+                        </div>
+                    </div>
+            
+                </div>
+
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+   
+
+
+
+
+
 </div>
 
 

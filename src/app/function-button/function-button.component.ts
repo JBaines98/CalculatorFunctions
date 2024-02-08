@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { dialogData } from '../models/calculationHistory.model';
+import { DialogData } from '../models/calculationHistory.model';
 
 @Component({
   selector: 'app-function-button',

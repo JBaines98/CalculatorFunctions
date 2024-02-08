@@ -1,7 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { dialogData } from '../models/calculationHistory.model';
+import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
+import { LogCalculationsService } from '../logCalculations.service';
 
 @Component({
   selector: 'app-weight-converter',
@@ -29,6 +30,7 @@ showWeightKey: boolean = false;
 showWeightKeyCheck: boolean = false;
 iconName: string = 'fa-solid fa-weight-hanging';
 titleString: string = 'Weight-converter';
+weightPanelState: boolean = false;
 
 private readonly gramsToOunces: number = 0.035274;
 private readonly gramsToPounds: number = 0.00220462;
@@ -49,8 +51,9 @@ americanWeights: string[] = [
 ];
 
 constructor(
+  public logCalculations: LogCalculationsService,
   public dialogRef: MatDialogRef<WeightConverterComponent>,
-  @Inject(MAT_DIALOG_DATA) public data: dialogData = {
+  @Inject(MAT_DIALOG_DATA) public data: DialogData = {
     converterType: '',
     messege: '',
     iconString: '',
@@ -91,6 +94,7 @@ weightConverter(){
     }
   }
   this.showWeightKey = true;
+  this.saveWeightClicked();
 }
 
   convertToAmerican(conversionRate: number){
@@ -116,6 +120,15 @@ weightConverter(){
   //     this.showWeightKeyCheck = false;
   //   };
   // }
+
+  saveWeightClicked(){
+    let converterCalculation: ConverterCalculation = {};
+    converterCalculation.number1 = this.gramValue;
+    converterCalculation.result = this.poundValue;
+    converterCalculation.fromSystem = this.gramSystem;
+    converterCalculation.toSystem = this.poundSystem;
+    this.logCalculations.addCalculation(converterCalculation);
+  }
 
   clearWeightsClicked(){
     const dialogRef = this.dialog.open(ClearDialogComponent, {

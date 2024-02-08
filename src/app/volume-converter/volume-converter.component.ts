@@ -1,8 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { dialogData } from '../models/calculationHistory.model';
+import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
+import { LogCalculationsService } from '../logCalculations.service';
 
 @Component({
   selector: 'app-volume-converter',
@@ -31,6 +32,7 @@ export class VolumeConverterComponent {
   showVolumeKey: boolean = false;
   iconName: string = 'fa-solid fa-layer-group';
   titleString: string = 'Volume-converter';
+  volumePanelState: boolean = false;
 
   private readonly millilitersToTeaspoons: number = 0.202884;
   private readonly millilitersToTablespoons: number = 0.06763;
@@ -60,8 +62,9 @@ export class VolumeConverterComponent {
 
 
   constructor(
+    public logCalculations: LogCalculationsService,
     public dialogRef: MatDialogRef<VolumeConverterComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: dialogData = {
+    @Inject(MAT_DIALOG_DATA) public data: DialogData = {
       converterType: '',
       messege: '',
       iconString: ''
@@ -132,6 +135,7 @@ export class VolumeConverterComponent {
       }
     }
     this.showVolumeKey = true;
+    this.saveVolumeClicked();
   }
 
   convertToAmerican(conversionRate: number){
@@ -157,6 +161,15 @@ export class VolumeConverterComponent {
   //     this.showVolumeKeyCheck = false;
   //   }
   // }
+
+  saveVolumeClicked(){
+    let converterCalculation: ConverterCalculation = {};
+    converterCalculation.number1 = this.metricValue;
+    converterCalculation.result = this.americanValue;
+    converterCalculation.fromSystem = this.metricSystem;
+    converterCalculation.toSystem = this.americanSystem;
+    this.logCalculations.addCalculation(converterCalculation);
+  }
 
   clearVolumesClicked(){
     const dialogRef = this.dialog.open(ClearDialogComponent, {

@@ -8,82 +8,104 @@
 </div> -->
 <app-title-banner [iconName]="iconNameTitle" [titleString]="titleString"></app-title-banner>
 <br>
-<div class="flex-container">
-    <div class="width">
-        <div class="inputPower">
-            <label><strong> Choose a power unit: </strong></label>
-        </div>
-        <div class="inputPower">
-            <select class="w-full" name="firstQuantity" id="firstQuantity" [(ngModel)]="firstSystem">
-                <option value="Horse Power">Horse Power</option>
-                <option value="Kilowatt">Kilowatt</option>
-            </select>
-        </div>
-        <div class="inputPower">
-            <label><strong> Choose a power unit to convert to: </strong></label>
-        </div>
-        <div class="inputPower">
-            <select class="w-full" name="secondQuantity" id="secondQuantity" [(ngModel)]="secondSystem">
-                <option value="Kilowatt">Kilowatt</option>
-                <option value="Horse Power">Horse Power</option>
-            </select>
-        </div>
-        <br>
-        <div class="inputPower">
-            <div>
-                <label><strong>First </strong></label>
+<div>
+
+    <mat-accordion>
+        <mat-expansion-panel class="expansion" (opened)="powerPanelState = true" (closed)="powerPanelState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <strong>
+                        Power-converter
+                    </strong>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <strong>
+                        Currently I am {{powerPanelState ? 'open' : 'closed'}}
+                    </strong>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="flex-container">
+                <div class="width">
+                    <div class="inputPower">
+                        <label><strong> Choose a power unit: </strong></label>
+                    </div>
+                    <div class="inputPower">
+                        <select class="w-full" name="firstQuantity" id="firstQuantity" [(ngModel)]="firstSystem">
+                            <option value="Horse Power">Horse Power</option>
+                            <option value="Kilowatt">Kilowatt</option>
+                        </select>
+                    </div>
+                    <div class="inputPower">
+                        <label><strong> Choose a power unit to convert to: </strong></label>
+                    </div>
+                    <div class="inputPower">
+                        <select class="w-full" name="secondQuantity" id="secondQuantity" [(ngModel)]="secondSystem">
+                            <option value="Kilowatt">Kilowatt</option>
+                            <option value="Horse Power">Horse Power</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="inputPower">
+                        <div>
+                            <label><strong>First </strong></label>
+                        </div>
+                        <div>
+                            <mat-slider class="mat-slider" min="0" max="100" step="1" showTickMarks discrete>
+                                <input  matSliderThumb [(ngModel)]="firstValue">
+                            </mat-slider>
+                        </div>
+                        <div>
+                            <strong>{{firstSystem}}</strong>
+                        </div>
+                    </div>
+                    <div class="inputPower">
+                        <div>
+                            <label><strong>Second </strong></label>
+                        </div>
+                        <div>
+                            <input class="w-full" readonly [(ngModel)]="secondValue">
+                        </div>
+                        <div>
+                            <strong>{{secondSystem}}</strong>       
+                        </div>
+                    </div>
+                    <br>
+                    <div class="inputPower">
+                        <div>
+                            <label><strong>ConversionRate : </strong></label>
+                        </div>
+                        <div>
+                            <input class="w-full" readonly [(ngModel)]="displayConversionRate">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <span>
+                            <button class="buttonPower" (click)="powerConversion()"><strong>Go</strong></button>
+                            <button class="buttonPowerClear" (click)="clearPowersClicked()"><strong>Clear</strong></button>
+                        </span>
+                    </div>
+                    <br>
+                    <!-- <div>
+                        <span>
+                            <button class="buttonShowPowerKey" (click)="powerShowIcon()"><strong>Show Icons <i *ngIf="showPowerKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!showPowerKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
+                        </span>
+                    </div> -->
+                    <br>
+                    <div *ngIf="showPowerKey">
+                        <div class="margin">
+                            <span class="icon">
+                                <app-icon-displayer [iconArray]="displayIcons" [iconName]="iconName" [iconUnit]="iconUnit" [iconValue]="iconValue" [iconFirstAddition]="iconFirstAddition" [displayPowerComponent]="displayPowerComponent" ></app-icon-displayer>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <mat-slider class="mat-slider" min="0" max="100" step="1" showTickMarks discrete>
-                    <input  matSliderThumb [(ngModel)]="firstValue">
-                </mat-slider>
-            </div>
-            <div>
-                <strong>{{firstSystem}}</strong>
-            </div>
-        </div>
-        <div class="inputPower">
-            <div>
-                <label><strong>Second </strong></label>
-            </div>
-            <div>
-                <input class="w-full" readonly [(ngModel)]="secondValue">
-            </div>
-            <div>
-                <strong>{{secondSystem}}</strong>       
-            </div>
-        </div>
-        <br>
-        <div class="inputPower">
-            <div>
-                <label><strong>ConversionRate : </strong></label>
-            </div>
-            <div>
-                <input class="w-full" readonly [(ngModel)]="displayConversionRate">
-            </div>
-        </div>
-    </div>
-    <div>
-        <div>
-            <span>
-                <button class="buttonPower" (click)="powerConversion()"><strong>Go</strong></button>
-                <button class="buttonPowerClear" (click)="clearPowersClicked()"><strong>Clear</strong></button>
-            </span>
-        </div>
-        <br>
-        <!-- <div>
-            <span>
-                <button class="buttonShowPowerKey" (click)="powerShowIcon()"><strong>Show Icons <i *ngIf="showPowerKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!showPowerKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
-            </span>
-        </div> -->
-        <br>
-        <div *ngIf="showPowerKey">
-            <div class="margin">
-                <span class="icon">
-                    <app-icon-displayer [iconArray]="displayIcons" [iconName]="iconName" [iconUnit]="iconUnit" [iconValue]="iconValue" [iconFirstAddition]="iconFirstAddition" [displayPowerComponent]="displayPowerComponent" ></app-icon-displayer>
-                </span>
-            </div>
-        </div>
-    </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+
+    
 </div>
 

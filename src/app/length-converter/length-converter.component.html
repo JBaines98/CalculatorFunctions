@@ -8,84 +8,106 @@
 </div> -->
 <app-title-banner [iconName]="iconName" [titleString]="titleString"></app-title-banner>
 <br>
-<div class="flex-container">
+<div>
 
-    <div class="width">
-        <div class="inputLength">
-            <label for="metricMeasurements"><strong> Choose a metric measurement: </strong></label>
-        </div>
-        <div class="inputLength">
-            <select class="w-full pxy-2" name="metricMeasurements" id="metricMeasurements" [(ngModel)]="metricSystem">
-                <option value="Centermeters">Centermeters</option>
-                <option value="Meters">Meters</option>
-                <option value="Kilometers">Kilometers</option>
-            </select>
-        </div>
-        <div class="inputLength">
-            <label for="americanMeasurements"><strong> Choose an American measurement: </strong></label>
-        </div>
-        <div class="inputLength">
-            <select class="w-full" name="americanMeasurements" id="americanMeasurements" [(ngModel)]="americanSystem">
-                <option value="Inches">Inches</option>
-                <option value="Feet">Feet</option>
-                <option value="Miles">Miles</option>
-            </select>
-        </div>
-        <br>
-        <div class="inputLength">
-            <div>
-                <label><strong>Metric </strong></label>
+    <mat-accordion>
+        <mat-expansion-panel class="expansion" (opened)="lengthPanelState = true" (closed)="lengthPanelState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <strong>
+                        Length-converter
+                    </strong>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <strong>
+                        Currently I am {{lengthPanelState ? 'open' : 'closed'}}
+                    </strong>
+                </mat-panel-description>    
+            </mat-expansion-panel-header>
+            <div class="flex-container">
+
+                <div class="width">
+                    <div class="inputLength">
+                        <label for="metricMeasurements"><strong> Choose a metric measurement: </strong></label>
+                    </div>
+                    <div class="inputLength">
+                        <select class="w-full pxy-2" name="metricMeasurements" id="metricMeasurements" [(ngModel)]="metricSystem">
+                            <option value="Centermeters">Centermeters</option>
+                            <option value="Meters">Meters</option>
+                            <option value="Kilometers">Kilometers</option>
+                        </select>
+                    </div>
+                    <div class="inputLength">
+                        <label for="americanMeasurements"><strong> Choose an American measurement: </strong></label>
+                    </div>
+                    <div class="inputLength">
+                        <select class="w-full" name="americanMeasurements" id="americanMeasurements" [(ngModel)]="americanSystem">
+                            <option value="Inches">Inches</option>
+                            <option value="Feet">Feet</option>
+                            <option value="Miles">Miles</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="inputLength">
+                        <div>
+                            <label><strong>Metric </strong></label>
+                        </div>
+                        <div>
+                            <input class="w-full" [(ngModel)]="metricValue">
+                        </div>
+                        <div>
+                            <strong>{{metricSystem}}</strong>
+                        </div>
+                    </div>
+                    <div class="inputLength">
+                        <div>
+                            <label><strong>American </strong></label>
+                        </div>
+                        <div>
+                            <input class="w-full" readonly [(ngModel)]="americanValue">
+                        </div>
+                        <div>
+                            <strong>{{americanSystem}}</strong>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="inputLength">
+                        <div>
+                            <label><strong>Conversion rate : </strong></label>
+                        </div>
+                        <div>
+                            <input class="w-full" readonly [(ngModel)]="displayConversionRate">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <span>
+                            <button class="buttonLength" (click)="lengthConverter()"><strong>Go</strong></button>
+                            <button class="buttonLengthClear" (click)="clearLengthsClicked()"><strong>Clear</strong></button>
+                        </span>
+                    </div>
+                    <br>
+                    <!-- <div>
+                        <span>
+                            <button class="buttonShowLengthKey" (click)="lengthShowIcon()"><strong>Show Icons <i *ngIf="showLengthKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!showLengthKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
+                        </span>
+                    </div> -->
+                    <br>
+                    <div *ngIf="showLengthKey">
+                        <div class="margin">
+                            <span class="icon">
+                                <app-icon-displayer [iconArray]="displayRuler" [iconName]="rulerIconName" [iconValue]="iconValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+              
+
             </div>
-            <div>
-                <input class="w-full" [(ngModel)]="metricValue">
-            </div>
-            <div>
-                <strong>{{metricSystem}}</strong>
-            </div>
-        </div>
-        <div class="inputLength">
-            <div>
-                <label><strong>American </strong></label>
-            </div>
-            <div>
-                <input class="w-full" readonly [(ngModel)]="americanValue">
-            </div>
-            <div>
-                <strong>{{americanSystem}}</strong>
-            </div>
-        </div>
-        <br>
-        <div class="inputLength">
-            <div>
-                <label><strong>Conversion rate : </strong></label>
-            </div>
-            <div>
-                <input class="w-full" readonly [(ngModel)]="displayConversionRate">
-            </div>
-        </div>
-    </div>
-    <div>
-        <div>
-            <span>
-                <button class="buttonLength" (click)="lengthConverter()"><strong>Go</strong></button>
-                <button class="buttonLengthClear" (click)="clearLengthsClicked()"><strong>Clear</strong></button>
-            </span>
-        </div>
-        <br>
-        <!-- <div>
-            <span>
-                <button class="buttonShowLengthKey" (click)="lengthShowIcon()"><strong>Show Icons <i *ngIf="showLengthKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!showLengthKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
-            </span>
-        </div> -->
-        <br>
-        <div *ngIf="showLengthKey">
-            <div class="margin">
-                <span class="icon">
-                    <app-icon-displayer [iconArray]="displayRuler" [iconName]="rulerIconName" [iconValue]="iconValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
-                </span>
-            </div>
-        </div>
-    </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
 </div>
 <br>
 

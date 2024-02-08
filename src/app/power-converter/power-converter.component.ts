@@ -1,8 +1,9 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSliderModule } from '@angular/material/slider';
-import { dialogData } from '../models/calculationHistory.model';
+import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
+import { LogCalculationsService } from '../logCalculations.service';
 
 @Component({
   selector: 'app-power-converter',
@@ -34,6 +35,7 @@ export class PowerConverterComponent {
   showPowerKey: boolean = false;
   iconNameTitle: string = 'fa-solid fa-battery-half';
   titleString: string = 'Power-converter';
+  powerPanelState: boolean = false;
  
   private readonly horsePowerToKilowatt: number = 1.341;
   private readonly kilowattToHorsePower: number = 1.341;
@@ -51,8 +53,9 @@ export class PowerConverterComponent {
   ];
 
   constructor(
+    public logCalculations: LogCalculationsService,
     public dialogRef: MatDialogRef<PowerConverterComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: dialogData = {
+    @Inject(MAT_DIALOG_DATA) public data: DialogData = {
       converterType: '',
       messege: '',
       iconString: ''
@@ -111,6 +114,7 @@ export class PowerConverterComponent {
       }
     }
     this.showPowerKey = true;
+    this.savePowerClicked();
   }
   
 
@@ -150,6 +154,15 @@ export class PowerConverterComponent {
   //     this.showPowerKeyCheck = false;
   //   };
   // }
+
+  savePowerClicked(){
+    let converterCalculation: ConverterCalculation = {};
+    converterCalculation.number1 = this.firstValue;
+    converterCalculation.result = this.secondValue;
+    converterCalculation.fromSystem = this.firstSystem;
+    converterCalculation.toSystem = this.secondSystem;
+    this.logCalculations.addCalculation(converterCalculation);
+  }
 
   clearPowersClicked(){
     const dialogRef = this.dialog.open(ClearDialogComponent, {

@@ -16,6 +16,7 @@ export class DateTimeComponent {
   public dateMSK : Date | undefined = undefined;
   public iconName: string = 'fa-regular fa-calendar-days';
   public titleString: string = 'Date & Time';
+  public datePanelState: boolean = false;
 
   timeGetGMT(){
    this.dateGMT = new Date();

@@ -8,82 +8,101 @@
 </div> -->
 <app-title-banner [iconName]="iconName" [titleString]="titleString"></app-title-banner>
 <br>
-<div class="flex-container">
-    <div class="width">
-        <div class="inputPressure"> 
-            <label><strong> First unit of pressure: </strong></label>
-        </div>
-        <div class="inputPressure">
-            <select class="w-full" name="fromQuantity" id="fromQuantity" [(ngModel)]="firstSystem">
-                <option value="Atmospheres">Atmospheres</option>
-                <option value="Bars">Bars</option>
-            </select>
-        </div>
-        <div class="inputPressure">
-            <label><strong> Second unit of pressure: </strong></label>
-        </div>
-        <div class="inputPressure">
-            <select class="w-full" name="toQuantity" id="toQuantity" [(ngModel)]="secondSystem">
-                <option value="Bars">Bars</option>
-                <option value="Atmospheres">Atmospheres</option>
-            </select>
-        </div>
-        <br>
-        <div>
-            <div class="inputPressure">
-                <label><strong>Pressure</strong></label>
-            </div>
-            <div class="inputPressure">
-                <input class="w-full" [(ngModel)]="firstValue">
-            </div>
-            <div class="inputPressure">
-                <strong>{{firstSystem}}</strong>
-            </div>
-        </div>
-        <div>
-            <div class="inputPressure">
-                <label><strong>Pressure</strong></label>
-            </div>
-            <div class="inputPressure">
-                <input class="w-full" readonly [(ngModel)]="secondValue">
-            </div>
-            <div class="inputPressure">
-                <strong>{{secondSystem}}</strong>
-            </div>
-        </div>
-        <br>
-        <div>
-            <div class="inputPressure">
-                <label><strong>Conversion rate: </strong></label>
-            </div>
-            <div class="inputPressure">
-                <input class="w-full" readonly [(ngModel)]="displayConversionRate">
-            </div>
-        </div>
-    </div>
-    <div>
-        <div>
-            <span>
-                <button class="buttonPressure" (click)="pressureConversion()"><strong>Go</strong></button>
-                <button class="buttonClear" (click)="clearPressureClicked()"><strong>Clear</strong></button>
-            </span>
-        </div>
-        <br>
-        <!-- <div>
-            <span>
-                <button class="buttonShowPressureKey" (click)="pressureShowIcon()"><strong>Show Icons <i *ngIf="showPressureKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!showPressureKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
-            </span>
-        </div> -->
-        <br>
-        <div *ngIf="showPressureKey">
-            <div class="margin">
-                <span class="icon">
-                    <app-icon-displayer [iconArray]="displayPlanetEarth" [iconName]="planetEarthIconName" [iconValue]="planetEarthValue" [iconUnit]="planetEarthUnit" [iconFirstAddition]="planetEarthIconFirstAddition" [displayPressureComponent]="displayPressureComponent"></app-icon-displayer>
-                </span>
-            </div>
-        </div>
+<div>
 
-    </div>
+    <mat-accordion>
+        <mat-expansion-panel class="expansion" (opened)="pressurePanelState = true" (closed)="pressurePanelState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <strong>
+                        Pressure-converter
+                    </strong>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <strong>
+                        Currently I am {{pressurePanelState ? 'open' : 'closed'}}
+                    </strong>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="flex-container">
+                <div class="width">
+                    <div class="inputPressure"> 
+                        <label><strong> First unit of pressure: </strong></label>
+                    </div>
+                    <div class="inputPressure">
+                        <select class="w-full" name="fromQuantity" id="fromQuantity" [(ngModel)]="firstSystem">
+                            <option value="Atmospheres">Atmospheres</option>
+                            <option value="Bars">Bars</option>
+                        </select>
+                    </div>
+                    <div class="inputPressure">
+                        <label><strong> Second unit of pressure: </strong></label>
+                    </div>
+                    <div class="inputPressure">
+                        <select class="w-full" name="toQuantity" id="toQuantity" [(ngModel)]="secondSystem">
+                            <option value="Bars">Bars</option>
+                            <option value="Atmospheres">Atmospheres</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <div class="inputPressure">
+                            <label><strong>Pressure</strong></label>
+                        </div>
+                        <div class="inputPressure">
+                            <input class="w-full" [(ngModel)]="firstValue">
+                        </div>
+                        <div class="inputPressure">
+                            <strong>{{firstSystem}}</strong>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inputPressure">
+                            <label><strong>Pressure</strong></label>
+                        </div>
+                        <div class="inputPressure">
+                            <input class="w-full" readonly [(ngModel)]="secondValue">
+                        </div>
+                        <div class="inputPressure">
+                            <strong>{{secondSystem}}</strong>
+                        </div>
+                    </div>
+                    <br>
+                    <div>
+                        <div class="inputPressure">
+                            <label><strong>Conversion rate: </strong></label>
+                        </div>
+                        <div class="inputPressure">
+                            <input class="w-full" readonly [(ngModel)]="displayConversionRate">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <span>
+                            <button class="buttonPressure" (click)="pressureConversion()"><strong>Go</strong></button>
+                            <button class="buttonClear" (click)="clearPressureClicked()"><strong>Clear</strong></button>
+                        </span>
+                    </div>
+                    <br>
+                    <!-- <div>
+                        <span>
+                            <button class="buttonShowPressureKey" (click)="pressureShowIcon()"><strong>Show Icons <i *ngIf="showPressureKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!showPressureKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
+                        </span>
+                    </div> -->
+                    <br>
+                    <div *ngIf="showPressureKey">
+                        <div class="margin">
+                            <span class="icon">
+                                <app-icon-displayer [iconArray]="displayPlanetEarth" [iconName]="planetEarthIconName" [iconValue]="planetEarthValue" [iconUnit]="planetEarthUnit" [iconFirstAddition]="planetEarthIconFirstAddition" [displayPressureComponent]="displayPressureComponent"></app-icon-displayer>
+                            </span>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>
 
 

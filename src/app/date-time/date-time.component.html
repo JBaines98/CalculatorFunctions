@@ -8,60 +8,81 @@
 </div> -->
 <app-title-banner [iconName]="iconName" [titleString]="titleString"></app-title-banner>
 <br>
-<div class="flex-container">
-    <div class="width">
-        <div class="inputDateTime">
-            <strong >
-                GMT:    
-            </strong>
-            <div>
-                <input class="w-full" readonly [(ngModel)]="dateGMT">
+<div>
+
+    <mat-accordion>
+        <mat-expansion-panel class="expansion" (opened)="datePanelState = true" (closed)="datePanelState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <strong>
+                        Date & Time
+                    </strong>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <strong>
+                        Currently I am {{datePanelState ? 'open' : 'closed'}}
+                    </strong>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="flex-container">
+                <div class="width">
+                    <div class="inputDateTime">
+                        <strong >
+                            GMT:    
+                        </strong>
+                        <div>
+                            <input class="w-full" readonly [(ngModel)]="dateGMT">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="inputDateTime">
+                        <strong>
+                            New York:    
+                        </strong>
+                        <div>
+                            <input class="w-full" readonly [(ngModel)]="dateEST">
+                        </div>
+                    </div>
+                    <div class="inputDateTime">
+                        <strong>
+                            India:    
+                        </strong>
+                        <div>
+                            <input class="w-full" readonly [(ngModel)]="dateIST">
+                        </div>
+                    </div>
+                    <div class="inputDateTime">
+                        <strong>
+                            Japan:    
+                        </strong>
+                        <div>
+                            <input class="w-full" readonly [(ngModel)]="dateJST">
+                        </div>
+                    </div>
+                    <div class="inputDateTime">
+                        <strong>
+                            Moscow:    
+                        </strong>
+                        <div>
+                            <input class="w-full" readonly [(ngModel)]="dateMSK">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <span>
+                        <button class="dateTimeButton" (click)="getAllTimes()">
+                            <strong>Get Times</strong>
+                        </button>
+                        <button class="dateTimeButtonClear" (click)="clearAllTimes()">
+                            <strong>Clear Times</strong>
+                        </button>
+                    </span>
+                </div>
             </div>
-        </div>
-        <br>
-        <div class="inputDateTime">
-            <strong>
-                New York:    
-            </strong>
-            <div>
-                <input class="w-full" readonly [(ngModel)]="dateEST">
-            </div>
-        </div>
-        <div class="inputDateTime">
-            <strong>
-                India:    
-            </strong>
-            <div>
-                <input class="w-full" readonly [(ngModel)]="dateIST">
-            </div>
-        </div>
-        <div class="inputDateTime">
-            <strong>
-                Japan:    
-            </strong>
-            <div>
-                <input class="w-full" readonly [(ngModel)]="dateJST">
-            </div>
-        </div>
-        <div class="inputDateTime">
-            <strong>
-                Moscow:    
-            </strong>
-            <div>
-                <input class="w-full" readonly [(ngModel)]="dateMSK">
-            </div>
-        </div>
-    </div>
-    <div>
-        <span>
-            <button class="dateTimeButton" (click)="getAllTimes()">
-                <strong>Get Times</strong>
-            </button>
-            <button class="dateTimeButtonClear" (click)="clearAllTimes()">
-                <strong>Clear Times</strong>
-            </button>
-        </span>
-    </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    
 
 </div>
 

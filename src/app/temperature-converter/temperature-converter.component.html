@@ -8,82 +8,101 @@
 </div> -->
 <app-title-banner [iconName]="iconName" [titleString]="titleString"></app-title-banner>
 <br>
-<div class="flex-container">
+<div>
 
-    <div class="width">
-        <div class="inputTemp">
-    
-            <label><strong> Starting Temperature: </strong></label>
-        </div>
-        <div class="inputTemp">
-            <select class="w-full" name="fromQuantity" id="fromQuantity" [(ngModel)]="fromSystem">
-                <option value="Celcius">Celcius</option>
-                <option value="Fahrenheit">Fahrenheit</option>
-            </select>
-        </div>
-        <div class="inputTemp">
-            <label><strong> Converted Temperature: </strong></label>
-        </div>
-        <div class="inputTemp">
-            <select class="w-full" name="toQuantity" id="toQuantity" [(ngModel)]="toSystem">
-                <option value="Fahrenheit">Fahrenheit</option>
-                <option value="Celcius">Celcius</option>
-            </select>
-        </div>
-        <br>
-        <div>
-            <div class="inputTemp">
-                <label><strong>Temperature</strong></label>
+
+    <mat-accordion>
+        <mat-expansion-panel class="expansion" (opened)="temperaturePanelState = true" (closed)="temperaturePanelState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <strong>
+                        Temperature-converter
+                    </strong>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <strong>
+                        Currently I am {{temperaturePanelState ? 'open' : 'closed'}}
+                    </strong>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="flex-container">
+                <div class="width">
+                    <div class="inputTemp">
+                
+                        <label><strong> Starting Temperature: </strong></label>
+                    </div>
+                    <div class="inputTemp">
+                        <select class="w-full" name="fromQuantity" id="fromQuantity" [(ngModel)]="fromSystem">
+                            <option value="Celcius">Celcius</option>
+                            <option value="Fahrenheit">Fahrenheit</option>
+                        </select>
+                    </div>
+                    <div class="inputTemp">
+                        <label><strong> Converted Temperature: </strong></label>
+                    </div>
+                    <div class="inputTemp">
+                        <select class="w-full" name="toQuantity" id="toQuantity" [(ngModel)]="toSystem">
+                            <option value="Fahrenheit">Fahrenheit</option>
+                            <option value="Celcius">Celcius</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <div class="inputTemp">
+                            <label><strong>Temperature</strong></label>
+                        </div>
+                        <div class="inputTemp">
+                            <input class="w-full" [(ngModel)]="fromValue">
+                        </div>
+                        <div class="inputTemp">
+                            <strong>{{fromSystem}}</strong>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inputTemp">
+                            <label><strong>Temperature</strong></label>
+                        </div>
+                        <div class="inputTemp">
+                            <input class="w-full" [(ngModel)]="toValue">
+                        </div>
+                        <div class="inputTemp">
+                            <strong>{{toSystem}}</strong>
+                        </div>
+                    </div>
+                    <br>
+                    <div>
+                        <div class="inputTemp">
+                            <label><strong>Conversion rate : </strong></label>
+                        </div>
+                        <div class="inputTemp">
+                            <input class="w-full" readonly [(ngModel)]="displayConversionRate">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <span>
+                            <button class="buttonTemperature" (click)="temperatureConversion()"><strong>Go</strong></button>
+                            <button class="buttonClear" (click)="clearTemperatureClicked()"><strong>Clear</strong></button>
+                        </span>
+                    </div>
+                    <br>
+                    <!-- <div>
+                        <span>
+                            <button class="buttonShowTempKey" (click)="tempShowIcon()"><strong>Show Icons <i *ngIf="ShowTempKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!ShowTempKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
+                        </span>
+                    </div> -->
+                    <br>
+                    <div *ngIf="showTempKey">
+                        <div class="margin">
+                            <span class="icon">
+                                <app-icon-displayer [iconArray]="displayTenDegree" [iconName]="tenDegreeIconName" [iconUnit]="iconUnit" [iconValue]="iconDisplayerValue" [iconFirstAddition]="iconFirstAddition" [displayTemperatureComponent]="displayTemperatureComponent"></app-icon-displayer>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="inputTemp">
-                <input class="w-full" [(ngModel)]="fromValue">
-            </div>
-            <div class="inputTemp">
-                <strong>{{fromSystem}}</strong>
-            </div>
-        </div>
-        <div>
-            <div class="inputTemp">
-                <label><strong>Temperature</strong></label>
-            </div>
-            <div class="inputTemp">
-                <input class="w-full" [(ngModel)]="toValue">
-            </div>
-            <div class="inputTemp">
-                <strong>{{toSystem}}</strong>
-            </div>
-        </div>
-        <br>
-        <div>
-            <div class="inputTemp">
-                <label><strong>Conversion rate : </strong></label>
-            </div>
-            <div class="inputTemp">
-                <input class="w-full" readonly [(ngModel)]="displayConversionRate">
-            </div>
-        </div>
-    </div>
-    <div>
-        <div>
-            <span>
-                <button class="buttonTemperature" (click)="temperatureConversion()"><strong>Go</strong></button>
-                <button class="buttonClear" (click)="clearTemperatureClicked()"><strong>Clear</strong></button>
-            </span>
-        </div>
-        <br>
-        <!-- <div>
-            <span>
-                <button class="buttonShowTempKey" (click)="tempShowIcon()"><strong>Show Icons <i *ngIf="ShowTempKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!ShowTempKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
-            </span>
-        </div> -->
-        <br>
-        <div *ngIf="showTempKey">
-            <div class="margin">
-                <span class="icon">
-                    <app-icon-displayer [iconArray]="displayTenDegree" [iconName]="tenDegreeIconName" [iconUnit]="iconUnit" [iconValue]="iconDisplayerValue" [iconFirstAddition]="iconFirstAddition" [displayTemperatureComponent]="displayTemperatureComponent"></app-icon-displayer>
-                </span>
-            </div>
-        </div>
-    </div>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>
 

@@ -1,7 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { dialogData } from '../models/calculationHistory.model';
+import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
+import { LogCalculationsService } from '../logCalculations.service';
 
 @Component({
   selector: 'app-food-energy-converter',
@@ -28,6 +29,7 @@ export class FoodEnergyConverterComponent {
   showFoodKeyCheck: boolean = false;
   iconName: string = 'fa-solid fa-burger';
   titleString: string = 'Food Calorie-converter';
+  foodPanelState: boolean = false;
 
   private readonly foodCaloriesToJoules: number = 4184;
   private readonly foodCaloriesToKiloJoules: number = 4.184;
@@ -41,8 +43,9 @@ export class FoodEnergyConverterComponent {
   ];
 
   constructor(
+    public logCalculations: LogCalculationsService,
     public dialogRef: MatDialogRef<FoodEnergyConverterComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: dialogData = {
+    @Inject(MAT_DIALOG_DATA) public data: DialogData = {
       converterType: '',
       messege: '',
       iconString: ''
@@ -65,6 +68,7 @@ export class FoodEnergyConverterComponent {
       }
     }
     this.showFoodKey = true;
+    this.saveFoodClicked();
   }
 
   convertToEnergy(conversionRate: number){
@@ -90,6 +94,15 @@ export class FoodEnergyConverterComponent {
   //     this.showFoodKeyCheck = false;
   //   };
   // }
+
+  saveFoodClicked(){
+    let converterCalculation: ConverterCalculation = {};
+    converterCalculation.number1 = this.foodValue;
+    converterCalculation.result = this.energyValue;
+    converterCalculation.fromSystem = this.foodSystem;
+    converterCalculation.toSystem = this.energySystem;
+    this.logCalculations.addCalculation(converterCalculation);
+  }
 
   clearQuantitiesClicked(){
     const dialogRef = this.dialog.open(ClearDialogComponent, {

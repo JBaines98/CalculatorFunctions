@@ -8,83 +8,101 @@
 </div> -->
 <app-title-banner [iconName]="iconName" [titleString]="titleString"></app-title-banner>
 <br>
-<div class="flex-container">
+<div>
 
-    <div class="width">
-        <div class="inputVolume">
-            <label for="metricVolumes"><strong> Choose a metric volume: </strong></label>
-        </div>
-        <div class="inputVolume">
-            <select class="w-full pxy-2" name="metricVolumes" id="metricVolumes" [(ngModel)]="metricSystem">
-                <option value="Milliliters">Milliliters</option>
-                <option value="Centiliters">Centiliters</option>
-                <option value="Liters">Liters</option>
-            </select>
-        </div>
-        <div>
-            <label for="americanMeasurements"><strong> Choose an American volume: </strong></label>
-        </div>
-        <div>
-            <select class="w-full" name="americanVolumes" id="americanVolumes" [(ngModel)]="americanSystem">
-                <option value="Teaspoons">Teaspoons</option>
-                <option value="Tablespoons">Tablespoons</option>
-                <option value="Ounces">Ounces</option>
-            </select>
-        </div>
-        <br>
-        <div>
-            <div>
-                <label><strong>Metric </strong></label>
+    <mat-accordion>
+        <mat-expansion-panel class="expansion" (opened)="volumePanelState = true" (closed)="volumePanelState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <strong>
+                        Volume-converter
+                    </strong>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <strong>
+                        Currently I am {{volumePanelState ? 'open' : 'closed'}}
+                    </strong>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="flex-container">
+                <div class="width">
+                    <div class="inputVolume">
+                        <label for="metricVolumes"><strong> Choose a metric volume: </strong></label>
+                    </div>
+                    <div class="inputVolume">
+                        <select class="w-full pxy-2" name="metricVolumes" id="metricVolumes" [(ngModel)]="metricSystem">
+                            <option value="Milliliters">Milliliters</option>
+                            <option value="Centiliters">Centiliters</option>
+                            <option value="Liters">Liters</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="americanMeasurements"><strong> Choose an American volume: </strong></label>
+                    </div>
+                    <div>
+                        <select class="w-full" name="americanVolumes" id="americanVolumes" [(ngModel)]="americanSystem">
+                            <option value="Teaspoons">Teaspoons</option>
+                            <option value="Tablespoons">Tablespoons</option>
+                            <option value="Ounces">Ounces</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <div>
+                            <label><strong>Metric </strong></label>
+                        </div>
+                        <div>
+                            <input class="w-full" [(ngModel)]="metricValue">
+                        </div>
+                        <div>
+                            <strong>{{metricSystem}}</strong>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <label><strong>American </strong></label>
+                        </div>
+                        <div>
+                            <input class="w-full" readonly [(ngModel)]="americanValue">
+                        </div>
+                        <div>
+                            <strong>{{americanSystem}}</strong>
+                        </div>
+                    </div>
+                    <br>
+                    <div>
+                        <div>
+                            <label><strong>Conversion rate : </strong></label>
+                        </div>
+                        <div>
+                            <input class="w-full" readonly [(ngModel)]="displayConversionRate">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <div>
+                        <span>
+                            <button class="buttonVolume" (click)="volumeConversion()"><strong>Go</strong></button>
+                            <button class="buttonVolumeClear" (click)="clearVolumesClicked()"><strong>Clear</strong></button>
+                        </span>
+                    </div>
+                    <br>
+                    <!-- <div>
+                        <span>
+                            <button class="buttonShowVolumeKey" (click)="volumeShowIcon()"><strong>Show Icons <i *ngIf="showVolumeKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!showVolumeKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
+                        </span>
+                    </div> -->
+                    <br>
+                    <div *ngIf="showVolumeKey">
+                        <div class="margin">
+                            <span class="icon">
+                                <app-icon-displayer [iconArray]="displayLiters" [iconName]="litreIconName" [iconUnit]="iconUnit" [iconValue]="iconValue" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer> 
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <input class="w-full" [(ngModel)]="metricValue">
-            </div>
-            <div>
-                <strong>{{metricSystem}}</strong>
-            </div>
-        </div>
-        <div>
-            <div>
-                <label><strong>American </strong></label>
-            </div>
-            <div>
-                <input class="w-full" readonly [(ngModel)]="americanValue">
-            </div>
-            <div>
-                <strong>{{americanSystem}}</strong>
-            </div>
-        </div>
-        <br>
-        <div>
-            <div>
-                <label><strong>Conversion rate : </strong></label>
-            </div>
-            <div>
-                <input class="w-full" readonly [(ngModel)]="displayConversionRate">
-            </div>
-        </div>
-    </div>
-    <br>
-    <div>
-        <div>
-            <span>
-                <button class="buttonVolume" (click)="volumeConversion()"><strong>Go</strong></button>
-                <button class="buttonVolumeClear" (click)="clearVolumesClicked()"><strong>Clear</strong></button>
-            </span>
-        </div>
-        <br>
-        <!-- <div>
-            <span>
-                <button class="buttonShowVolumeKey" (click)="volumeShowIcon()"><strong>Show Icons <i *ngIf="showVolumeKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!showVolumeKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
-            </span>
-        </div> -->
-        <br>
-        <div *ngIf="showVolumeKey">
-            <div class="margin">
-                <span class="icon">
-                    <app-icon-displayer [iconArray]="displayLiters" [iconName]="litreIconName" [iconUnit]="iconUnit" [iconValue]="iconValue" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer> 
-                </span>
-            </div>
-        </div>
-    </div>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>

@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { CalculatorService } from './calculator.service';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { dialogData } from './models/calculationHistory.model';
+import { DialogData } from './models/calculationHistory.model';
 import { ClearDialogComponent } from './clear-dialog/clear-dialog.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 
@@ -22,12 +22,12 @@ export class AppComponent {
   displaySumHistory: boolean = false;
   iconName: string = 'fa-solid fa-calculator';
   titleString: string = 'Calculator';
-  calculatorPanelState: boolean = true;
+  calculatorPanelState: boolean = false;
 
   constructor(    
     public calculatorService: CalculatorService,
     public dialogRef: MatDialogRef<AppComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: dialogData = {
+    @Inject(MAT_DIALOG_DATA) public data: DialogData = {
       converterType: '',
       messege: '',
       iconString: '',

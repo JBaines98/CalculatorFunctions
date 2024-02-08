@@ -1,7 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { dialogData } from '../models/calculationHistory.model';
+import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
+import { LogCalculationsService } from '../logCalculations.service';
 
 @Component({
   selector: 'app-temperature-converter',
@@ -36,6 +37,7 @@ export class TemperatureConverterComponent {
   showTempKey: boolean = false;
   iconName: string = 'fa-solid fa-temperature-three-quarters';
   titleString: string = 'Temperature-converter';
+  temperaturePanelState: boolean = false;
 
   private readonly celciusToFahrenheit: number = 33.8;
   private readonly fahrenheitToCelcius: number = 0;
@@ -54,8 +56,9 @@ export class TemperatureConverterComponent {
   ]
 
   constructor(
+    public logCalculations: LogCalculationsService,
     public dialogRef: MatDialogRef<TemperatureConverterComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: dialogData = {
+    @Inject(MAT_DIALOG_DATA) public data: DialogData = {
       converterType: '',
       messege: '',
       iconString: ''
@@ -164,6 +167,7 @@ export class TemperatureConverterComponent {
       this.iconDisplayerValue = 10;
       this.iconFirstAddition = 10;
       this.showTempKey = true;
+      this.saveTemperatureClicked();
     }
   }
 
@@ -263,6 +267,15 @@ export class TemperatureConverterComponent {
   //     this.ShowTempKeyCheck = false;
   //   };
   // }
+
+  saveTemperatureClicked(){
+    let converterCalculation: ConverterCalculation = {};
+    converterCalculation.number1 = this.fromValue;
+    converterCalculation.result = this.toValue;
+    converterCalculation.fromSystem = this.fromSystem;
+    converterCalculation.toSystem = this.toSystem;
+    this.logCalculations.addCalculation(converterCalculation);
+  }
 
   clearTemperatureClicked(){
     const dialogRef = this.dialog.open(ClearDialogComponent, {

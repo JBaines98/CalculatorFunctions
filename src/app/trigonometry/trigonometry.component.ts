@@ -1,7 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { dialogData } from '../models/calculationHistory.model';
+import { DialogData, TrigonometryCalculation } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
+import { LogCalculationsService } from '../logCalculations.service';
 
 @Component({
   selector: 'app-trigonometry',
@@ -16,10 +17,12 @@ export class TrigonometryComponent {
   adjacent: number  = 0;
   iconName: string = 'fa-solid fa-shapes';
   titleString: string = 'Trigonometry';
+  trigonometryPanelState: boolean = false;
 
   constructor(
+    public logCalculations: LogCalculationsService,
     public dialogRef: MatDialogRef<TrigonometryComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: dialogData = {
+    @Inject(MAT_DIALOG_DATA) public data: DialogData = {
       converterType: '',
       messege: '',
       iconString: ''
@@ -38,6 +41,17 @@ export class TrigonometryComponent {
 
   trigonometryTan(){
     this.adjacent = this.opposite / Math.tan(this.angleInput);
+    this.saveTrigonometryClicked();
+  }
+
+  saveTrigonometryClicked(){
+    let trigonometryCalculation: TrigonometryCalculation = {};
+    trigonometryCalculation.number1 = this.angleInput;
+    trigonometryCalculation.function = 'Trigonometry';
+    trigonometryCalculation.hypotenuse = this.hypotenuse;
+    trigonometryCalculation.opposite = this.opposite;
+    trigonometryCalculation.adjacent = this.adjacent;
+    this.logCalculations.addCalculation(trigonometryCalculation);
   }
 
   clearTrigonometryClciked(){

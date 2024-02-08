@@ -1,7 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { dialogData } from '../models/calculationHistory.model';
+import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
+import { LogCalculationsService } from '../logCalculations.service';
 
 @Component({
   selector: 'app-pressure',
@@ -29,6 +30,7 @@ export class PressureComponent {
   showPressureKey: boolean = false;
   iconName: string = 'fa-solid fa-guage';
   titleString: string = 'Pressure-converter';
+  pressurePanelState: boolean = false;
 
   fromQuantity: string[] = [
     'Atmospheres',
@@ -45,8 +47,9 @@ export class PressureComponent {
   private readonly barsToElephants: number = 0.725388405;
 
   constructor(
+    public logCalculations: LogCalculationsService,
     public dialogRef: MatDialogRef<PressureComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: dialogData = {
+    @Inject(MAT_DIALOG_DATA) public data: DialogData = {
       converterType: '',
       messege: '',
       iconString: ''
@@ -86,6 +89,7 @@ export class PressureComponent {
       }
     }
     this.showPressureKey = true;
+    this.savePressureClicked();
   }
 
   convertPressure(conversionRate: number){
@@ -131,6 +135,15 @@ export class PressureComponent {
       }
     });
     this.showPressureKey = false;
+  }
+
+  savePressureClicked(){
+    let converterCalculation: ConverterCalculation = {};
+    converterCalculation.number1 = this.firstValue;
+    converterCalculation.result = this.secondValue;
+    converterCalculation.fromSystem = this.firstSystem;
+    converterCalculation.toSystem = this.secondSystem;
+    this.logCalculations.addCalculation(converterCalculation);
   }
 
   clearPressure(){

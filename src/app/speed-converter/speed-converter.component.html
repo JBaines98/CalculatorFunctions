@@ -8,79 +8,100 @@
 </div> -->
 <app-title-banner [iconName]="iconName" [titleString]="titleString"></app-title-banner>
 <br>
-<div class="flex-container">
-    <div class="width">
-        <div class="inputSpeed">
-            <label><strong> Metric Speed: </strong></label>
-        </div>
-        <div class="inputSpeed">
-            <select class="w-full" name="metricQuantity" id="americanQuantity" [(ngModel)]="metricSystem">
-                <option value="Meters per second">Meters per second</option>
-                <option value="Kilometers per hour">Kilometers per hour</option>
-            </select>
-        </div>
-        <div class="inputSpeed">
-            <label><strong> American Speed: </strong></label>
-        </div>
-        <div class="inputSpeed"> 
-            <select class="w-full" name="americanQuantity" id="americanQuantity" [(ngModel)]="americanSystem">
-                <option value="Feet per second">Feet per second</option>
-                <option value="Miles per hour">Miles per hour</option>
-            </select>
-        </div>
-        <br>
-        <div class="inputSpeed">
-            <div>
-                <label><strong>Speed </strong></label>
-            </div>
-            <div>
-                <input class="w-full" [(ngModel)]="metricValue">
-            </div>
-            <div>
-                <strong>{{metricSystem}}</strong>
-            </div>
-        </div>
-        <div class="inputSpeed">
-            <div>
-                <label><strong>Speed </strong></label>
-            </div>
-            <div>
-                <input class="w-full" readonly [(ngModel)]="americanValue">
-            </div>
-            <div>
-                <strong>{{americanSystem}}</strong>
-            </div>
-        </div>
-        <br>
-        <div class="inputSpeed">
-            <label><strong>Conversion rate : </strong></label>
-        </div>
-        <div class="inputSpeed">
-            <input class="w-full" readonly [(ngModel)]="displayConversionRate">
-        </div>
-    </div>
-    <div>
-        <div>
-            <span>
-                <button class="buttonSpeed" (click)="speedConversion()"><strong>Go</strong></button>
-                <button class="buttonClear" (click)="clearSpeedClicked()"><strong>Clear</strong></button>
-            </span>
-        </div>
-        <br>
-        <!-- <div>
-            <span>
-                <button class="buttonShowSpeedKey" (click)="speedShowIcon()"><strong>Show Icons <i *ngIf="showSpeedKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!showSpeedKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
-            </span>
-        </div> -->
-        <br>
-        <div *ngIf="showSpeedKey">
-            <div class="margin">
-                <span class="icon">
-                    <app-icon-displayer [iconArray]="displaySpeed" [iconName]="speedIconName" [iconValue]="iconDisplayerValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition" [displaySpeedComponent]="displaySpeedComponent"></app-icon-displayer>
-                </span>
-            </div>
-        </div>
+<div>
 
-    </div>
+    <mat-accordion>
+        <mat-expansion-panel class="expansion" (opened)="speedPanelState = true" (closed)="speedPanelState = false;">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <strong>
+                        Speed-converter
+                    </strong>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <strong>
+                        Currently I am {{speedPanelState ? 'open' : 'closed'}}
+                    </strong>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="flex-container">
+                <div class="width">
+                    <div class="inputSpeed">
+                        <label><strong> Metric Speed: </strong></label>
+                    </div>
+                    <div class="inputSpeed">
+                        <select class="w-full" name="metricQuantity" id="americanQuantity" [(ngModel)]="metricSystem">
+                            <option value="Meters per second">Meters per second</option>
+                            <option value="Kilometers per hour">Kilometers per hour</option>
+                        </select>
+                    </div>
+                    <div class="inputSpeed">
+                        <label><strong> American Speed: </strong></label>
+                    </div>
+                    <div class="inputSpeed"> 
+                        <select class="w-full" name="americanQuantity" id="americanQuantity" [(ngModel)]="americanSystem">
+                            <option value="Feet per second">Feet per second</option>
+                            <option value="Miles per hour">Miles per hour</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="inputSpeed">
+                        <div>
+                            <label><strong>Speed </strong></label>
+                        </div>
+                        <div>
+                            <input class="w-full" [(ngModel)]="metricValue">
+                        </div>
+                        <div>
+                            <strong>{{metricSystem}}</strong>
+                        </div>
+                    </div>
+                    <div class="inputSpeed">
+                        <div>
+                            <label><strong>Speed </strong></label>
+                        </div>
+                        <div>
+                            <input class="w-full" readonly [(ngModel)]="americanValue">
+                        </div>
+                        <div>
+                            <strong>{{americanSystem}}</strong>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="inputSpeed">
+                        <label><strong>Conversion rate : </strong></label>
+                    </div>
+                    <div class="inputSpeed">
+                        <input class="w-full" readonly [(ngModel)]="displayConversionRate">
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <span>
+                            <button class="buttonSpeed" (click)="speedConversion()"><strong>Go</strong></button>
+                            <button class="buttonClear" (click)="clearSpeedClicked()"><strong>Clear</strong></button>
+                        </span>
+                    </div>
+                    <br>
+                    <!-- <div>
+                        <span>
+                            <button class="buttonShowSpeedKey" (click)="speedShowIcon()"><strong>Show Icons <i *ngIf="showSpeedKeyCheck" class="fa-solid fa-check"></i><i *ngIf="!showSpeedKeyCheck" class="fa-solid fa-xmark"></i></strong></button>
+                        </span>
+                    </div> -->
+                    <br>
+                    <div *ngIf="showSpeedKey">
+                        <div class="margin">
+                            <span class="icon">
+                                <app-icon-displayer [iconArray]="displaySpeed" [iconName]="speedIconName" [iconValue]="iconDisplayerValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition" [displaySpeedComponent]="displaySpeedComponent"></app-icon-displayer>
+                            </span>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    
 </div>
 

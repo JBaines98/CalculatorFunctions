@@ -1,7 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { dialogData } from '../models/calculationHistory.model';
+import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
+import { LogCalculationsService } from '../logCalculations.service';
 
 @Component({
   selector: 'app-speed-converter',
@@ -38,6 +39,7 @@ export class SpeedConverterComponent {
   showSpeedKeyCheck: boolean = false;
   iconName: string = 'fa-solid fa-gauge';
   titleString: string = 'Speed-converter';
+  speedPanelState: boolean = false;
 
 
   
@@ -62,8 +64,10 @@ export class SpeedConverterComponent {
     "Miles per hour"
   ];
 
-  constructor(public dialogRef: MatDialogRef<SpeedConverterComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: dialogData = {
+  constructor(
+    public logCalculations: LogCalculationsService,
+    public dialogRef: MatDialogRef<SpeedConverterComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData = {
       converterType: '',
       messege: '',
       iconString: ''
@@ -215,6 +219,7 @@ export class SpeedConverterComponent {
       }
     };
     this.showSpeedKey = true;
+    this.saveSpeedClicked();
   };
 
   convertToAmerican(conversionRate: number){
@@ -268,6 +273,15 @@ export class SpeedConverterComponent {
   //     this.showSpeedKeyCheck = false;
   //   }
   // }
+
+  saveSpeedClicked(){
+    let converterCalculation: ConverterCalculation = {};
+    converterCalculation.number1 = this.metricValue;
+    converterCalculation.result = this.americanValue;
+    converterCalculation.fromSystem = this.metricSystem;
+    converterCalculation.toSystem = this.americanSystem;
+    this.logCalculations.addCalculation(converterCalculation);
+  }
 
   clearSpeedClicked(){
     const dialogRef = this.dialog.open(ClearDialogComponent, {

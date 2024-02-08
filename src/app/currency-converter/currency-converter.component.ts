@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { CalculatorService } from '../calculator.service';
+import { ConverterCalculation, CurrencyCalculation } from '../models/calculationHistory.model';
+import { LogCalculationsService } from '../logCalculations.service';
 
 @Component({
   selector: 'app-currency-converter',
@@ -9,39 +11,69 @@ import { CalculatorService } from '../calculator.service';
 export class CurrencyConverterComponent {
   sterlingValue: number = 0;
   exchangedValue: number = 0;
-  currency: string = 'fa-solid fa-sterling-sign';
+  exchangeRate: number = 0;
+  currency: string = '';
+  currencyIcon: string = 'fa-solid fa-sterling-sign';
   title: string = 'Currency-converter';
+  currencyPanelState: boolean = false;
 
-  constructor(public calculatorService: CalculatorService) {}
+  constructor(
+    public logCalculations: LogCalculationsService,
+    public calculatorService: CalculatorService) {}
 
   dollarExchange() {
     this.exchangedValue = this.sterlingValue * 1.27;
-    this.currency = 'fa-solid fa-dollar-sign';
+    this.currencyIcon = 'fa-solid fa-dollar-sign';
+    this.exchangeRate = 1.27;
+    this.currency = "Dollar";
+    this.saveCurrencyClicked(this.exchangeRate, this.currency);
   }
 
   euroExchange() {
     this.exchangedValue = this.sterlingValue * 1.16;
-    this.currency = 'fa-solid fa-euro-sign';
+    this.currencyIcon = 'fa-solid fa-euro-sign';
+    this.exchangeRate = 1.16;
+    this.currency = "Euro";
+    this.saveCurrencyClicked(this.exchangeRate, this.currency);
   }
 
   yenExchange() {
     this.exchangedValue = this.sterlingValue * 183.45;
-    this.currency = 'fa-solid fa-yen-sign';
+    this.currencyIcon = 'fa-solid fa-yen-sign';
+    this.exchangeRate = 183.45;
+    this.currency = "Yen";
+    this.saveCurrencyClicked(this.exchangeRate, this.currency);
   }
 
   wonExchange() {
     this.exchangedValue = this.sterlingValue * 1679.12;
-    this.currency = 'fa-solid fa-won-sign';
+    this.currencyIcon = 'fa-solid fa-won-sign';
+    this.exchangeRate = 1679.12;
+    this.currency = "Won";
+    this.saveCurrencyClicked(this.exchangeRate, this.currency);
   }
 
   pesoExchange() {
     this.exchangedValue = this.sterlingValue * 21.48;
-    this.currency = 'fa-solid fa-peso-sign';
+    this.currencyIcon = 'fa-solid fa-peso-sign';
+    this.exchangeRate = 21.48;
+    this.currency = "Peso";
+    this.saveCurrencyClicked(this.exchangeRate, this.currency);
+  }
+
+  saveCurrencyClicked(conversionRate: number, currency: string){
+    let currencyCalculation: CurrencyCalculation = {};
+    currencyCalculation.sterlingValue = this.sterlingValue;
+    currencyCalculation.convertedValue = this.exchangedValue;
+    currencyCalculation.conversionRate = conversionRate;
+    currencyCalculation.toCurrency = currency;
+    this.logCalculations.addCalculation(currencyCalculation);
   }
 
   clearExchange(){
     this.sterlingValue = 0;
     this.exchangedValue = 0;
-    this.currency = 'fa-solid fa-sterling-sign';
+    this.currencyIcon = 'fa-solid fa-sterling-sign';
+    this.currency = '';
   }
 }

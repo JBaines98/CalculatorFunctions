@@ -1,17 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { CalculatorService } from '../calculator.service';
-import { tap } from 'rxjs';
+import { Observable, Subject, map, takeUntil, tap, } from 'rxjs';
 
 @Component({
   selector: 'app-memory',
   templateUrl: './memory.component.html',
   styleUrls: ['./memory.component.css']
 })
-export class MemoryComponent {
+export class MemoryComponent implements OnDestroy {
 
   constructor(public calculatorService: CalculatorService){}
 
-  isMemory0: boolean = true;
+
+
+  public isMemory0: boolean = true;
+  public destroyed$ = new Subject();
+
+  ngOnDestroy(): void {
+    this.destroyed$.next(this.destroyed$);
+    this.destroyed$.complete();
+  }
 
 
   ngOnInit(){
@@ -22,7 +30,8 @@ export class MemoryComponent {
         }else{
           this.isMemory0 = false;
         }
-      })
+      }),
+      takeUntil(this.destroyed$)
     ).subscribe();
   }
 

@@ -1,15 +1,16 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { LogCalculationsService } from '../logCalculations.service';
+import { Observable, Subject, map, takeUntil, tap, } from 'rxjs';
 
 @Component({
   selector: 'app-food-energy-converter',
   templateUrl: './food-energy-converter.component.html',
   styleUrls: ['./food-energy-converter.component.css']
 })
-export class FoodEnergyConverterComponent {
+export class FoodEnergyConverterComponent implements OnDestroy {
 
 
   foodSystem: string = '';
@@ -31,6 +32,8 @@ export class FoodEnergyConverterComponent {
   titleString: string = 'Food Calorie-converter';
   foodPanelState: boolean = false;
 
+  public destroyed$ = new Subject();
+
   private readonly foodCaloriesToJoules: number = 4184;
   private readonly foodCaloriesToKiloJoules: number = 4.184;
   private readonly foodCaloriesToApples: number = 0.0105708245243129;
@@ -51,6 +54,13 @@ export class FoodEnergyConverterComponent {
       iconString: ''
     },
     public dialog: MatDialog){}
+
+
+
+  ngOnDestroy(): void {
+    this.destroyed$.next(this.destroyed$);
+    this.destroyed$.complete();
+  }
 
   energyConversion(){
     if(this.foodSystem === 'Food Calories'){

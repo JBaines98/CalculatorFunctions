@@ -28,6 +28,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TitleBannerComponent } from './title-banner/title-banner.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { ShowCalculationHistoryComponent } from './show-calculation-history/show-calculation-history.component';
+
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     PressureComponent,
     PowerConverterComponent,
     ClearDialogComponent,
-    TitleBannerComponent
+    TitleBannerComponent,
+    ShowCalculationHistoryComponent
 
   ],
   imports: [

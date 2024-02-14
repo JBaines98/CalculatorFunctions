@@ -29,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TitleBannerComponent } from './title-banner/title-banner.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ShowCalculationHistoryComponent } from './show-calculation-history/show-calculation-history.component';
+import { CurrentTimeComponent } from './current-time/current-time.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { ShowCalculationHistoryComponent } from './show-calculation-history/show
     PowerConverterComponent,
     ClearDialogComponent,
     TitleBannerComponent,
-    ShowCalculationHistoryComponent
+    ShowCalculationHistoryComponent,
+    CurrentTimeComponent
 
   ],
   imports: [

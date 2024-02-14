@@ -55,6 +55,10 @@ export class AppComponent {
     this.showButton = true;
   }
 
+  homeButtonClicked(){
+    this.calculatorPanelState = false;
+  }
+
   reverseOrder()
   {
     this.reverseArray = this.arrayOfNames.sort().reverse();

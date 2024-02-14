@@ -30,6 +30,7 @@ import { TitleBannerComponent } from './title-banner/title-banner.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ShowCalculationHistoryComponent } from './show-calculation-history/show-calculation-history.component';
 import { CurrentTimeComponent } from './current-time/current-time.component';
+import { SharedDateComponent } from './shared-date/shared-date.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { CurrentTimeComponent } from './current-time/current-time.component';
     ClearDialogComponent,
     TitleBannerComponent,
     ShowCalculationHistoryComponent,
-    CurrentTimeComponent
+    CurrentTimeComponent,
+    SharedDateComponent
 
   ],
   imports: [

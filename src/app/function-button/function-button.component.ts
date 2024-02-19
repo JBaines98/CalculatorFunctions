@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogData } from '../models/calculationHistory.model';
+import { ThemeService } from '../theme.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-function-button',
@@ -14,7 +16,15 @@ export class FunctionButtonComponent {
   @Output() equalClicked = new EventEmitter<string>();
   @Output() backSpaceClicked = new EventEmitter<string>();
 
+  public themeName: string = 'business';
 
+  constructor(public themeService: ThemeService){
+    this.themeService.themeName$.pipe(
+      tap((theme) => {
+        this.themeName = theme;
+      })
+    ).subscribe();
+  }
 
 
 

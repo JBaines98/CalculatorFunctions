@@ -1,5 +1,4 @@
 .text{
-    color: white;
     font-size: xx-large;
 
 }
@@ -10,4 +9,16 @@
     border: 2px;
     border-color: black;
     margin-left: 20px;
+}
+.backgroundBusiness{
+    background-color: rgb(100 116 139);
+    color: white;
+}
+.backgroundLight{
+    background-color: lightskyblue;
+    color: black;
+}
+.backgroundDark {
+    background-color: darkblue;
+    color: white;
 }

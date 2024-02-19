@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ThemeService } from '../theme.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-number-button',
@@ -7,11 +9,17 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class NumberButtonComponent {
 
+  public themeName: string = 'business';
   @Input() key = '';
-
   @Output() numberClicked = new EventEmitter<string>();
 
-  constructor(){}
+  constructor(public themeService: ThemeService){
+    this.themeService.themeName$.pipe(
+      tap((theme) => {
+        this.themeName = theme;
+      })
+    ).subscribe();
+  }
 
   onClick()
   {

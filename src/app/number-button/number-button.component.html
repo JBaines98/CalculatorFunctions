@@ -1,1 +1,6 @@
-<button (click)="onClick()" class="buttonNumber"><i [class]="getClass()"></i></button>
+<button (click)="onClick()" 
+    [class.buttonBusiness]="themeName === 'business'"
+    [class.buttonLight]="themeName === 'light'"
+    [class.buttonDark]="themeName === 'dark'">
+         <i [class]="getClass()"></i>
+</button>

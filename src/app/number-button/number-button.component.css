@@ -22,3 +22,48 @@
     width: 100px;
     background-color: bisque;
 }
+.buttonBusiness{
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 50px;
+    width: 100px;
+    background-color: rgb(203 213 225);
+    color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+.buttonLight{
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 50px;
+    width: 100px;
+    background-color: lightblue;
+    color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+.buttonDark{
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 50px;
+    width: 100px;
+    background-color: darkcyan;
+    color: white;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}

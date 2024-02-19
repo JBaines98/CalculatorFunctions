@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CalculatorService } from '../calculator.service';
 import { ConverterCalculation, CurrencyCalculation } from '../models/calculationHistory.model';
 import { LogCalculationsService } from '../logCalculations.service';
+import { ThemeService } from '../theme.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-currency-converter',
@@ -16,10 +18,18 @@ export class CurrencyConverterComponent {
   currencyIcon: string = 'fa-solid fa-sterling-sign';
   title: string = 'Currency-converter';
   currencyPanelState: boolean = false;
+  themeName: string = 'business';
 
   constructor(
+    public themeService: ThemeService,
     public logCalculations: LogCalculationsService,
-    public calculatorService: CalculatorService) {}
+    public calculatorService: CalculatorService) {
+      this.themeService.themeName$.pipe(
+        tap((theme) => {
+          this.themeName = theme;
+        })
+      ).subscribe();
+    }
 
   dollarExchange() {
     this.exchangedValue = this.sterlingValue * 1.27;

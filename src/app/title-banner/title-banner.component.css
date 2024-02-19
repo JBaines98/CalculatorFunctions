@@ -10,9 +10,32 @@
     justify-content: center;
 }
 .titleString{
-    color: white;
     font-size: xx-large;
 }
 .right{
     margin-left: 100px;
+}
+.bannerBusiness{
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgb(100 116 139);
+    color: white;
+}
+.bannerLight{
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: lightskyblue;
+    color: black;
+}
+.bannerDark{
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: darkblue;
+    color: white;
 }

@@ -5,6 +5,8 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 import { DialogData } from './models/calculationHistory.model';
 import { ClearDialogComponent } from './clear-dialog/clear-dialog.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { ThemeService } from './theme.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -23,16 +25,24 @@ export class AppComponent {
   iconName: string = 'fa-solid fa-calculator';
   titleString: string = 'Calculator';
   calculatorPanelState: boolean = false;
+  themeName: string = 'business';
 
   constructor(    
     public calculatorService: CalculatorService,
+    public themeService: ThemeService,
     public dialogRef: MatDialogRef<AppComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData = {
       converterType: '',
       messege: '',
       iconString: '',
     },
-    public dialog: MatDialog){}
+    public dialog: MatDialog){
+      this.themeService.themeName$.pipe(
+        tap((theme) => {
+          this.themeName = theme;
+        })
+      ).subscribe();
+    }
 
 
 
@@ -57,6 +67,7 @@ export class AppComponent {
 
   homeButtonClicked(){
     this.calculatorPanelState = false;
+    this.changeTheme('business');
   }
 
   reverseOrder()
@@ -114,5 +125,10 @@ export class AppComponent {
     }else{
       this.displaySumHistory = true;
     }
+  }
+
+
+  changeTheme(theme: string){
+    this.themeService.themeChange(theme);
   }
 }

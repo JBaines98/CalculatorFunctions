@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { CalculatorService } from '../calculator.service';
 import { Observable, Subject, map, takeUntil, tap, } from 'rxjs';
+import { ThemeService } from '../theme.service';
 
 @Component({
   selector: 'app-memory',
@@ -9,7 +10,7 @@ import { Observable, Subject, map, takeUntil, tap, } from 'rxjs';
 })
 export class MemoryComponent implements OnDestroy {
 
-  constructor(public calculatorService: CalculatorService){}
+  constructor(public calculatorService: CalculatorService, public themeService: ThemeService){}
 
 
 

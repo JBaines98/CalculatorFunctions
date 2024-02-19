@@ -1,4 +1,6 @@
-<div class="outline">
+<div [class.outlineBusiness]="themeName === 'business'"
+  [class.outlineLight]="themeName === 'light'"
+  [class.outlineDark]="themeName === 'dark'">
   <!-- <form>
     <label>
       Names for list:
@@ -41,29 +43,58 @@
   </div> -->
   <app-title-banner [iconName]="iconName" [titleString]="titleString"></app-title-banner>
 
-  
+  <br>
+
+  <span class="homeSize">
     <button class="home" (click)="homeButtonClicked()">
       <i class="fa-solid fa-house"></i>
     </button>
+    
+  </span>
+
   
 
+  <span>
+    <button class="router">
+      <strong>
+        <a routerLink="/history" routerLinkActive="active" ariaCurrentWhenActive="page">Calculation History</a>
+      </strong>
+    </button>
+    <button (click)="changeTheme('business')"
+      [class.businessButton]="themeName === 'business'"
+      [class.lightButton]="themeName === 'light'"
+      [class.darkButton]="themeName === 'dark'">
+      <strong>
+        Business Theme
+      </strong>
+    </button>
+    <button (click)="changeTheme('light')"
+      [class.businessButton]="themeName === 'business'"
+      [class.lightButton]="themeName === 'light'"
+      [class.darkButton]="themeName === 'dark'">
+      <strong>
+        Light Theme
+      </strong>
+    </button>
+    <button (click)="changeTheme('dark')"
+      [class.businessButton]="themeName === 'business'"
+      [class.lightButton]="themeName === 'light'"
+      [class.darkButton]="themeName === 'dark'">
+      <strong>
+        Dark Theme
+      </strong>
+    </button>
+  </span>
+
   <br>
-  <div>
-    <ul>
-      <li>
-        <button class="router">
-          <strong>
-            <a routerLink="/history" routerLinkActive="active" ariaCurrentWhenActive="page">Calculation History</a>
-          </strong>
-        </button>
-      </li>
-    </ul>
-  </div>
   <br>
 
   <div>
     <mat-accordion>
-      <mat-expansion-panel class="expansion" (opened)="calculatorPanelState = true" (closed)="calculatorPanelState = false">
+      <mat-expansion-panel [(expanded)]="calculatorPanelState"
+        [class.expansionBusiness]="themeName === 'business'"
+        [class.expansionLight]="themeName === 'light'"
+        [class.expansionDark]="themeName === 'dark'" >
         <mat-expansion-panel-header>
           <mat-panel-title>
             <strong>

@@ -1,19 +1,65 @@
 <div class="flex">
-    <button (click)="onClicked('+')" class="buttonFunction"><i class="fa-solid fa-plus"></i></button>
-    <button (click)="onClicked('-')" class="buttonFunction"><i class="fa-solid fa-minus"></i></button>
-    <button (click)="onClicked('*')" class="buttonFunction"><i class="fa-solid fa-xmark"></i></button>
+    <button (click)="onClicked('+')" 
+    [class.buttonFunctionBusiness]="themeName === 'business'"
+    [class.buttonFunctionLight]="themeName === 'light'"
+    [class.buttonFunctionDark]="themeName === 'dark'">
+        <i class="fa-solid fa-plus"></i>
+    </button>
+    <button (click)="onClicked('-')"
+    [class.buttonFunctionBusiness]="themeName === 'business'"
+    [class.buttonFunctionLight]="themeName === 'light'"
+    [class.buttonFunctionDark]="themeName === 'dark'">
+        <i class="fa-solid fa-minus"></i>
+    </button>
+    <button (click)="onClicked('*')"
+    [class.buttonFunctionBusiness]="themeName === 'business'"
+    [class.buttonFunctionLight]="themeName === 'light'"
+    [class.buttonFunctionDark]="themeName === 'dark'">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
 </div>
 <br>
 <div class="flex">
-    <button (click)="onClicked('/')" class="buttonFunction"><i class="fa-solid fa-divide"></i></button>
-    <button (click)="onClicked('^2')" class="buttonFunction"><i class="fa-solid fa-superscript"></i></button>
-    <button (click)="onClicked('sqRT')" class="buttonFunction"><i class="fa-solid fa-square-root-variable"></i></button>
+    <button (click)="onClicked('/')"
+    [class.buttonFunctionBusiness]="themeName === 'business'"
+    [class.buttonFunctionLight]="themeName === 'light'"
+    [class.buttonFunctionDark]="themeName === 'dark'">
+        <i class="fa-solid fa-divide"></i>
+    </button>
+    <button (click)="onClicked('^2')"
+    [class.buttonFunctionBusiness]="themeName === 'business'"
+    [class.buttonFunctionLight]="themeName === 'light'"
+    [class.buttonFunctionDark]="themeName === 'dark'">
+        <i class="fa-solid fa-superscript"></i>
+    </button>
+    <button (click)="onClicked('sqRT')"
+    [class.buttonFunctionBusiness]="themeName === 'business'"
+    [class.buttonFunctionLight]="themeName === 'light'"
+    [class.buttonFunctionDark]="themeName === 'dark'"
+        ><i class="fa-solid fa-square-root-variable"></i>
+    </button>
 </div>
 <br>
 <div class="flex">
-    <button (click)="onEqualClicked('=')" class="buttonFunctionEqual"><i class="fa-solid fa-equals"></i></button>
-    <button (click)="onClearClicked('')" class="buttonFunctionClear"><strong> Clear </strong></button>
-    <button (click)="onBackSpaceClicked('')" class="buttonFunctionBackSpace"><i class="fa-solid fa-arrow-left"></i><i class="fa-solid fa-pipe"></i></button>
+    <button (click)="onEqualClicked('=')"
+    [class.buttonFunctionEqualBusiness]="themeName === 'business'"
+    [class.buttonFunctionEqualLight]="themeName === 'light'"
+    [class.buttonFunctionEqualDark]="themeName === 'dark'">
+        <i class="fa-solid fa-equals"></i>
+    </button>
+    <button (click)="onClearClicked('')"
+    [class.buttonFunctionClearBusiness]="themeName === 'business'"
+    [class.buttonFunctionClearLight]="themeName === 'light'"
+    [class.buttonFunctionClearDark]="themeName === 'dark'">
+        <strong> Clear </strong>
+    </button>
+    <button (click)="onBackSpaceClicked('')"
+    [class.buttonFunctionBackSpaceBusiness]="themeName === 'business'"
+    [class.buttonFunctionBackSpaceLight]="themeName === 'light'"
+    [class.buttonFunctionBackSpaceDark]="themeName === 'dark'">
+        <i class="fa-solid fa-arrow-left"></i>
+        <i class="fa-solid fa-pipe"></i>
+    </button>
     <!-- <a class="casio" href="https://https://www.casio.co.uk/watches-clocks/all-watches?gad_source=1&gclid=EAIaIQobChMIwZS4xsPBgwMVmZSDBx3XSQuMEAAYASAAEgL5pvD_BwE">
         <img class="casioImage" src="assets/Casio.png">
     </a> -->

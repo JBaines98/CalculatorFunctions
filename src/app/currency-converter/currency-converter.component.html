@@ -13,7 +13,9 @@
 <br>
 <div>
   <mat-accordion>
-    <mat-expansion-panel class="expansion">
+    <mat-expansion-panel [class.expansionBusiness]="themeName === 'business'"
+    [class.expansionLight]="themeName === 'light'"
+    [class.expansionDark]="themeName === 'dark'">
       <mat-expansion-panel-header>
         <mat-panel-title>
           <strong>

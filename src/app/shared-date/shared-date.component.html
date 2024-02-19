@@ -1,5 +1,7 @@
 <mat-card class="card">
-    <mat-card-content class="bg-slate-500 py-3">
+    <mat-card-content [class.backgroundBusiness]="themeName === 'business'"
+                    [class.backgroundLight]="themeName === 'light'"
+                    [class.backgroundDark]="themeName === 'dark'">
         <div class="text">
             <strong>
                 {{currentDate | date: 'shortDate'}}

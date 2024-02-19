@@ -48,6 +48,15 @@
 .arrow{
     margin-left: 20px;
 }
-.expansion{
-    background-color: lightgray;
+
+.expansionBusiness{
+    background-color: rgb(100 116 139);
+    color: white;
+}
+.expansionLight{
+    background-color: lightskyblue;
+}
+.expansionDark{
+    background-color: darkblue;
+    color: white;
 }

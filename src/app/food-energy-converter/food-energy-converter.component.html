@@ -11,7 +11,10 @@
 <div>
 
     <mat-accordion>
-        <mat-expansion-panel class="expansion" (opened)="foodPanelState = true" (closed)="foodPanelState = false">
+        <mat-expansion-panel (opened)="foodPanelState = true" (closed)="foodPanelState = false"
+        [class.expansionBusiness]="themeName === 'business'"
+        [class.expansionLight]="themeName === 'light'"
+        [class.expansionDark]="themeName === 'dark'">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     <strong>
@@ -31,7 +34,7 @@
                         <label><strong> Food Calories: </strong></label>
                     </div>
                     <div class="inputFood">
-                        <select class="w-full" name="foodQuantity" id="foodQuantity" [(ngModel)]="foodSystem">
+                        <select class="w-full inputBorder" name="foodQuantity" id="foodQuantity" [(ngModel)]="foodSystem">
                             <option value="Food Calories">
                                 Food Calories
                             </option>
@@ -41,7 +44,7 @@
                         <label for="energyQuantity"><strong> Choose an energy unit: </strong></label>
                     </div>
                     <div class="inputFood">
-                        <select class="w-full" name="energyQuantity" id="energyQuantity" [(ngModel)]="energySystem">
+                        <select class="w-full inputBorder" name="energyQuantity" id="energyQuantity" [(ngModel)]="energySystem">
                             <option value="Joules">Joules</option>
                             <option value="KiloJoules">KiloJoules</option>
                         </select>
@@ -52,7 +55,7 @@
                             <label><strong>Calories </strong></label>
                         </div>
                         <div>
-                            <input class="w-full" [(ngModel)]="foodValue">
+                            <input class="w-full inputBorder" [(ngModel)]="foodValue">
                         </div>
                         <div>
                             <strong>{{foodSystem}}</strong>
@@ -63,7 +66,7 @@
                             <label><strong>Energy </strong></label>
                         </div>
                         <div>
-                            <input class="w-full" readonly [(ngModel)]="energyValue">
+                            <input class="w-full inputBorder" readonly [(ngModel)]="energyValue">
                         </div>
                         <div>
                             <strong>{{energySystem}}</strong>
@@ -77,7 +80,7 @@
                             </label>
                         </div>
                         <div>
-                            <input class="w-full" readonly [(ngModel)]="displayConversionRate">
+                            <input class="w-full inputBorder" readonly [(ngModel)]="displayConversionRate">
                         </div>
                     </div>
                     <div class="inputFood">
@@ -85,15 +88,27 @@
                             <label><strong>Equivalent Apples </strong></label>
                         </div>
                         <div>
-                            <input class="w-full" readonly [(ngModel)]="appleValue">
+                            <input class="w-full inputBorder" readonly [(ngModel)]="appleValue">
                         </div>
                     </div>
                 </div>
                 <div>
                     <div>
                         <span>
-                            <button class="buttonEnergy" (click)="energyConversion()"><strong>Go</strong></button>
-                            <button class="buttonEnergyClear" (click)="clearQuantitiesClicked()"><strong>Clear</strong></button>
+                            <button (click)="energyConversion()"
+                            [class.buttonEnergyBusiness]="themeName === 'business'"
+                            [class.buttonEnergyLight]="themeName === 'light'"
+                            [class.buttonEnergyDark]="themeName === 'dark'"
+                            [class.button-base]="themeName === 'business' || themeName === 'light' || themeName === 'dark'">
+                                <strong>Go</strong>
+                            </button>
+                            <button (click)="clearQuantitiesClicked()"
+                            [class.buttonEnergyClearBusiness]="themeName === 'business'"
+                            [class.buttonEnergyClearLight]="themeName === 'light'"
+                            [class.buttonEnergyClearDark]="themeName === 'dark'"
+                            [class.button-base]="themeName === 'business' || themeName === 'light' || themeName === 'dark'">
+                                <strong>Clear</strong>
+                            </button>
                         </span>
                     </div>
                     <br>

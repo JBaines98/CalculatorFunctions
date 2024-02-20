@@ -10,7 +10,10 @@
 <br>
 <div>
     <mat-accordion>
-        <mat-expansion-panel class="expansion">
+        <mat-expansion-panel (opened)="weightPanelState = true" (closed)="weightPanelState = false"
+        [class.expansionBusiness]="themeName === 'business'"
+        [class.expansionLight]="themeName === 'light'"
+        [class.expansionDark]="themeName === 'dark'">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     <strong>
@@ -30,7 +33,7 @@
                         <label for="gramMeasurements"><strong> Choose a metric weight: </strong></label>
                     </div>
                     <div>
-                        <select class="w-full pxy-2" name="gramMeasurements" id="gramMeasurements" [(ngModel)]="gramSystem">
+                        <select class="w-full pxy-2 inputBorder" name="gramMeasurements" id="gramMeasurements" [(ngModel)]="gramSystem">
                             <option value="Grams">Grams</option>
                             <option value="Kilograms">Kilograms</option>
                         </select>
@@ -39,7 +42,7 @@
                         <label for="poundMeasurements"><strong> Choose an American weight: </strong></label>
                     </div>
                     <div>
-                        <select class="w-full pxy-2" name="poundMeasurements" id="poundMeasurements" [(ngModel)]="poundSystem">
+                        <select class="w-full pxy-2 inputBorder" name="poundMeasurements" id="poundMeasurements" [(ngModel)]="poundSystem">
                             <option value="Ounces">Ounces</option>
                             <option value="Pounds">Pounds</option>
                         </select>
@@ -50,7 +53,7 @@
                             <label><strong>Metric </strong></label>
                         </div>
                         <div>
-                            <input class="w-full pxy-2" [(ngModel)]="gramValue">
+                            <input class="w-full pxy-2 inputBorder" [(ngModel)]="gramValue">
                         </div>
                         <div>
                             <strong>{{gramSystem}}</strong>
@@ -61,7 +64,7 @@
                             <label><strong>American </strong></label>
                         </div>
                         <div>
-                            <input class="w-full pxy-2" [(ngModel)]="poundValue">
+                            <input class="w-full pxy-2 inputBorder" [(ngModel)]="poundValue">
                         </div>
                         <div>
                             <strong>{{poundSystem}}</strong> 
@@ -73,7 +76,7 @@
                             <label><strong>Conversion rate : </strong></label>
                         </div>
                         <div>
-                            <input class="w-full pxy-2" readonly [(ngModel)]="displayConversionRate">
+                            <input class="w-full pxy-2 inputBorder" readonly [(ngModel)]="displayConversionRate">
                         </div>
                     </div>
                 </div>
@@ -81,8 +84,18 @@
                 <div>
                     <div>
                         <span>
-                            <button class="weightLength" (click)="weightConverter()"><strong>Go</strong></button>
-                            <button class="weightClear" (click)="clearWeightsClicked()"><strong>Clear</strong></button>
+                            <button (click)="weightConverter()"
+                            [class.weightLengthBusiness]="themeName === 'business'"
+                            [class.weightLengthLight]="themeName === 'light'"
+                            [class.weightLengthDark]="themeName === 'dark'">
+                                <strong>Go</strong>
+                            </button>
+                            <button (click)="clearWeightsClicked()"
+                            [class.weightClearBusiness]="themeName === 'business'"
+                            [class.weightClearLight]="themeName === 'light'"
+                            [class.weightClearDark]="themeName === 'dark'">
+                                <strong>Clear</strong>
+                            </button>
                         </span>
                     </div>
                     <br>

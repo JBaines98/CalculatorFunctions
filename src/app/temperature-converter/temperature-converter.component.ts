@@ -3,6 +3,8 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { LogCalculationsService } from '../logCalculations.service';
+import { ThemeService } from '../theme.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-temperature-converter',
@@ -38,6 +40,7 @@ export class TemperatureConverterComponent {
   iconName: string = 'fa-solid fa-temperature-three-quarters';
   titleString: string = 'Temperature-converter';
   temperaturePanelState: boolean = false;
+  themeName: string = 'business';
 
   private readonly celciusToFahrenheit: number = 33.8;
   private readonly fahrenheitToCelcius: number = 0;
@@ -56,6 +59,7 @@ export class TemperatureConverterComponent {
   ]
 
   constructor(
+    public themeService: ThemeService,
     public logCalculations: LogCalculationsService,
     public dialogRef: MatDialogRef<TemperatureConverterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData = {
@@ -63,7 +67,13 @@ export class TemperatureConverterComponent {
       messege: '',
       iconString: ''
     },
-    public dialog: MatDialog){}
+    public dialog: MatDialog){
+      this.themeService.themeName$.pipe(
+        tap((theme) => {
+          this.themeName = theme;
+        })
+      ).subscribe();
+    }
 
   temperatureConversion(){
     if(this.fromSystem === 'Celcius'){

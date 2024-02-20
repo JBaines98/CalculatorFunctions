@@ -3,6 +3,8 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { LogCalculationsService } from '../logCalculations.service';
+import { ThemeService } from '../theme.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-weight-converter',
@@ -31,6 +33,7 @@ showWeightKeyCheck: boolean = false;
 iconName: string = 'fa-solid fa-weight-hanging';
 titleString: string = 'Weight-converter';
 weightPanelState: boolean = false;
+themeName: string = 'business';
 
 private readonly gramsToOunces: number = 0.035274;
 private readonly gramsToPounds: number = 0.00220462;
@@ -51,6 +54,7 @@ americanWeights: string[] = [
 ];
 
 constructor(
+  public themeService: ThemeService,
   public logCalculations: LogCalculationsService,
   public dialogRef: MatDialogRef<WeightConverterComponent>,
   @Inject(MAT_DIALOG_DATA) public data: DialogData = {
@@ -58,7 +62,13 @@ constructor(
     messege: '',
     iconString: '',
   },
-  public dialog: MatDialog){}
+  public dialog: MatDialog){
+    this.themeService.themeName$.pipe(
+      tap((theme) => {
+        this.themeName = theme;
+      })
+    ).subscribe();
+  }
 
 weightConverter(){
   switch(this.gramSystem){

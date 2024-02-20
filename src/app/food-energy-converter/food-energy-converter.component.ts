@@ -4,6 +4,7 @@ import { ConverterCalculation, DialogData } from '../models/calculationHistory.m
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { LogCalculationsService } from '../logCalculations.service';
 import { Observable, Subject, map, takeUntil, tap, } from 'rxjs';
+import { ThemeService } from '../theme.service';
 
 @Component({
   selector: 'app-food-energy-converter',
@@ -31,6 +32,7 @@ export class FoodEnergyConverterComponent implements OnDestroy {
   iconName: string = 'fa-solid fa-burger';
   titleString: string = 'Food Calorie-converter';
   foodPanelState: boolean = false;
+  themeName: string = 'business';
 
   public destroyed$ = new Subject();
 
@@ -46,6 +48,7 @@ export class FoodEnergyConverterComponent implements OnDestroy {
   ];
 
   constructor(
+    public themeService: ThemeService,
     public logCalculations: LogCalculationsService,
     public dialogRef: MatDialogRef<FoodEnergyConverterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData = {
@@ -53,7 +56,13 @@ export class FoodEnergyConverterComponent implements OnDestroy {
       messege: '',
       iconString: ''
     },
-    public dialog: MatDialog){}
+    public dialog: MatDialog){
+      this.themeService.themeName$.pipe(
+        tap((theme) => {
+          this.themeName = theme;
+        })
+      ).subscribe();
+    }
 
 
 

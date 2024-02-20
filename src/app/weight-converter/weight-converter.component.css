@@ -3,7 +3,7 @@
     font-size: larger;
 }
 
-.weightLength{
+.weightLengthBusiness{
     border-radius: 5px;
     padding-left: 15px;
     padding-right: 15px;
@@ -14,8 +14,60 @@
     width: 100px;
     margin-left: 40px;
     background-color: aquamarine;
+    color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
 }
-.weightClear{
+.weightLengthLight{
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 50px;
+    width: 100px;
+    margin-left: 40px;
+    background-color: lightgreen;
+    color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+.weightLengthDark {
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 50px;
+    width: 100px;
+    margin-left: 40px;
+    background-color: aquamarine;
+    border-style: solid;
+    color: black;
+    border-width: 2px;
+    border-color: black;
+}
+.weightClearBusiness{
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 50px;
+    width: 100px;
+    margin-left: 10px;
+    background-color: red;
+    color: white;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+.weightClearLight{
     border-radius: 5px;
     padding-left: 15px;
     padding-right: 15px;
@@ -26,6 +78,26 @@
     width: 100px;
     margin-left: 10px;
     background-color: lightcoral;
+    color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+.weightClearDark{
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 50px;
+    width: 100px;
+    margin-left: 10px;
+    background-color: maroon;
+    color: white;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
 }
 .buttonShowWeightKey {
     border-radius: 5px;
@@ -61,6 +133,19 @@
 .margin {
     margin-left: 30px;
 }
-.expansion{
-    background-color: lightgray;
+.expansionBusiness{
+    background-color: rgb(100 116 139);
+    color: white;
+}
+.expansionLight{
+    background-color: lightskyblue;
+}
+.expansionDark{
+    background-color: darkblue;
+    color: white;
+}
+.inputBorder{
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
 }

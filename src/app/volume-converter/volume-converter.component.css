@@ -3,29 +3,29 @@
     font-size: larger;
 }
 
-.buttonVolume{
-    border-radius: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-family: 'Times New Roman', Times, serif;
-    height: 50px;
-    width: 100px;
-    margin-left: 40px;
+.buttonVolumeGoBusiness{
     background-color: aquamarine;
+    color: black;
 }
-.buttonVolumeClear{
-    border-radius: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-family: 'Times New Roman', Times, serif;
-    height: 50px;
-    width: 100px;
-    margin-left: 10px;
+.buttonVolumeGoLight{
+    background-color: lightgreen;
+    color: black;
+}
+.buttonVolumeGoDark{
+    background-color: aquamarine;
+    color: black;
+}
+.buttonVolumeClearBusiness{
+    background-color: red;
+    color: white;
+}
+.buttonVolumeClearLight{
     background-color: lightcoral;
+    color: black;
+}
+.buttonVolumeClearDark{
+    background-color: maroon;
+    color: white;
 }
 .buttonShowVolumeKey {
     border-radius: 5px;
@@ -61,6 +61,19 @@
     width: 400px;
     margin-left: 10px;
 }
-.expansion{
-    background-color: lightgray;
+.expansionBusiness{
+    background-color: rgb(100 116 139);
+    color: white;
+}
+.expansionLight{
+    background-color: lightskyblue;
+}
+.expansionDark{
+    background-color: darkblue;
+    color: white;
+}
+.inputBorder{
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
 }

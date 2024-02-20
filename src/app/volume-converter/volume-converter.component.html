@@ -11,7 +11,10 @@
 <div>
 
     <mat-accordion>
-        <mat-expansion-panel class="expansion" (opened)="volumePanelState = true" (closed)="volumePanelState = false">
+        <mat-expansion-panel (opened)="volumePanelState = true" (closed)="volumePanelState = false"
+        [class.expansionBusiness]="themeName === 'business'"
+        [class.expansionLight]="themeName === 'light'"
+        [class.expansionDark]="themeName === 'dark'">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     <strong>
@@ -30,7 +33,7 @@
                         <label for="metricVolumes"><strong> Choose a metric volume: </strong></label>
                     </div>
                     <div class="inputVolume">
-                        <select class="w-full pxy-2" name="metricVolumes" id="metricVolumes" [(ngModel)]="metricSystem">
+                        <select class="w-full pxy-2 inputBorder" name="metricVolumes" id="metricVolumes" [(ngModel)]="metricSystem">
                             <option value="Milliliters">Milliliters</option>
                             <option value="Centiliters">Centiliters</option>
                             <option value="Liters">Liters</option>
@@ -40,7 +43,7 @@
                         <label for="americanMeasurements"><strong> Choose an American volume: </strong></label>
                     </div>
                     <div>
-                        <select class="w-full" name="americanVolumes" id="americanVolumes" [(ngModel)]="americanSystem">
+                        <select class="w-full inputBorder" name="americanVolumes" id="americanVolumes" [(ngModel)]="americanSystem">
                             <option value="Teaspoons">Teaspoons</option>
                             <option value="Tablespoons">Tablespoons</option>
                             <option value="Ounces">Ounces</option>
@@ -52,7 +55,7 @@
                             <label><strong>Metric </strong></label>
                         </div>
                         <div>
-                            <input class="w-full" [(ngModel)]="metricValue">
+                            <input class="w-full inputBorder" [(ngModel)]="metricValue">
                         </div>
                         <div>
                             <strong>{{metricSystem}}</strong>
@@ -63,7 +66,7 @@
                             <label><strong>American </strong></label>
                         </div>
                         <div>
-                            <input class="w-full" readonly [(ngModel)]="americanValue">
+                            <input class="w-full inputBorder" readonly [(ngModel)]="americanValue">
                         </div>
                         <div>
                             <strong>{{americanSystem}}</strong>
@@ -75,7 +78,7 @@
                             <label><strong>Conversion rate : </strong></label>
                         </div>
                         <div>
-                            <input class="w-full" readonly [(ngModel)]="displayConversionRate">
+                            <input class="w-full inputBorder" readonly [(ngModel)]="displayConversionRate">
                         </div>
                     </div>
                 </div>
@@ -83,8 +86,20 @@
                 <div>
                     <div>
                         <span>
-                            <button class="buttonVolume" (click)="volumeConversion()"><strong>Go</strong></button>
-                            <button class="buttonVolumeClear" (click)="clearVolumesClicked()"><strong>Clear</strong></button>
+                            <button (click)="volumeConversion()"
+                            [class.buttonVolumeGoBusiness]="themeName === 'business'"
+                            [class.buttonVolumeGoLight]="themeName === 'light'"
+                            [class.buttonVolumeGoDark]="themeName === 'dark'"
+                            [class.button-base]="themeName === 'business' || themeName === 'light' || themeName === 'dark'">
+                                <strong>Go</strong>
+                            </button>
+                            <button (click)="clearVolumesClicked()"
+                            [class.buttonVolumeClearBusiness]="themeName === 'business'"
+                            [class.buttonVolumeClearLight]="themeName === 'light'"
+                            [class.buttonVolumeClearDark]="themeName === 'dark'"
+                            [class.button-base]="themeName === 'business' || themeName === 'light' || themeName === 'dark'">
+                                <strong>Clear</strong>
+                            </button>
                         </span>
                     </div>
                     <br>

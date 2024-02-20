@@ -3,6 +3,8 @@ import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { LogCalculationsService } from '../logCalculations.service';
+import { ThemeService } from '../theme.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-speed-converter',
@@ -40,6 +42,7 @@ export class SpeedConverterComponent {
   iconName: string = 'fa-solid fa-gauge';
   titleString: string = 'Speed-converter';
   speedPanelState: boolean = false;
+  themeName: string = 'business';
 
 
   
@@ -65,6 +68,7 @@ export class SpeedConverterComponent {
   ];
 
   constructor(
+    public themeService: ThemeService,
     public logCalculations: LogCalculationsService,
     public dialogRef: MatDialogRef<SpeedConverterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData = {
@@ -72,7 +76,13 @@ export class SpeedConverterComponent {
       messege: '',
       iconString: ''
     },
-    public dialog: MatDialog){}
+    public dialog: MatDialog){
+      this.themeService.themeName$.pipe(
+        tap((theme) => {
+          this.themeName = theme;
+        })
+      ).subscribe();
+    }
 
   speedConversion(){
 

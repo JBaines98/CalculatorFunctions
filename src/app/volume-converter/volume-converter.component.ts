@@ -4,6 +4,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { LogCalculationsService } from '../logCalculations.service';
+import { ThemeService } from '../theme.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-volume-converter',
@@ -33,6 +35,7 @@ export class VolumeConverterComponent {
   iconName: string = 'fa-solid fa-layer-group';
   titleString: string = 'Volume-converter';
   volumePanelState: boolean = false;
+  themeName: string = 'business';
 
   private readonly millilitersToTeaspoons: number = 0.202884;
   private readonly millilitersToTablespoons: number = 0.06763;
@@ -62,6 +65,7 @@ export class VolumeConverterComponent {
 
 
   constructor(
+    public themeService: ThemeService,
     public logCalculations: LogCalculationsService,
     public dialogRef: MatDialogRef<VolumeConverterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData = {
@@ -69,7 +73,13 @@ export class VolumeConverterComponent {
       messege: '',
       iconString: ''
     },
-    public dialog: MatDialog){}
+    public dialog: MatDialog){
+      this.themeService.themeName$.pipe(
+        tap((theme) => {
+          this.themeName = theme;
+        })
+      ).subscribe();
+    }
 
   volumeConversion(){
     switch(this.metricSystem){

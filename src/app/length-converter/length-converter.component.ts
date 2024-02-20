@@ -3,6 +3,8 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { LogCalculationsService } from '../logCalculations.service';
+import { ThemeService } from '../theme.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-length-converter',
@@ -30,6 +32,7 @@ export class LengthConverterComponent {
   iconName: string = 'fa-solid fa-ruler';
   titleString: string = 'Length-converter';
   lengthPanelState: boolean = false;
+  themeName: string = 'business';
 
   private readonly centermetersToInches: number = 0.393701;
   private readonly centermetersToFeet: number = 0.0328084;
@@ -60,6 +63,7 @@ export class LengthConverterComponent {
   ];
 
   constructor(
+    public themeService: ThemeService, 
     public logCalculations: LogCalculationsService,
     public dialogRef: MatDialogRef<LengthConverterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData = {
@@ -67,7 +71,13 @@ export class LengthConverterComponent {
       messege: '',
       iconString: '',
     },
-    public dialog: MatDialog){}
+    public dialog: MatDialog){
+      this.themeService.themeName$.pipe(
+        tap((theme) => {
+          this.themeName = theme;
+        })
+      ).subscribe();
+    }
 
   lengthConverter(){
     switch(this.metricSystem){

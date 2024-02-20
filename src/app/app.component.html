@@ -55,7 +55,9 @@
   
 
   <span>
-    <button class="router">
+    <button [class.routerBusiness]="themeName === 'business'"
+    [class.routerLight]="themeName === 'light'"
+    [class.routerDark]="themeName === 'dark'">
       <strong>
         <a routerLink="/history" routerLinkActive="active" ariaCurrentWhenActive="page">Calculation History</a>
       </strong>
@@ -146,7 +148,12 @@
           </div>
           <br>
           <div>
-            <button class="buttonHistory" (click)="showSumHistory()"><strong>Show sum history:</strong></button>
+            <button (click)="showSumHistory()"
+            [class.buttonHistoryBusiness]="themeName === 'business'"
+            [class.buttonHistoryLight]="themeName === 'light'"
+            [class.buttonHistoryDark]="themeName === 'dark'">
+              <strong>Show sum history:</strong>
+            </button>
           </div>
           <br>
           <div *ngIf="displaySumHistory">

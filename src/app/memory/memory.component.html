@@ -1,5 +1,10 @@
 <span class="flex">
-    <button (click)="saveToMemory()" class="memoryBorder"><strong>Save To Memory</strong></button>
+    <button (click)="saveToMemory()"
+    [class.memoryBorderBusiness]="themeName === 'business'"
+    [class.memoryBorderLight]="themeName === 'light'"
+    [class.memoryBorderDark]="themeName === 'dark'">
+        <strong>Save To Memory</strong>
+    </button>
 
     <!-- <div *ngIf="isMemory0">
         <button (click)="useMemory()" class="memoryBorder"><strong>Use Memory</strong></button>
@@ -8,6 +13,16 @@
         <button (click)="useMemory()" class="memoryBorder"><strong>Use Memory  {{this.calculatorService.memoryNumber$ | async}}</strong></button>
     </div>  -->
 
-    <button (click)="useMemory()" class="memoryBorder"><strong>Use Memory  {{(this.calculatorService.memoryNumber$ | async)}} </strong></button>    
-    <button (click)="clearMemory()" class="memoryBorder"><strong>Clear memory</strong></button>
+    <button (click)="useMemory()"
+    [class.memoryBorderBusiness]="themeName === 'business'"
+    [class.memoryBorderLight]="themeName === 'light'"
+    [class.memoryBorderDark]="themeName === 'dark'">
+        <strong>Use Memory  {{(this.calculatorService.memoryNumber$ | async)}} </strong>
+    </button>    
+    <button (click)="clearMemory()"
+    [class.memoryBorderBusiness]="themeName === 'business'"
+    [class.memoryBorderLight]="themeName === 'light'"
+    [class.memoryBorderDark]="themeName === 'dark'">
+        <strong>Clear memory</strong>
+    </button>
 </span>

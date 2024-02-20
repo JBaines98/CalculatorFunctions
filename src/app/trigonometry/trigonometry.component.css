@@ -5,7 +5,7 @@
 .inputTrigonometry{
     margin-left: 20%;
 }
-.buttonTrigonometry{
+.buttonTrigonometryBusiness{
     border-radius: 5px;
     padding-left: 15px;
     padding-right: 15px;
@@ -16,9 +16,47 @@
     width: 100px;
     margin-left: 70px;
     margin-right: 70px;
-    background-color: bisque;
+    background-color: rgb(203 213 225);
+    color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
 }
-.buttonGo{
+.buttonTrigonometryLight{
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 50px;
+    width: 100px;
+    margin-left: 70px;
+    margin-right: 70px;
+    background-color: lightblue;
+    color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+.buttonTrigonometryDark{
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 50px;
+    width: 100px;
+    margin-left: 70px;
+    margin-right: 70px;
+    background-color: darkcyan;
+    color: white;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+.buttonGoBusiness{
     border-radius: 5px;
     padding-left: 15px;
     padding-right: 15px;
@@ -28,8 +66,42 @@
     height: 50px;
     width: 100px;
     background-color: aquamarine;
+    color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
 }
-.buttonClear{
+.buttonGoLight{
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 50px;
+    width: 100px;
+    background-color: lightgreen;
+    color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+.buttonGoDark{
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 50px;
+    width: 100px;
+    background-color: aquamarine;
+    color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+.buttonClearBusiness{
     border-radius: 5px;
     padding-left: 15px;
     padding-right: 15px;
@@ -41,7 +113,47 @@
     margin-left: 5px;
     margin-top: 10px;
     margin-right: 10px;
+    background-color: red;
+    color: white;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+.buttonClearLight{
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 50px;
+    width: 100px;
+    margin-left: 5px;
+    margin-top: 10px;
+    margin-right: 10px;
+    color: black;
     background-color: lightcoral;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+.buttonClearDark{
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 50px;
+    width: 100px;
+    margin-left: 5px;
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: maroon;
+    color: white;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
 }
 .flex-container {
     display: flex;
@@ -55,6 +167,19 @@
 .input{
     margin-right: 10%;
 }
-.expansion {
-    background-color: lightgray;
+.expansionBusiness{
+    background-color: rgb(100 116 139);
+    color: white;
+}
+.expansionLight{
+    background-color: lightskyblue;
+}
+.expansionDark{
+    background-color: darkblue;
+    color: white;
+}
+.inputBorder{
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
 }

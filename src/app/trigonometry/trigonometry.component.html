@@ -13,7 +13,10 @@
 <br>
 <div>
     <mat-accordion>
-        <mat-expansion-panel class="expansion" (opened)="trigonometryPanelState = true" (closed)="trigonometryPanelState = false">
+        <mat-expansion-panel (opened)="trigonometryPanelState = true" (closed)="trigonometryPanelState = false"
+        [class.expansionBusiness]="themeName === 'business'"
+        [class.expansionLight]="themeName === 'light'"
+        [class.expansionDark]="themeName === 'dark'">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     <strong>
@@ -32,27 +35,35 @@
                     <div class="input">
                         <div class="inputTrigonometry">
                             <strong>Angle: </strong>
-                            <input  class="w-80" [(ngModel)]="angleInput">
+                            <div class="input">
+                                <input class="w-80 inputBorder" [(ngModel)]="angleInput">
+                            </div>
                         </div>
                         <div class="inputTrigonometry">
                             <strong>Hypotenuse: </strong>
-                            <input class="w-80" [(ngModel)]="hypotenuse">
+                            <input class="w-80 inputBorder" [(ngModel)]="hypotenuse">
                         </div>
                         <div class="inputTrigonometry">
                             <strong>Opposite: </strong>
-                            <input class="w-80" [(ngModel)]="opposite">
+                            <input class="w-80 inputBorder" [(ngModel)]="opposite">
                         </div>
                         <div class="inputTrigonometry">
                             <strong>Adjacent: </strong>
-                            <input class="w-80" [(ngModel)]="adjacent">
+                            <input class="w-80 inputBorder" [(ngModel)]="adjacent">
                         </div>
                     </div>
                     <div>
                         <span>
-                            <button (click)="trigonometrySin()" class="buttonGo">
+                            <button (click)="trigonometrySin()"
+                            [class.buttonGoBusiness]="themeName === 'business'"
+                            [class.buttonGoLight]="themeName === 'light'"
+                            [class.buttonGoDark]="themeName === 'dark'">
                                 <strong>Go</strong>
                             </button>
-                            <button (click)="clearTrigonometry()" class="buttonClear">
+                            <button (click)="clearTrigonometry()"
+                            [class.buttonClearBusiness]="themeName === 'business'"
+                            [class.buttonClearLight]="themeName === 'light'"
+                            [class.buttonClearDark]="themeName === 'dark'">
                                 <strong>Clear</strong>
                             </button>
                         </span>
@@ -61,13 +72,22 @@
                 <br>
                 <div class="flex-container">
                     <span>
-                        <button (click)="trigonometrySin()" class="buttonTrigonometry">
+                        <button (click)="trigonometrySin()"
+                        [class.buttonTrigonometryBusiness]="themeName === 'business'"
+                        [class.buttonTrigonometryLight]="themeName === 'light'"
+                        [class.buttonTrigonometryDark]="themeName === 'dark'">
                             <strong>Sin</strong>
                         </button>
-                        <button (click)="trigonometryCos()" class="buttonTrigonometry">
+                        <button (click)="trigonometryCos()"
+                        [class.buttonTrigonometryBusiness]="themeName === 'business'"
+                        [class.buttonTrigonometryLight]="themeName === 'light'"
+                        [class.buttonTrigonometryDark]="themeName === 'dark'">
                             <strong>Cos</strong>
                         </button>
-                        <button (click)="trigonometryTan()" class="buttonTrigonometry">
+                        <button (click)="trigonometryTan()"
+                        [class.buttonTrigonometryBusiness]="themeName === 'business'"
+                        [class.buttonTrigonometryLight]="themeName === 'light'"
+                        [class.buttonTrigonometryDark]="themeName === 'dark'">
                             <strong>Tan</strong>
                         </button>
                     </span>

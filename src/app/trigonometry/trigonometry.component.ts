@@ -3,6 +3,8 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 import { DialogData, TrigonometryCalculation } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { LogCalculationsService } from '../logCalculations.service';
+import { ThemeService } from '../theme.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-trigonometry',
@@ -18,8 +20,10 @@ export class TrigonometryComponent {
   iconName: string = 'fa-solid fa-shapes';
   titleString: string = 'Trigonometry';
   trigonometryPanelState: boolean = false;
+  themeName: string = 'business';
 
   constructor(
+    public themeService: ThemeService,
     public logCalculations: LogCalculationsService,
     public dialogRef: MatDialogRef<TrigonometryComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData = {
@@ -27,7 +31,13 @@ export class TrigonometryComponent {
       messege: '',
       iconString: ''
     },
-    public dialog: MatDialog){}
+    public dialog: MatDialog){
+      this.themeService.themeName$.pipe(
+        tap((theme) => {
+          this.themeName = theme;
+        })
+      ).subscribe();
+    }
 
   trigonometrySin(){
     this.opposite = Math.sin(this.angleInput) * this.hypotenuse;

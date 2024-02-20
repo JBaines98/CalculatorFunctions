@@ -34,7 +34,7 @@
           <div class="inputCurrency">
             <i [class]="currency"></i>
             <strong> : </strong>
-            <input [(ngModel)]="sterlingValue"/>
+            <input [(ngModel)]="sterlingValue" class="input"/>
           </div>
           <span class="arrow">
             <i class="fa-solid fa-arrow-right"></i>
@@ -42,34 +42,52 @@
           <div class="inputCurrency2">
             <i [class]="currency"></i>
             <strong> : </strong>
-            <input readonly [value]="exchangedValue" />
+            <input readonly [value]="exchangedValue" class="input"/>
           </div>
         </div>
         <br>
         <div class="flex-container">
-          <button class="buttonCurrency" (click)="dollarExchange()" title="US Dollar">
+          <button (click)="dollarExchange()" title="US Dollar"
+          [class.buttonCurrencyBusiness]="themeName === 'business'"
+          [class.buttonCurrencyLight]="themeName === 'light'"
+          [class.buttonCurrencyDark]="themeName === 'dark'">
             <i class="fa-solid fa-dollar-sign iconSize"></i>
           </button>
         
-          <button class="buttonCurrency" (click)="euroExchange()" title="Euros">
+          <button (click)="euroExchange()" title="Euros"
+          [class.buttonCurrencyBusiness]="themeName === 'business'"
+          [class.buttonCurrencyLight]="themeName === 'light'"
+          [class.buttonCurrencyDark]="themeName === 'dark'">
             <i class="fa-solid fa-euro-sign iconSize"></i>
           </button>
         
-          <button class="buttonCurrency" (click)="yenExchange()" title="Yen ">
+          <button (click)="yenExchange()" title="Yen"
+          [class.buttonCurrencyBusiness]="themeName === 'business'"
+          [class.buttonCurrencyLight]="themeName === 'light'"
+          [class.buttonCurrencyDark]="themeName === 'dark'">
             <i class="fa-solid fa-yen-sign iconSize"></i>
           </button>
         </div>
         <br>
         <div class="flex-container">
-          <button class="buttonCurrency" (click)="wonExchange()" title="Won">
+          <button (click)="wonExchange()" title="Won"
+          [class.buttonCurrencyBusiness]="themeName === 'business'"
+          [class.buttonCurrencyLight]="themeName === 'light'"
+          [class.buttonCurrencyDark]="themeName === 'dark'">
             <i class="fa-solid fa-won-sign iconSize"></i>
           </button>
         
-          <button class="buttonCurrency" (click)="pesoExchange()" title="Pesos">
+          <button (click)="pesoExchange()" title="Pesos"
+          [class.buttonCurrencyBusiness]="themeName === 'business'"
+          [class.buttonCurrencyLight]="themeName === 'light'"
+          [class.buttonCurrencyDark]="themeName === 'dark'">
             <i class="fa-solid fa-peso-sign iconSize"></i>
           </button>
         
-          <button class="buttonClear" (click)="clearExchange()" title="Clear">
+          <button (click)="clearExchange()" title="Clear"
+          [class.buttonClearBusiness]="themeName === 'business'"
+          [class.buttonClearLight]="themeName === 'light'"
+          [class.buttonClearDark]="themeName === 'dark'">
             <strong>
               Clear
             </strong>

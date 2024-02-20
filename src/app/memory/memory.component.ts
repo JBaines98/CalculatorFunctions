@@ -16,6 +16,7 @@ export class MemoryComponent implements OnDestroy {
 
   public isMemory0: boolean = true;
   public destroyed$ = new Subject();
+  public themeName: string = 'business';
 
   ngOnDestroy(): void {
     this.destroyed$.next(this.destroyed$);
@@ -34,6 +35,12 @@ export class MemoryComponent implements OnDestroy {
       }),
       takeUntil(this.destroyed$)
     ).subscribe();
+    this.themeService.themeName$.pipe(
+      tap((theme) => {
+        this.themeName = theme;
+      }),
+      takeUntil(this.destroyed$)
+      ).subscribe();
   }
 
   saveToMemory(){

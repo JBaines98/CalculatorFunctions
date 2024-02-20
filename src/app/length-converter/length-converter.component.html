@@ -11,7 +11,10 @@
 <div>
 
     <mat-accordion>
-        <mat-expansion-panel class="expansion" (opened)="lengthPanelState = true" (closed)="lengthPanelState = false">
+        <mat-expansion-panel (opened)="lengthPanelState = true" (closed)="lengthPanelState = false"
+        [class.expansionBusiness]="themeName === 'business'"
+        [class.expansionLight]="themeName === 'light'"
+        [class.expansionDark]="themeName === 'dark'">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     <strong>
@@ -31,7 +34,7 @@
                         <label for="metricMeasurements"><strong> Choose a metric measurement: </strong></label>
                     </div>
                     <div class="inputLength">
-                        <select class="w-full pxy-2" name="metricMeasurements" id="metricMeasurements" [(ngModel)]="metricSystem">
+                        <select class="w-full pxy-2 inputBorder" name="metricMeasurements" id="metricMeasurements" [(ngModel)]="metricSystem">
                             <option value="Centermeters">Centermeters</option>
                             <option value="Meters">Meters</option>
                             <option value="Kilometers">Kilometers</option>
@@ -41,7 +44,7 @@
                         <label for="americanMeasurements"><strong> Choose an American measurement: </strong></label>
                     </div>
                     <div class="inputLength">
-                        <select class="w-full" name="americanMeasurements" id="americanMeasurements" [(ngModel)]="americanSystem">
+                        <select class="w-full pxy-2 inputBorder" name="americanMeasurements" id="americanMeasurements" [(ngModel)]="americanSystem">
                             <option value="Inches">Inches</option>
                             <option value="Feet">Feet</option>
                             <option value="Miles">Miles</option>
@@ -53,7 +56,7 @@
                             <label><strong>Metric </strong></label>
                         </div>
                         <div>
-                            <input class="w-full" [(ngModel)]="metricValue">
+                            <input class="w-full inputBorder" [(ngModel)]="metricValue">
                         </div>
                         <div>
                             <strong>{{metricSystem}}</strong>
@@ -64,7 +67,7 @@
                             <label><strong>American </strong></label>
                         </div>
                         <div>
-                            <input class="w-full" readonly [(ngModel)]="americanValue">
+                            <input class="w-full inputBorder" readonly [(ngModel)]="americanValue">
                         </div>
                         <div>
                             <strong>{{americanSystem}}</strong>
@@ -76,15 +79,25 @@
                             <label><strong>Conversion rate : </strong></label>
                         </div>
                         <div>
-                            <input class="w-full" readonly [(ngModel)]="displayConversionRate">
+                            <input class="w-full inputBorder" readonly [(ngModel)]="displayConversionRate">
                         </div>
                     </div>
                 </div>
                 <div>
                     <div>
                         <span>
-                            <button class="buttonLength" (click)="lengthConverter()"><strong>Go</strong></button>
-                            <button class="buttonLengthClear" (click)="clearLengthsClicked()"><strong>Clear</strong></button>
+                            <button (click)="lengthConverter()"
+                            [class.buttonLengthBusiness]="themeName === 'business'"
+                            [class.buttonLengthLight]="themeName === 'light'"
+                            [class.buttonLengthDark]="themeName === 'dark'">
+                                <strong>Go</strong>
+                            </button>
+                            <button (click)="clearLengthsClicked()"
+                            [class.buttonLengthClearBusiness]="themeName === 'business'"
+                            [class.buttonLengthClearLight]="themeName === 'light'"
+                            [class.buttonLengthClearDark]="themeName === 'dark'">
+                                <strong>Clear</strong>
+                            </button>
                         </span>
                     </div>
                     <br>

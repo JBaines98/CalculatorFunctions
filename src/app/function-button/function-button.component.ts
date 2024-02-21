@@ -1,15 +1,15 @@
-import { Component, EventEmitter, Inject, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, OnDestroy, Output } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogData } from '../models/calculationHistory.model';
 import { ThemeService } from '../theme.service';
-import { tap } from 'rxjs';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-function-button',
   templateUrl: './function-button.component.html',
   styleUrls: ['./function-button.component.css']
 })
-export class FunctionButtonComponent {
+export class FunctionButtonComponent implements OnDestroy {
 
   @Output() functionClicked = new EventEmitter<string>();
   @Output() clearClicked = new EventEmitter<string>();
@@ -17,13 +17,21 @@ export class FunctionButtonComponent {
   @Output() backSpaceClicked = new EventEmitter<string>();
 
   public themeName: string = 'business';
+  public destroyed$ = new Subject();
 
   constructor(public themeService: ThemeService){
     this.themeService.themeName$.pipe(
       tap((theme) => {
         this.themeName = theme;
-      })
+      }),
+      takeUntil(this.destroyed$)
     ).subscribe();
+  }
+
+
+  ngOnDestroy(): void {
+    this.destroyed$.next(this.destroyed$);
+    this.destroyed$.complete();
   }
 
 

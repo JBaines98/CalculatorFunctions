@@ -1,17 +1,17 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { LogCalculationsService } from '../logCalculations.service';
 import { ThemeService } from '../theme.service';
-import { tap } from 'rxjs';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-temperature-converter',
   templateUrl: './temperature-converter.component.html',
   styleUrls: ['./temperature-converter.component.css']
 })
-export class TemperatureConverterComponent {
+export class TemperatureConverterComponent implements OnDestroy {
 
   fromSystem: string = '';
   toSystem: string = '';
@@ -41,6 +41,7 @@ export class TemperatureConverterComponent {
   titleString: string = 'Temperature-converter';
   temperaturePanelState: boolean = false;
   themeName: string = 'business';
+  public destroyed$ = new Subject();
 
   private readonly celciusToFahrenheit: number = 33.8;
   private readonly fahrenheitToCelcius: number = 0;
@@ -71,9 +72,14 @@ export class TemperatureConverterComponent {
       this.themeService.themeName$.pipe(
         tap((theme) => {
           this.themeName = theme;
-        })
+        }),
+        takeUntil(this.destroyed$)
       ).subscribe();
     }
+  ngOnDestroy(): void {
+    this.destroyed$.next(this.destroyed$);
+    this.destroyed$.complete();
+  }
 
   temperatureConversion(){
     if(this.fromSystem === 'Celcius'){
@@ -297,7 +303,9 @@ export class TemperatureConverterComponent {
         iconString: 'fa-solid fa-temperature-three-quarters'
       }
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed()
+    .pipe(takeUntil(this.destroyed$))
+    .subscribe(result => {
       if(result === true){
         this.clearTemperature();
       }else{

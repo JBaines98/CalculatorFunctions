@@ -1,21 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ThemeService } from '../theme.service';
-import { tap } from 'rxjs';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-date-time',
   templateUrl: './date-time.component.html',
   styleUrls: ['./date-time.component.css']
 })
-export class DateTimeComponent {
+export class DateTimeComponent implements OnDestroy {
 
-  constructor(public themeService: ThemeService){
-    this.themeService.themeName$.pipe(
-      tap((theme) => {
-        this.themeName = theme;
-      })
-    ).subscribe();
-  }
+
 
   public dateGMT : Date | undefined = undefined;
   public dateEST : Date | undefined = undefined;
@@ -26,6 +20,22 @@ export class DateTimeComponent {
   public titleString: string = 'Date & Time';
   public datePanelState: boolean = false;
   public themeName: string = 'business';
+  public destroyed$ = new Subject();
+
+  constructor(public themeService: ThemeService){
+    this.themeService.themeName$.pipe(
+      tap((theme) => {
+        this.themeName = theme;
+      }),
+      takeUntil(this.destroyed$)
+    ).subscribe();
+  }
+
+
+  ngOnDestroy(): void {
+    this.destroyed$.next(this.destroyed$);
+    this.destroyed$.complete();
+  }
 
   timeGetGMT(){
    this.dateGMT = new Date();

@@ -1,15 +1,16 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { ThemeService } from '../theme.service';
-import { tap } from 'rxjs';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-current-time',
   templateUrl: './current-time.component.html',
   styleUrls: ['./current-time.component.css']
 })
-export class CurrentTimeComponent {
+export class CurrentTimeComponent implements OnDestroy{
 
   themeName: string = 'business';
+  destroyed$ = new Subject();
   
   @Input() isTimeForTitle: boolean = false;
   @Input() isTimeForSubTitle: boolean = false;
@@ -21,8 +22,14 @@ export class CurrentTimeComponent {
     this.themeService.themeName$.pipe(
       tap((theme) => {
         this.themeName = theme;
-      })
+      }),
+      takeUntil(this.destroyed$)
     ).subscribe();
+  }
+
+  ngOnDestroy(): void {
+    this.destroyed$.next(this.destroyed$);
+    this.destroyed$.complete();  
   }
 
   getCurrentTime(){

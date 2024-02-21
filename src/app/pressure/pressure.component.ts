@@ -1,17 +1,17 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { LogCalculationsService } from '../logCalculations.service';
 import { ThemeService } from '../theme.service';
-import { tap } from 'rxjs';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-pressure',
   templateUrl: './pressure.component.html',
   styleUrls: ['./pressure.component.css']
 })
-export class PressureComponent {
+export class PressureComponent implements OnDestroy {
 
   firstSystem: string = '';
   secondSystem: string = '';
@@ -34,6 +34,7 @@ export class PressureComponent {
   titleString: string = 'Pressure-converter';
   pressurePanelState: boolean = false;
   themeName: string = 'business';
+  public destroyed$ = new Subject();
 
   fromQuantity: string[] = [
     'Atmospheres',
@@ -62,9 +63,16 @@ export class PressureComponent {
       this.themeService.themeName$.pipe(
         tap((theme) => {
           this.themeName = theme;
-        })
+        }),
+        takeUntil(this.destroyed$)
       ).subscribe();
-    };
+    }
+    
+    ngOnDestroy(): void {
+      this.destroyed$.next(this.destroyed$);
+      this.destroyed$.complete();
+  }
+
 
 
   pressureConversion(){

@@ -1,17 +1,17 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogData, TrigonometryCalculation } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { LogCalculationsService } from '../logCalculations.service';
 import { ThemeService } from '../theme.service';
-import { tap } from 'rxjs';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-trigonometry',
   templateUrl: './trigonometry.component.html',
   styleUrls: ['./trigonometry.component.css']
 })
-export class TrigonometryComponent {
+export class TrigonometryComponent implements OnDestroy {
 
   angleInput: number = 0;
   hypotenuse: number = 0;
@@ -21,6 +21,7 @@ export class TrigonometryComponent {
   titleString: string = 'Trigonometry';
   trigonometryPanelState: boolean = false;
   themeName: string = 'business';
+  public destroyed$ = new Subject();
 
   constructor(
     public themeService: ThemeService,
@@ -35,9 +36,14 @@ export class TrigonometryComponent {
       this.themeService.themeName$.pipe(
         tap((theme) => {
           this.themeName = theme;
-        })
+        }),
+        takeUntil(this.destroyed$)
       ).subscribe();
     }
+  ngOnDestroy(): void {
+    this.destroyed$.next(this.destroyed$);
+    this.destroyed$.complete();
+  }
 
   trigonometrySin(){
     this.opposite = Math.sin(this.angleInput) * this.hypotenuse;
@@ -74,7 +80,9 @@ export class TrigonometryComponent {
         iconString: 'fa-solid fa-shapes'
       }
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed()
+    .pipe(takeUntil(this.destroyed$))
+    .subscribe(result => {
       if(result === true){
         this.clearTrigonometry();
       }else{

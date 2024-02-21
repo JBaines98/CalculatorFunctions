@@ -1,17 +1,17 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { LogCalculationsService } from '../logCalculations.service';
 import { ThemeService } from '../theme.service';
-import { tap } from 'rxjs';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-length-converter',
   templateUrl: './length-converter.component.html',
   styleUrls: ['./length-converter.component.css']
 })
-export class LengthConverterComponent {
+export class LengthConverterComponent implements OnDestroy{
 
   metricSystem: string = '';
   americanSystem: string = '';
@@ -33,6 +33,7 @@ export class LengthConverterComponent {
   titleString: string = 'Length-converter';
   lengthPanelState: boolean = false;
   themeName: string = 'business';
+  public destroyed$ = new Subject();
 
   private readonly centermetersToInches: number = 0.393701;
   private readonly centermetersToFeet: number = 0.0328084;
@@ -75,9 +76,15 @@ export class LengthConverterComponent {
       this.themeService.themeName$.pipe(
         tap((theme) => {
           this.themeName = theme;
-        })
+        }),
+        takeUntil(this.destroyed$)
       ).subscribe();
     }
+
+  ngOnDestroy(): void {
+    this.destroyed$.next(this.destroyed$);
+    this.destroyed$.complete();
+  }
 
   lengthConverter(){
     switch(this.metricSystem){
@@ -193,7 +200,9 @@ export class LengthConverterComponent {
         iconString: 'fa-solid fa-ruler-horizontal'
       }
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed()
+    .pipe(takeUntil(this.destroyed$))
+    .subscribe(result => {
       if(result === true){
         this.clearLengths();
       }else{

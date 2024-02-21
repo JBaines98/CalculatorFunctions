@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { CalculatorService } from '../calculator.service';
 import { ConverterCalculation, CurrencyCalculation } from '../models/calculationHistory.model';
 import { LogCalculationsService } from '../logCalculations.service';
 import { ThemeService } from '../theme.service';
-import { tap } from 'rxjs/operators';
+import { takeUntil, tap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-currency-converter',
   templateUrl: './currency-converter.component.html',
   styleUrls: ['./currency-converter.component.css'],
 })
-export class CurrencyConverterComponent {
+export class CurrencyConverterComponent implements OnDestroy{
   sterlingValue: number = 0;
   exchangedValue: number = 0;
   exchangeRate: number = 0;
@@ -19,6 +20,7 @@ export class CurrencyConverterComponent {
   title: string = 'Currency-converter';
   currencyPanelState: boolean = false;
   themeName: string = 'business';
+  destoryed$ = new Subject();
 
   constructor(
     public themeService: ThemeService,
@@ -27,9 +29,15 @@ export class CurrencyConverterComponent {
       this.themeService.themeName$.pipe(
         tap((theme) => {
           this.themeName = theme;
-        })
+        }),
+        takeUntil(this.destoryed$)
       ).subscribe();
     }
+
+  ngOnDestroy(): void {
+    this.destoryed$.next(this.destoryed$);
+    this.destoryed$.complete();
+  }
 
   dollarExchange() {
     this.exchangedValue = this.sterlingValue * 1.27;

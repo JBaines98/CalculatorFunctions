@@ -60,7 +60,8 @@ export class FoodEnergyConverterComponent implements OnDestroy {
       this.themeService.themeName$.pipe(
         tap((theme) => {
           this.themeName = theme;
-        })
+        }),
+        takeUntil(this.destroyed$)
       ).subscribe();
     }
 
@@ -133,7 +134,9 @@ export class FoodEnergyConverterComponent implements OnDestroy {
         iconString: 'fa-solid fa-burger'
       }
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed()
+    .pipe(takeUntil(this.destroyed$))
+    .subscribe(result => {
       if(result === true){
         this.clearQuantities();
       }else{

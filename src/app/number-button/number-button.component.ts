@@ -1,14 +1,15 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { ThemeService } from '../theme.service';
-import { tap } from 'rxjs';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-number-button',
   templateUrl: './number-button.component.html',
   styleUrls: ['./number-button.component.css']
 })
-export class NumberButtonComponent {
+export class NumberButtonComponent implements OnDestroy {
 
+  public destroyed$ = new Subject();
   public themeName: string = 'business';
   @Input() key = '';
   @Output() numberClicked = new EventEmitter<string>();
@@ -17,8 +18,14 @@ export class NumberButtonComponent {
     this.themeService.themeName$.pipe(
       tap((theme) => {
         this.themeName = theme;
-      })
+      }),
+      takeUntil(this.destroyed$)
     ).subscribe();
+  }
+
+  ngOnDestroy(): void {
+    this.destroyed$.next(this.destroyed$);
+    this.destroyed$.complete();
   }
 
   onClick()

@@ -1,17 +1,17 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { LogCalculationsService } from '../logCalculations.service';
 import { ThemeService } from '../theme.service';
-import { tap } from 'rxjs';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-weight-converter',
   templateUrl: './weight-converter.component.html',
   styleUrls: ['./weight-converter.component.css']
 })
-export class WeightConverterComponent {
+export class WeightConverterComponent implements OnDestroy{
 
 gramSystem: string = '';
 poundSystem: string = '';
@@ -34,6 +34,7 @@ iconName: string = 'fa-solid fa-weight-hanging';
 titleString: string = 'Weight-converter';
 weightPanelState: boolean = false;
 themeName: string = 'business';
+public destroyed$ = new Subject();
 
 private readonly gramsToOunces: number = 0.035274;
 private readonly gramsToPounds: number = 0.00220462;
@@ -66,8 +67,14 @@ constructor(
     this.themeService.themeName$.pipe(
       tap((theme) => {
         this.themeName = theme;
-      })
+      }),
+      takeUntil(this.destroyed$)
     ).subscribe();
+  }
+
+  ngOnDestroy(): void {
+    this.destroyed$.next(this.destroyed$);
+    this.destroyed$.complete();
   }
 
 weightConverter(){
@@ -146,7 +153,9 @@ weightConverter(){
       height: 'fit-content',
       data: {converterType: 'Weight-converter', message: 'Are you sure you want to clear weight-converter?', iconString: 'fa-solid fa-dumbbell'}
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed()
+    .pipe(takeUntil(this.destroyed$))
+    .subscribe(result => {
       if(result === true){
         this.clearWeights();
       }else{

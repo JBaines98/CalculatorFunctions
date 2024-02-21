@@ -22,8 +22,6 @@ export class SumHistoryComponent implements OnDestroy {
   }
 
 
-
-
   ngOnInit(){
     this.calculatorService.calculationHistory$.pipe(
       tap(calculationHistory => {

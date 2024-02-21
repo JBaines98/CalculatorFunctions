@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { CalculatorService } from './calculator.service';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -6,14 +6,14 @@ import { DialogData } from './models/calculationHistory.model';
 import { ClearDialogComponent } from './clear-dialog/clear-dialog.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { ThemeService } from './theme.service';
-import { tap } from 'rxjs';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
 
   title = 'AngularPractiseTextbox';
   names: string = "";
@@ -26,6 +26,7 @@ export class AppComponent {
   titleString: string = 'Calculator';
   calculatorPanelState: boolean = false;
   themeName: string = 'business';
+  public destroyed$ = new Subject();
 
   constructor(    
     public calculatorService: CalculatorService,
@@ -40,13 +41,16 @@ export class AppComponent {
       this.themeService.themeName$.pipe(
         tap((theme) => {
           this.themeName = theme;
-        })
+        }),
+        takeUntil(this.destroyed$)
       ).subscribe();
     }
 
-
-
-
+    
+  ngOnDestroy(): void {
+    this.destroyed$.next(this.destroyed$);
+    this.destroyed$.complete();
+  }
 
 
   onSubmit(inputedNames: string)
@@ -102,7 +106,9 @@ export class AppComponent {
         iconString: 'fa-solid fa-calculator'
       }
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed()
+    .pipe(takeUntil(this.destroyed$))
+    .subscribe(result => {
       if(result === true){
         this.calculatorService.clearClicked();
       }else{

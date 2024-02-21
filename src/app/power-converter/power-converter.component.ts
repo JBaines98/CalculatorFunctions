@@ -1,18 +1,18 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSliderModule } from '@angular/material/slider';
 import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { LogCalculationsService } from '../logCalculations.service';
 import { ThemeService } from '../theme.service';
-import { tap } from 'rxjs';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-power-converter',
   templateUrl: './power-converter.component.html',
   styleUrls: ['./power-converter.component.css']
 })
-export class PowerConverterComponent {
+export class PowerConverterComponent implements OnDestroy {
 
   
 
@@ -39,6 +39,7 @@ export class PowerConverterComponent {
   titleString: string = 'Power-converter';
   powerPanelState: boolean = false;
   themeName: string = 'business';
+  public destroyed$ = new Subject();
  
   private readonly horsePowerToKilowatt: number = 1.341;
   private readonly kilowattToHorsePower: number = 1.341;
@@ -68,9 +69,16 @@ export class PowerConverterComponent {
       this.themeService.themeName$.pipe(
         tap((theme) => {
           this.themeName = theme;
-        })
+        }),
+        takeUntil(this.destroyed$)
       ).subscribe();
     }
+
+
+  ngOnDestroy(): void {
+    this.destroyed$.next(this.destroyed$);
+    this.destroyed$.complete();
+  }
 
 
   powerConversion(){
@@ -186,7 +194,9 @@ export class PowerConverterComponent {
       }
       
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed()
+    .pipe(takeUntil(this.destroyed$))
+    .subscribe(result => {
       if(result === true){
         this.clearPowers();
       }else{

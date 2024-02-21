@@ -1,17 +1,17 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { LogCalculationsService } from '../logCalculations.service';
 import { ThemeService } from '../theme.service';
-import { tap } from 'rxjs';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-speed-converter',
   templateUrl: './speed-converter.component.html',
   styleUrls: ['./speed-converter.component.css']
 })
-export class SpeedConverterComponent {
+export class SpeedConverterComponent implements OnDestroy {
 
   metricSystem: string = '';
   americanSystem: string = '';
@@ -43,6 +43,7 @@ export class SpeedConverterComponent {
   titleString: string = 'Speed-converter';
   speedPanelState: boolean = false;
   themeName: string = 'business';
+  public destroyed$ = new Subject();
 
 
   
@@ -80,9 +81,14 @@ export class SpeedConverterComponent {
       this.themeService.themeName$.pipe(
         tap((theme) => {
           this.themeName = theme;
-        })
+        }),
+        takeUntil(this.destroyed$)
       ).subscribe();
     }
+  ngOnDestroy(): void {
+    this.destroyed$.next(this.destroyed$);
+    this.destroyed$.complete();
+  }
 
   speedConversion(){
 
@@ -303,7 +309,9 @@ export class SpeedConverterComponent {
         iconString: 'fa-solid fa-gauge'
       }
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed()
+    .pipe(takeUntil(this.destroyed$))
+    .subscribe(result => {
       if(result === true){
         this.clearSpeed();
       }else{

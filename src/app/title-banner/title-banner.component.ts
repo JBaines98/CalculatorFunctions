@@ -1,15 +1,16 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { ThemeService } from '../theme.service';
-import { tap } from 'rxjs';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-title-banner',
   templateUrl: './title-banner.component.html',
   styleUrls: ['./title-banner.component.css']
 })
-export class TitleBannerComponent {
+export class TitleBannerComponent implements OnDestroy{
 
   public themeName: string = 'business';
+  public destroyed$ = new Subject();
 
   @Input() public titleString: string = '';
   @Input() public iconName: string = '';
@@ -18,8 +19,13 @@ export class TitleBannerComponent {
     this.themeService.themeName$.pipe(
       tap((theme) => {
         this.themeName = theme;
-      })
+      }),
+      takeUntil(this.destroyed$)
     ).subscribe();
+  }
+  ngOnDestroy(): void {
+    this.destroyed$.next(this.destroyed$);
+    this.destroyed$.complete();
   }
 
 

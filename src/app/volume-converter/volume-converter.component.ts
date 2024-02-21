@@ -1,18 +1,18 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { LogCalculationsService } from '../logCalculations.service';
 import { ThemeService } from '../theme.service';
-import { tap } from 'rxjs';
+import { Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-volume-converter',
   templateUrl: './volume-converter.component.html',
   styleUrls: ['./volume-converter.component.css']
 })
-export class VolumeConverterComponent {
+export class VolumeConverterComponent implements OnDestroy {
 
 
   metricSystem: string = '';
@@ -36,6 +36,7 @@ export class VolumeConverterComponent {
   titleString: string = 'Volume-converter';
   volumePanelState: boolean = false;
   themeName: string = 'business';
+  public destroyed$ = new Subject();
 
   private readonly millilitersToTeaspoons: number = 0.202884;
   private readonly millilitersToTablespoons: number = 0.06763;
@@ -77,9 +78,14 @@ export class VolumeConverterComponent {
       this.themeService.themeName$.pipe(
         tap((theme) => {
           this.themeName = theme;
-        })
+        }),
+        takeUntil(this.destroyed$)
       ).subscribe();
     }
+  ngOnDestroy(): void {
+    this.destroyed$.next(this.destroyed$);
+    this.destroyed$.complete();
+  }
 
   volumeConversion(){
     switch(this.metricSystem){
@@ -191,7 +197,9 @@ export class VolumeConverterComponent {
         iconString: 'fa-solid fa-layer-group'
       }
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed()
+    .pipe(takeUntil(this.destroyed$))
+    .subscribe(result => {
       if(result === true){
         this.clearVolumes();
       }else{

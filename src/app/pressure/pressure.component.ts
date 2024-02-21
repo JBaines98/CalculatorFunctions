@@ -3,6 +3,8 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { LogCalculationsService } from '../logCalculations.service';
+import { ThemeService } from '../theme.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-pressure',
@@ -31,6 +33,7 @@ export class PressureComponent {
   iconName: string = 'fa-solid fa-guage';
   titleString: string = 'Pressure-converter';
   pressurePanelState: boolean = false;
+  themeName: string = 'business';
 
   fromQuantity: string[] = [
     'Atmospheres',
@@ -47,6 +50,7 @@ export class PressureComponent {
   private readonly barsToElephants: number = 0.725388405;
 
   constructor(
+    public themeService: ThemeService,
     public logCalculations: LogCalculationsService,
     public dialogRef: MatDialogRef<PressureComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData = {
@@ -54,7 +58,13 @@ export class PressureComponent {
       messege: '',
       iconString: ''
     },
-    public dialog: MatDialog){};
+    public dialog: MatDialog){
+      this.themeService.themeName$.pipe(
+        tap((theme) => {
+          this.themeName = theme;
+        })
+      ).subscribe();
+    };
 
 
   pressureConversion(){

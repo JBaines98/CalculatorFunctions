@@ -2,33 +2,32 @@
     margin-left: 10px;
     font-size: larger;
 }
-.dateTimeButton{
-    border-radius: 5px;
-
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-family: 'Times New Roman', Times, serif;
-    height: 50px;
-    width: 100px;
-    margin-left: 60px;
+.dateTimeButtonBusiness{
     background-color: aquamarine;
+    color: black;
+}
+.dateTimeButtonLight{
+    background-color: lightgreen;
+    color: black;
+}
+.dateTimeButtonDark{
+    background-color: aquamarine;
+    color: black;
 }
 .textBox {
     width: fit-content;
 }
-.dateTimeButtonClear{
-    border-radius: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-family: 'Times New Roman', Times, serif;
-    height: 50px;
-    width: 110px;
-    margin-left: 10px;
+.dateTimeButtonClearBusiness{
+    background-color: red;
+    color: white;
+}
+.dateTimeButtonClearLight{
     background-color: lightcoral;
+    color: black;
+}
+.dateTimeButtonClearDark{
+    background-color: maroon;
+    color: white;
 }
 .flex-container {
     display: flex;
@@ -49,6 +48,19 @@
 .margin {
     margin-left: 30px;
 }
-.expansion{
-    background-color: lightgray;
+.expansionBusiness{
+    background-color: rgb(100 116 139);
+    color: white;
+}
+.expansionLight{
+    background-color: lightskyblue;
+}
+.expansionDark{
+    background-color: darkblue;
+    color: white;
+}
+.inputBorder{
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
 }

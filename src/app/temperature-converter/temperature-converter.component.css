@@ -15,17 +15,17 @@
     color: black;
     background-color: aquamarine;
 }
-.buttonClear{
-    border-radius: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-family: 'Times New Roman', Times, serif;
-    height: 50px;
-    width: 100px;
-    margin-left: 10px;
+.buttonClearBusiness{
+    background-color: red;
+    color: white;
+}
+.buttonClearLight{
     background-color: lightcoral;
+    color: black;
+}
+.buttonClearDark{
+    background-color: maroon;
+    color: white;
 }
 .buttonShowTempKey {
     border-radius: 5px;

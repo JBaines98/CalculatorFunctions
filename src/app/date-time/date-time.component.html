@@ -11,7 +11,10 @@
 <div>
 
     <mat-accordion>
-        <mat-expansion-panel class="expansion" (opened)="datePanelState = true" (closed)="datePanelState = false">
+        <mat-expansion-panel (opened)="datePanelState = true" (closed)="datePanelState = false"
+        [class.expansionBusiness]="themeName === 'business'"
+        [class.expansionLight]="themeName === 'light'"
+        [class.expansionDark]="themeName === 'dark'">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     <strong>
@@ -31,7 +34,7 @@
                             GMT:    
                         </strong>
                         <div>
-                            <input class="w-full" readonly [(ngModel)]="dateGMT">
+                            <input class="w-full inputBorder" readonly [(ngModel)]="dateGMT">
                         </div>
                     </div>
                     <br>
@@ -40,7 +43,7 @@
                             New York:    
                         </strong>
                         <div>
-                            <input class="w-full" readonly [(ngModel)]="dateEST">
+                            <input class="w-full inputBorder" readonly [(ngModel)]="dateEST">
                         </div>
                     </div>
                     <div class="inputDateTime">
@@ -48,7 +51,7 @@
                             India:    
                         </strong>
                         <div>
-                            <input class="w-full" readonly [(ngModel)]="dateIST">
+                            <input class="w-full inputBorder" readonly [(ngModel)]="dateIST">
                         </div>
                     </div>
                     <div class="inputDateTime">
@@ -56,7 +59,7 @@
                             Japan:    
                         </strong>
                         <div>
-                            <input class="w-full" readonly [(ngModel)]="dateJST">
+                            <input class="w-full inputBorder" readonly [(ngModel)]="dateJST">
                         </div>
                     </div>
                     <div class="inputDateTime">
@@ -64,16 +67,24 @@
                             Moscow:    
                         </strong>
                         <div>
-                            <input class="w-full" readonly [(ngModel)]="dateMSK">
+                            <input class="w-full inputBorder" readonly [(ngModel)]="dateMSK">
                         </div>
                     </div>
                 </div>
                 <div>
                     <span>
-                        <button class="dateTimeButton" (click)="getAllTimes()">
+                        <button (click)="getAllTimes()"
+                        [class.dateTimeButtonBusiness]="themeName === 'business'"
+                        [class.dateTimeButtonLight]="themeName === 'light'"
+                        [class.dateTimeButtonDark]="themeName === 'dark'"
+                        [class.button-base]="themeName === 'business' || themeName === 'light' || themeName === 'dark'">
                             <strong>Get Times</strong>
                         </button>
-                        <button class="dateTimeButtonClear" (click)="clearAllTimes()">
+                        <button (click)="clearAllTimes()"
+                        [class.dateTimeButtonClearBusiness]="themeName === 'business'"
+                        [class.dateTimeButtonClearLight]="themeName === 'light'"
+                        [class.dateTimeButtonClearDark]="themeName === 'dark'"
+                        [class.button-base]="themeName === 'business' || themeName === 'light' || themeName === 'dark'" >
                             <strong>Clear Times</strong>
                         </button>
                     </span>

@@ -11,7 +11,10 @@
 <div>
 
     <mat-accordion>
-        <mat-expansion-panel class="expansion" (opened)="pressurePanelState = true" (closed)="pressurePanelState = false">
+        <mat-expansion-panel (opened)="pressurePanelState = true" (closed)="pressurePanelState = false"
+        [class.expansionBusiness]="themeName === 'business'"
+        [class.expansionLight]="themeName === 'light'"
+        [class.expansionDark]="themeName === 'dark'">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     <strong>
@@ -30,7 +33,7 @@
                         <label><strong> First unit of pressure: </strong></label>
                     </div>
                     <div class="inputPressure">
-                        <select class="w-full" name="fromQuantity" id="fromQuantity" [(ngModel)]="firstSystem">
+                        <select class="w-full inputBorder" name="fromQuantity" id="fromQuantity" [(ngModel)]="firstSystem">
                             <option value="Atmospheres">Atmospheres</option>
                             <option value="Bars">Bars</option>
                         </select>
@@ -39,7 +42,7 @@
                         <label><strong> Second unit of pressure: </strong></label>
                     </div>
                     <div class="inputPressure">
-                        <select class="w-full" name="toQuantity" id="toQuantity" [(ngModel)]="secondSystem">
+                        <select class="w-full inputBorder" name="toQuantity" id="toQuantity" [(ngModel)]="secondSystem">
                             <option value="Bars">Bars</option>
                             <option value="Atmospheres">Atmospheres</option>
                         </select>
@@ -50,7 +53,7 @@
                             <label><strong>Pressure</strong></label>
                         </div>
                         <div class="inputPressure">
-                            <input class="w-full" [(ngModel)]="firstValue">
+                            <input class="w-full inputBorder" [(ngModel)]="firstValue">
                         </div>
                         <div class="inputPressure">
                             <strong>{{firstSystem}}</strong>
@@ -61,7 +64,7 @@
                             <label><strong>Pressure</strong></label>
                         </div>
                         <div class="inputPressure">
-                            <input class="w-full" readonly [(ngModel)]="secondValue">
+                            <input class="w-full inputBorder" readonly [(ngModel)]="secondValue">
                         </div>
                         <div class="inputPressure">
                             <strong>{{secondSystem}}</strong>
@@ -73,15 +76,27 @@
                             <label><strong>Conversion rate: </strong></label>
                         </div>
                         <div class="inputPressure">
-                            <input class="w-full" readonly [(ngModel)]="displayConversionRate">
+                            <input class="w-full inputBorder" readonly [(ngModel)]="displayConversionRate">
                         </div>
                     </div>
                 </div>
                 <div>
                     <div>
                         <span>
-                            <button class="buttonPressure" (click)="pressureConversion()"><strong>Go</strong></button>
-                            <button class="buttonClear" (click)="clearPressureClicked()"><strong>Clear</strong></button>
+                            <button (click)="pressureConversion()"
+                            [class.buttonPressureBusiness]="themeName === 'business'"
+                            [class.buttonPressureLight]="themeName === 'light'"
+                            [class.buttonPressureDark]="themeName === 'dark'"
+                            [class.button-base]="themeName === 'business' || themeName === 'light' || themeName === 'dark'">
+                                <strong>Go</strong>
+                            </button>
+                            <button (click)="clearPressureClicked()"
+                            [class.buttonClearBusiness]="themeName === 'business'"
+                            [class.buttonClearLight]="themeName === 'light'"
+                            [class.buttonClearDark]="themeName === 'dark'"
+                            [class.button-base]="themeName === 'business' || themeName === 'light' || themeName === 'dark'">
+                                <strong>Clear</strong>
+                            </button>
                         </span>
                     </div>
                     <br>

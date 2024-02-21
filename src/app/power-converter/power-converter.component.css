@@ -3,29 +3,29 @@
     font-size: larger;
 }
 
-.buttonPower{
-    border-radius: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-family: 'Times New Roman', Times, serif;
-    height: 50px;
-    width: 100px;
-    margin-left: 40px;
+.buttonPowerBusiness{
+    color: black;
     background-color: aquamarine;
 }
-.buttonPowerClear{
-    border-radius: 5px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-family: 'Times New Roman', Times, serif;
-    height: 50px;
-    width: 100px;
-    margin-left: 10px;
+.buttonPowerLight{
+    color: black;
+    background-color: lightgreen
+}
+.buttonPowerDark{
+    color: black;
+    background-color: aquamarine;
+}
+.buttonPowerClearBusiness{
+    color: white;
+    background-color: red;
+}
+.buttonPowerClearLight{
+    color: black;
     background-color: lightcoral;
+}
+.buttonPowerClearDark{
+    color: white;
+    background-color: maroon;
 }
 .buttonShowPowerKey {
     border-radius: 5px;
@@ -50,6 +50,7 @@
 }
 .mat-slider{
     width: 98%;
+    color: white !important;
 }
 .textSize{
     font-size: xx-large;
@@ -64,6 +65,24 @@
 .margin {
     margin-left: 30px;
 }
-.expansion{
-    background-color: lightgray;
+.expansionBusiness{
+    background-color: rgb(100 116 139);
+    color: white;
+}
+.expansionLight{
+    background-color: lightskyblue;
+}
+.expansionDark{
+    background-color: darkblue;
+    color: white;
+}
+.inputBorder{
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+.mat-mdc-slider.mat-primary {
+    --mdc-slider-handle-color: white;
+    --mdc-slider-focus-handle-color: white;
+    width: 98%;
 }

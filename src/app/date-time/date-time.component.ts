@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ThemeService } from '../theme.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-date-time',
@@ -7,7 +9,13 @@ import { Component } from '@angular/core';
 })
 export class DateTimeComponent {
 
-  constructor(){}
+  constructor(public themeService: ThemeService){
+    this.themeService.themeName$.pipe(
+      tap((theme) => {
+        this.themeName = theme;
+      })
+    ).subscribe();
+  }
 
   public dateGMT : Date | undefined = undefined;
   public dateEST : Date | undefined = undefined;
@@ -17,6 +25,7 @@ export class DateTimeComponent {
   public iconName: string = 'fa-regular fa-calendar-days';
   public titleString: string = 'Date & Time';
   public datePanelState: boolean = false;
+  public themeName: string = 'business';
 
   timeGetGMT(){
    this.dateGMT = new Date();

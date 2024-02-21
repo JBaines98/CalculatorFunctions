@@ -4,6 +4,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { LogCalculationsService } from '../logCalculations.service';
+import { ThemeService } from '../theme.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-power-converter',
@@ -36,6 +38,7 @@ export class PowerConverterComponent {
   iconNameTitle: string = 'fa-solid fa-battery-half';
   titleString: string = 'Power-converter';
   powerPanelState: boolean = false;
+  themeName: string = 'business';
  
   private readonly horsePowerToKilowatt: number = 1.341;
   private readonly kilowattToHorsePower: number = 1.341;
@@ -53,6 +56,7 @@ export class PowerConverterComponent {
   ];
 
   constructor(
+    public themeService: ThemeService,
     public logCalculations: LogCalculationsService,
     public dialogRef: MatDialogRef<PowerConverterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData = {
@@ -60,7 +64,13 @@ export class PowerConverterComponent {
       messege: '',
       iconString: ''
     },
-    public dialog: MatDialog){}
+    public dialog: MatDialog){
+      this.themeService.themeName$.pipe(
+        tap((theme) => {
+          this.themeName = theme;
+        })
+      ).subscribe();
+    }
 
 
   powerConversion(){

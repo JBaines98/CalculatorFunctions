@@ -35,7 +35,7 @@
                         <label><strong> Starting Temperature: </strong></label>
                     </div>
                     <div class="inputTemp">
-                        <select class="w-full" name="fromQuantity" id="fromQuantity" [(ngModel)]="fromSystem">
+                        <select class="w-full inputBorder" name="fromQuantity" id="fromQuantity" [(ngModel)]="fromSystem">
                             <option value="Celcius">Celcius</option>
                             <option value="Fahrenheit">Fahrenheit</option>
                         </select>
@@ -44,7 +44,7 @@
                         <label><strong> Converted Temperature: </strong></label>
                     </div>
                     <div class="inputTemp">
-                        <select class="w-full" name="toQuantity" id="toQuantity" [(ngModel)]="toSystem">
+                        <select class="w-full inputBorder" name="toQuantity" id="toQuantity" [(ngModel)]="toSystem">
                             <option value="Fahrenheit">Fahrenheit</option>
                             <option value="Celcius">Celcius</option>
                         </select>
@@ -55,7 +55,7 @@
                             <label><strong>Temperature</strong></label>
                         </div>
                         <div class="inputTemp">
-                            <input class="w-full" [(ngModel)]="fromValue">
+                            <input class="w-full inputBorder" [(ngModel)]="fromValue">
                         </div>
                         <div class="inputTemp">
                             <strong>{{fromSystem}}</strong>
@@ -66,7 +66,7 @@
                             <label><strong>Temperature</strong></label>
                         </div>
                         <div class="inputTemp">
-                            <input class="w-full" [(ngModel)]="toValue">
+                            <input class="w-full inputBorder" [(ngModel)]="toValue">
                         </div>
                         <div class="inputTemp">
                             <strong>{{toSystem}}</strong>
@@ -78,15 +78,25 @@
                             <label><strong>Conversion rate : </strong></label>
                         </div>
                         <div class="inputTemp">
-                            <input class="w-full" readonly [(ngModel)]="displayConversionRate">
+                            <input class="w-full inputBorder" readonly [(ngModel)]="displayConversionRate">
                         </div>
                     </div>
                 </div>
                 <div>
                     <div>
                         <span>
-                            <button class="buttonTemperature" (click)="temperatureConversion()"><strong>Go</strong></button>
-                            <button class="buttonClear" (click)="clearTemperatureClicked()"><strong>Clear</strong></button>
+                            <button (click)="temperatureConversion()"
+                            [class.buttonTemperatureBusiness]="themeName === 'business'"
+                            [class.buttonTemperatureLight]="themeName === 'light'"
+                            [class.buttonTemperatureDark]="themeName === 'dark'"
+                            [class.button-base]="themeName === 'business' || themeName === 'light' || themeName === 'dark'">
+                                <strong>Go</strong>
+                            </button>
+                            <button (click)="clearTemperatureClicked()"
+                            [class.buttonClearBusiness]="themeName === 'business'"
+                            [class.buttonClearLight]="themeName === 'light'"
+                            [class.butoonClearDark]="themeName === 'dark'"
+                            [class.button-base]="themeName === 'business' || themeName === 'light' || themeName === 'dark'"><strong>Clear</strong></button>
                         </span>
                     </div>
                     <br>

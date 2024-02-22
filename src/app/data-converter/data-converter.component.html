@@ -1,0 +1,109 @@
+<app-title-banner [iconName]="iconName" [titleString]="titleString"></app-title-banner>
+<br>
+<div>
+
+    <mat-accordion>
+        <mat-expansion-panel (opened)="dataPanelState = true" (closed)="dataPanelState = false"
+        [class.expansionBusiness]="themeName === 'business'"
+        [class.expansionLight]="themeName === 'light'"
+        [class.expansionDark]="themeName === 'dark'">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <strong>
+                        Data-converter
+                    </strong>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <strong> 
+                        Currently I am {{dataPanelState ? 'open' : 'closed'}}
+                    </strong>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="flex-container">
+                <div class="width">
+                    <div class="inputData">
+                        <label><strong> First unit of data: </strong></label>
+                    </div>
+                    <div class="inputData">
+                        <select class="w-full inputBorder" name="fromQuantity" id="fromQuantity" [(ngModel)]="firstSystem">
+                            <option value="Megabytes">Megabytes</option>
+                            <option value="Gigabytes">Giabytes</option>
+                            <option value="Terabytes">Terabytes</option>
+                        </select>
+                    </div>
+                    <div class="inputData">
+                        <label><strong> Second unit of data: </strong></label>
+                    </div>
+                    <div class="inputData">
+                        <select class="w-full inputBorder" name="toQuantity" id="toQuantity" [(ngModel)]="secondSystem">
+                            <option value="Megabytes">Megabytes</option>
+                            <option value="Gigabytes">Gigabytes</option>
+                            <option value="Terabytes">Terabytes</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <div class="inputData">
+                            <label><strong>Data</strong></label>
+                        </div>
+                        <div class="inputData">
+                            <input class="w-full inputBorder" [(ngModel)]="firstValue">
+                        </div>
+                        <div class="inputData">
+                            <strong>{{firstSystem}}</strong>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inputData">
+                            <label><strong>Data</strong></label>
+                        </div>
+                        <div class="inputData">
+                            <input class="w-full inputBorder" [(ngModel)]="secondValue">
+                        </div>
+                        <div class="inputData">
+                            <strong>{{secondSystem}}</strong>
+                        </div>
+                    </div>
+                    <br>
+                    <div>
+                        <div class="inputData">
+                            <label><strong>Conversion rate: </strong></label>
+                        </div>
+                        <div class="inputData">
+                            <input class="w-full inputBorder" readonly [(ngModel)]="displayConversionRate">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <span>
+                            <button (click)="dataConversion()"
+                            [class.buttonDataBusiness]="themeName === 'business'"
+                            [class.buttonDataLight]="themeName === 'light'"
+                            [class.buttonDataDark]="themeName === 'dark'"
+                            [class.button-base]="themeName === 'business' || themeName === 'light' || themeName === 'dark'">
+                                <strong>Go</strong>
+                            </button>
+                            <button (click)="clearDataClicked()"
+                            [class.buttonClearBusiness]="themeName === 'business'"
+                            [class.buttonClearLight]="themeName === 'light'"
+                            [class.buttonClearDark]="themeName === 'dark'"
+                            [class.button-base]="themeName === 'business' || themeName === 'light' || themeName === 'dark'">
+                                <strong>Clear</strong>
+                            </button>
+                        </span>
+                    </div>
+                    <br>
+                    <div *ngIf="showDataKey">
+                        <div class="margin">
+                            <span class="icon">
+                                <app-icon-displayer [iconArray]="displayDataIcon" [iconName]="dataIconName" [iconValue]="dataIconValue" [iconUnit]="dataIconUnit" [iconFirstAddition]="iconFirstAddition" ></app-icon-displayer>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+</div>

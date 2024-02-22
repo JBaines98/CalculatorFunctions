@@ -31,6 +31,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { ShowCalculationHistoryComponent } from './show-calculation-history/show-calculation-history.component';
 import { CurrentTimeComponent } from './current-time/current-time.component';
 import { SharedDateComponent } from './shared-date/shared-date.component';
+import { DataConverterComponent } from './data-converter/data-converter.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { SharedDateComponent } from './shared-date/shared-date.component';
     TitleBannerComponent,
     ShowCalculationHistoryComponent,
     CurrentTimeComponent,
-    SharedDateComponent
+    SharedDateComponent,
+    DataConverterComponent
 
   ],
   imports: [

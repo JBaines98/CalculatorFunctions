@@ -145,7 +145,9 @@ export class PressureComponent implements OnDestroy {
         iconString: 'fa-solid fa-gauge'
       }
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed()
+    .pipe(takeUntil(this.destroyed$))
+    .subscribe(result => {
       if(result === true){
         this.clearPressure();
       }else{

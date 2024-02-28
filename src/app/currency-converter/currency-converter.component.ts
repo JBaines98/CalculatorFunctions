@@ -12,11 +12,15 @@ import { Subject } from 'rxjs';
   styleUrls: ['./currency-converter.component.css'],
 })
 export class CurrencyConverterComponent implements OnDestroy{
+
   sterlingValue: number = 0;
   exchangedValue: number = 0;
   exchangeRate: number = 0;
   currency: string = '';
   currencyIcon: string = 'fa-solid fa-sterling-sign';
+
+
+
   title: string = 'Currency-converter';
   currencyPanelState: boolean = false;
   themeName: string = 'business';
@@ -40,43 +44,52 @@ export class CurrencyConverterComponent implements OnDestroy{
   }
 
   dollarExchange() {
-    this.exchangedValue = this.sterlingValue * 1.27;
-    this.currencyIcon = 'fa-solid fa-dollar-sign';
-    this.exchangeRate = 1.27;
-    this.currency = "Dollar";
-    this.saveCurrencyClicked(this.exchangeRate, this.currency);
+    let exchangedValue = this.sterlingValue * 1.27;
+    let currencyIcon = 'fa-solid fa-dollar-sign';
+    let exchangeRate = 1.27;
+    let currency = "Dollar";
+    this.generalExchange(exchangedValue, exchangeRate, currencyIcon, currency);
   }
 
   euroExchange() {
-    this.exchangedValue = this.sterlingValue * 1.16;
-    this.currencyIcon = 'fa-solid fa-euro-sign';
-    this.exchangeRate = 1.16;
-    this.currency = "Euro";
-    this.saveCurrencyClicked(this.exchangeRate, this.currency);
+    let exchangedValue = this.sterlingValue * 1.16;
+    let currencyIcon = 'fa-solid fa-euro-sign';
+    let exchangeRate = 1.16;
+    let currency = "Euro";
+    this.generalExchange(exchangedValue, exchangeRate, currencyIcon, currency);
   }
 
   yenExchange() {
-    this.exchangedValue = this.sterlingValue * 183.45;
-    this.currencyIcon = 'fa-solid fa-yen-sign';
-    this.exchangeRate = 183.45;
-    this.currency = "Yen";
-    this.saveCurrencyClicked(this.exchangeRate, this.currency);
+    let exchangedValue = this.sterlingValue * 183.45;
+    let currencyIcon = 'fa-solid fa-yen-sign';
+    let exchangeRate = 183.45;
+    let currency = "Yen";
+    this.generalExchange(exchangedValue, exchangeRate, currencyIcon, currency);
   }
 
   wonExchange() {
-    this.exchangedValue = this.sterlingValue * 1679.12;
-    this.currencyIcon = 'fa-solid fa-won-sign';
-    this.exchangeRate = 1679.12;
-    this.currency = "Won";
-    this.saveCurrencyClicked(this.exchangeRate, this.currency);
+    let exchangedValue = this.sterlingValue * 1679.12;
+    let currencyIcon = 'fa-solid fa-won-sign';
+    let exchangeRate = 1679.12;
+    let currency = "Won";
+    this.generalExchange(exchangedValue, exchangeRate, currencyIcon, currency);
   }
 
   pesoExchange() {
-    this.exchangedValue = this.sterlingValue * 21.48;
-    this.currencyIcon = 'fa-solid fa-peso-sign';
-    this.exchangeRate = 21.48;
-    this.currency = "Peso";
+    let exchangedValue = this.sterlingValue * 21.48;
+    let currencyIcon = 'fa-solid fa-peso-sign';
+    let exchangeRate = 21.48;
+    let currency = "Peso";
+    this.generalExchange(exchangedValue, exchangeRate, currencyIcon, currency);
+  }
+
+  generalExchange(exchangedValue: number, exchangeRate: number, currencyIcon: string, currency: string){
+    this.exchangedValue= exchangedValue;
+    this.currencyIcon = currencyIcon;
+    this.exchangeRate = exchangeRate;
+    this.currency = currency;
     this.saveCurrencyClicked(this.exchangeRate, this.currency);
+
   }
 
   saveCurrencyClicked(conversionRate: number, currency: string){
@@ -91,6 +104,7 @@ export class CurrencyConverterComponent implements OnDestroy{
   clearExchange(){
     this.sterlingValue = 0;
     this.exchangedValue = 0;
+    this.exchangeRate = 0;
     this.currencyIcon = 'fa-solid fa-sterling-sign';
     this.currency = '';
   }

@@ -9,19 +9,22 @@ import { Subject, takeUntil, tap } from 'rxjs';
 })
 export class SharedDateComponent implements OnDestroy{
 
-  public themeName: string = 'business';
+  public themeName: any = 'business';
   public currentDate: Date = new Date();
   public intervalId = setInterval(this.getCurrentDate, 1000);
   public destroyed$ = new Subject();
 
-  constructor(public themeService: ThemeService){
+  constructor(public themeService: ThemeService){} 
+
+  ngOnInit(){    
     this.themeService.themeName$.pipe(
-      tap((theme) => {
-        this.themeName = theme;
-      }),
-      takeUntil(this.destroyed$)
-    ).subscribe();
-  }
+    tap((theme) => {
+      this.themeName = theme;
+    }),
+    takeUntil(this.destroyed$)
+  ).subscribe();
+}
+
   ngOnDestroy(): void {
     this.destroyed$.next(this.destroyed$);
     this.destroyed$.complete();

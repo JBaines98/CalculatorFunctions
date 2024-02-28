@@ -11,7 +11,8 @@ export class ThemeService {
 
   constructor() {this.themeChange('business');}
 
-  themeChange(theme: string){
-    this.behaviorThemeName$.next(theme); 
+  themeChange(theme: any): BehaviorSubject<string>{
+    this.behaviorThemeName$.next(theme);
+    return this.behaviorThemeName$;
   }
 }

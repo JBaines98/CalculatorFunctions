@@ -19,12 +19,11 @@ export class CurrencyConverterComponent implements OnDestroy{
   currency: string = '';
   currencyIcon: string = 'fa-solid fa-sterling-sign';
 
-
-
   title: string = 'Currency-converter';
   currencyPanelState: boolean = false;
   themeName: string = 'business';
   destoryed$ = new Subject();
+  y: any = 0;
 
   constructor(
     public themeService: ThemeService,
@@ -98,6 +97,7 @@ export class CurrencyConverterComponent implements OnDestroy{
     currencyCalculation.convertedValue = this.exchangedValue;
     currencyCalculation.conversionRate = conversionRate;
     currencyCalculation.toCurrency = currency;
+    this.y = 1;
     this.logCalculations.addCalculation(currencyCalculation);
   }
 

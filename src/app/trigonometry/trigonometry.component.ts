@@ -1,6 +1,6 @@
 import { Component, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { DialogData, TrigonometryCalculation } from '../models/calculationHistory.model';
+import { Calculation, DialogData, TrigonometryCalculation } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { LogCalculationsService } from '../logCalculations.service';
 import { ThemeService } from '../theme.service';
@@ -21,6 +21,7 @@ export class TrigonometryComponent implements OnDestroy {
   titleString: string = 'Trigonometry';
   trigonometryPanelState: boolean = false;
   themeName: string = 'business';
+  calculation: TrigonometryCalculation = {};
   public destroyed$ = new Subject();
 
   constructor(
@@ -67,7 +68,8 @@ export class TrigonometryComponent implements OnDestroy {
     trigonometryCalculation.hypotenuse = this.hypotenuse;
     trigonometryCalculation.opposite = this.opposite;
     trigonometryCalculation.adjacent = this.adjacent;
-    this.logCalculations.addCalculation(trigonometryCalculation);
+    this.calculation = this.logCalculations.addTrigonometryCalculation(trigonometryCalculation);
+    return this.calculation;
   }
 
   clearTrigonometryClciked(){
@@ -96,6 +98,7 @@ export class TrigonometryComponent implements OnDestroy {
     this.angleInput = 0;
     this.hypotenuse = 0;
     this.opposite = 0;
+    this.calculation = {};
     console.log("Trigonometry functions cleared.")
   }
 

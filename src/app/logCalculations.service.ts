@@ -51,6 +51,15 @@ export class LogCalculationsService {
     this.behaviourAllCalculationHistory$.next(this.arrayOfCalculation);
     console.log("XXXXXXXXXXXXXXXXXX");
     console.log(this.arrayOfCalculation);
+    return calculation;
+  }
+
+  addTrigonometryCalculation(calculation: TrigonometryCalculation){
+    this.arrayOfCalculation.push(calculation);
+    this.behaviourAllCalculationHistory$.next(this.arrayOfCalculation);
+    console.log("XXXXXXXXXXXXXXXXXX");
+    console.log(this.arrayOfCalculation);
+    return calculation;
   }
 
   // displaySavedCalculations(){

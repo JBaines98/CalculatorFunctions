@@ -60,6 +60,10 @@ describe('CurrencyConverterComponent', () => {
     expect(component.saveCurrencyClicked(21.48, 'Peso'));
   });
 
+  it('should asign 1 to the variable y', () => {
+    expect(component.y).toEqual(1);
+  })
+
   it('should reverte values back to a clear stage', () => {
     expect(component.sterlingValue).toEqual(0);
     expect(component.exchangedValue).toEqual(0);

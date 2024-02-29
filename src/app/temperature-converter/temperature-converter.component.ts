@@ -1,6 +1,6 @@
 import { Component, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
+import { Calculation, ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { LogCalculationsService } from '../logCalculations.service';
 import { ThemeService } from '../theme.service';
@@ -41,13 +41,14 @@ export class TemperatureConverterComponent implements OnDestroy {
   titleString: string = 'Temperature-converter';
   temperaturePanelState: boolean = false;
   themeName: string = 'business';
+  calculation: Calculation = {};
   public destroyed$ = new Subject();
 
   private readonly celciusToFahrenheit: number = 33.8;
   private readonly fahrenheitToCelcius: number = 0;
 
-  private readonly celciusToTenDegrees: number = 0.1;
-  private readonly fahrenheitToTenDegrees: number = 3.38;
+  public celciusToTenDegrees: number = 0.1;
+  public fahrenheitToTenDegrees: number = 3.38;
 
   fromQuantity: string[] = [
     "Celcius",
@@ -290,7 +291,8 @@ export class TemperatureConverterComponent implements OnDestroy {
     converterCalculation.result = this.toValue;
     converterCalculation.fromSystem = this.fromSystem;
     converterCalculation.toSystem = this.toSystem;
-    this.logCalculations.addCalculation(converterCalculation);
+    this.calculation = this.logCalculations.addCalculation(converterCalculation);
+    return this.calculation;
   }
 
   clearTemperatureClicked(){
@@ -324,6 +326,7 @@ export class TemperatureConverterComponent implements OnDestroy {
       this.tenDegreeValue = 0;
       this.displayTenDegree = [];
       this.displayTenDegreeRate = 0;
+      this.calculation = {};
       console.log("Cleared");
    }
 }

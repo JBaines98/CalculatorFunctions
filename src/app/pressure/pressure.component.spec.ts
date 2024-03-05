@@ -18,4 +18,15 @@ describe('PressureComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should convert Atmospheres to Bars', () => {
+    component.firstSystem = 'Atmospheres';
+    component.secondSystem = 'Bars';
+    component.atmosphericToBars = 0.986923;
+    component.atmosphericToElephants = 0.735;
+
+    component.pressureConversion();
+
+    expect()
+  });
 });

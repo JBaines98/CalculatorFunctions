@@ -45,10 +45,10 @@ export class PressureComponent implements OnDestroy {
     'Atmospheres'
   ];
 
-  private readonly atmosphericToBars: number = 0.986923;
-  private readonly barsToAtmospheric: number = 1.01325;
-  private readonly atmosphericToElephants: number = 0.735;
-  private readonly barsToElephants: number = 0.725388405;
+  public atmosphericToBars: number = 0.986923;
+  public barsToAtmospheric: number = 1.01325;
+  public atmosphericToElephants: number = 0.735;
+  public barsToElephants: number = 0.725388405;
 
   constructor(
     public themeService: ThemeService,

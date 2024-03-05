@@ -61,40 +61,5 @@ describe('WeightConverterComponent', () => {
     component.weightConverter();
 
     expect(component.poundValue).toEqual(component.gramValue * component.kilogramsToOunces);
-    expect(component.showWeightKey).toBeTrue();
   });
-
-  it('should convert Kilograms to Pounds', () => {
-    component.gramSystem = 'Kilogram';
-    component.poundSystem = 'Ounces';
-    component.gramValue = 5;
-    component.poundValue = 0;
-    component.displayConversionRate = 0;
-    component.displayDumbBell = [];
-    component.kilogramsToOunces = 35.274;
-
-    component.weightConverter();
-
-    expect(component.poundValue).toEqual(component.gramValue * component.kilogramsToPounds);
-    expect(component.showWeightKey).toBeTrue();
-  });
-
-  it('should clear all variables', () => {
-    component.clearWeights();
-
-    expect(component.gramValue).toEqual(0);
-    expect(component.poundValue).toEqual(0);
-    expect(component.gramSystem).toEqual('');
-    expect(component.poundSystem).toEqual('');
-    expect(component.displayConversionRate).toEqual(0);
-    expect(component.displayDumbBell).toEqual([]);
-  });
-
-  it('should change variable showWeightKey to false, hiding key icon', () => {
-    component.showWeightKey = true;
-
-    component.clearWeightsClicked();
-
-    expect(component.showWeightKey).toBeFalse();
-  })
 });

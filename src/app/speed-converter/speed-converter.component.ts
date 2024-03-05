@@ -1,7 +1,7 @@
 import { Component, Inject, OnDestroy } from '@angular/core';
 import { ClearDialogComponent } from '../clear-dialog/clear-dialog.component';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ConverterCalculation, DialogData } from '../models/calculationHistory.model';
+import { Calculation, ConverterCalculation, DialogData } from '../models/calculationHistory.model';
 import { LogCalculationsService } from '../logCalculations.service';
 import { ThemeService } from '../theme.service';
 import { Subject, takeUntil, tap } from 'rxjs';
@@ -43,20 +43,22 @@ export class SpeedConverterComponent implements OnDestroy {
   titleString: string = 'Speed-converter';
   speedPanelState: boolean = false;
   themeName: string = 'business';
+  calculation: Calculation = {};
   public destroyed$ = new Subject();
 
 
   
-  private readonly metersPerSecondToFeetPerSecond: number = 3.28084;
-  private readonly metersPerSecondToMilesPerHour: number = 2.23694;
-  private readonly kilometersPerHourToFeetPerSecond: number = 0.911344;
+  public metersPerSecondToFeetPerSecond: number = 3.28084;
+  public metersPerSecondToMilesPerHour: number = 2.23694;
+  public kilometersPerHourToFeetPerSecond: number = 0.911344;
   private readonly kilometersPerHourToMilesPerHour: number = 0.621371;
 
-  private readonly metersPerSecondToTenMilesPerHour: number = 4;
-  private readonly kilometersPerHourToTenMilesPerHour: number = 16.0934;
 
-  private readonly kilometersPerHourTo60MilesPerHour: number = 96.5606;
-  private readonly metersPerSecondTo60MilesPerHour: number = 26.8223889;
+  public metersPerSecondToTenMilesPerHour: number = 4;
+  public kilometersPerHourToTenMilesPerHour: number = 16.0934;
+
+  public kilometersPerHourTo60MilesPerHour: number = 96.5606;
+  public metersPerSecondTo60MilesPerHour: number = 26.8223889;
 
   metricQuantity: string[] = [
     "Meters per second",

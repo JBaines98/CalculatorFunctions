@@ -39,7 +39,7 @@ public destroyed$ = new Subject();
 public gramsToOunces: number = 0.035274;
 public gramsToPounds: number = 0.00220462;
 public kilogramsToOunces: number = 35.274;
-private readonly kilogramsToPounds: number = 2.20462;
+public kilogramsToPounds: number = 2.20462;
 
 private readonly gramsTo1kgDumbBells: number = 0.001;
 private readonly kiloGramsTo1kgDumbBells: number = 1;

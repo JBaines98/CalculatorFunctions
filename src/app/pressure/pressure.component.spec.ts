@@ -27,6 +27,24 @@ describe('PressureComponent', () => {
 
     component.pressureConversion();
 
-    expect()
+    expect(component.secondValue).toEqual(component.firstValue * component.atmosphericToBars);
   });
+
+  it('should convert Bars to Atmospheres', () => {
+    component.firstSystem = 'Bars';
+    component.secondSystem = 'Atmospheres';
+    component.barsToAtmospheric = 1.01325;
+    component.barsToElephants = 0.725388405;
+
+    component.pressureConversion();
+
+    expect(component.secondValue).toEqual(component.firstValue * component.barsToAtmospheric);
+  });
+
+  it('should clear all variables', () => {
+    component.firstSystem = '';
+    component.secondSystem = '';
+    component.firstValue = 0;
+    component.secondValue = 0;
+  })
 });

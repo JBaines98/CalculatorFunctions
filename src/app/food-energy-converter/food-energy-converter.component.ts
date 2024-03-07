@@ -36,8 +36,8 @@ export class FoodEnergyConverterComponent implements OnDestroy {
 
   public destroyed$ = new Subject();
 
-  private readonly foodCaloriesToJoules: number = 4184;
-  private readonly foodCaloriesToKiloJoules: number = 4.184;
+  public foodCaloriesToJoules: number = 4184;
+  public foodCaloriesToKiloJoules: number = 4.184;
   private readonly foodCaloriesToApples: number = 0.0105708245243129;
 
   foodQuantity: string = 'Food Calories';

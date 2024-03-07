@@ -44,12 +44,12 @@ export class DataConverterComponent implements OnDestroy{
     'Terabytes'
   ];
 
-  private readonly megabytesToGigabytes: number = 1024;
-  private readonly megabytesToTerabytes: number = 1048576;
-  private readonly gigabytesToMegabytes: number = 0.0009765625;
-  private readonly gigabytesToTerabytes: number = 1024;
-  private readonly terabytesToMegabytes: number = 1/1048576;
-  private readonly terabytesToGigabytes: number = 0.0009765625;
+  public megabytesToGigabytes: number = 1024;
+  public megabytesToTerabytes: number = 1048576;
+  public gigabytesToMegabytes: number = 0.0009765625;
+  public gigabytesToTerabytes: number = 1024;
+  public terabytesToMegabytes: number = 1/1048576;
+  public terabytesToGigabytes: number = 0.0009765625;
   private readonly megabytesToDataIcon: number = 0;
   private readonly gigabytesToDataIcon: number = 0;
   private readonly terabytesToDataIcon: number = 0;

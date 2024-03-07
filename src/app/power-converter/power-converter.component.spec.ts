@@ -18,4 +18,11 @@ describe('PowerConverterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should assign values to variables, if firstSystem = Horse Power & then convert HorsePower to Kilowatt'), () => {
+    component.firstSystem = 'Horse Power';
+    component.secondSystem = 'Kilowatt';
+    component.firstValue = 10;
+    component.horsePowerToKilowatt = 1.341;
+  }
 });

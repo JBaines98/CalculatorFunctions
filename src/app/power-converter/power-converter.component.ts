@@ -41,7 +41,7 @@ export class PowerConverterComponent implements OnDestroy {
   themeName: string = 'business';
   public destroyed$ = new Subject();
  
-  private readonly horsePowerToKilowatt: number = 1.341;
+  public horsePowerToKilowatt: number = 1.341;
   private readonly kilowattToHorsePower: number = 1.341;
   private readonly horsePowerToIcon: number = 1;
   private readonly kilowattToIcon: number = 1;

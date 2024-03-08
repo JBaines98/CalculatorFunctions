@@ -38,15 +38,15 @@ export class VolumeConverterComponent implements OnDestroy {
   themeName: string = 'business';
   public destroyed$ = new Subject();
 
-  private readonly millilitersToTeaspoons: number = 0.202884;
-  private readonly millilitersToTablespoons: number = 0.06763;
-  private readonly millilitersToOunces: number = 0.0351950797;
-  private readonly centilitersToTeaspoons: number = 2.02884;
-  private readonly centilitersToTablespoons: number = 0.67628;
-  private readonly centilitersToOunces: number = 0.33814;
-  private readonly litersToTeaspoons: number = 202.884;
-  private readonly litersToTablespoons: number = 67.628;
-  private readonly litersToOunces: number = 33.814;
+  public millilitersToTeaspoons: number = 0.202884;
+  public millilitersToTablespoons: number = 0.06763;
+  public millilitersToOunces: number = 0.0351950797;
+  public centilitersToTeaspoons: number = 2.02884;
+  public centilitersToTablespoons: number = 0.67628;
+  public centilitersToOunces: number = 0.33814;
+  public litersToTeaspoons: number = 202.884;
+  public litersToTablespoons: number = 67.628;
+  public litersToOunces: number = 33.814;
 
   private readonly millilitersToWaterBottles: number = 0.001;
   private readonly centilitersToWaterBottles: number = 0.01;

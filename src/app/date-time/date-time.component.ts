@@ -9,8 +9,6 @@ import { Subject, takeUntil, tap } from 'rxjs';
 })
 export class DateTimeComponent implements OnDestroy {
 
-
-
   public dateGMT : Date | undefined = undefined;
   public dateEST : Date | undefined = undefined;
   public dateIST : Date | undefined = undefined;

@@ -27,6 +27,7 @@ describe('PressureComponent', () => {
 
     component.pressureConversion();
 
+    expect(component.showPressureKey).toBeTrue();
     expect(component.secondValue).toEqual(component.firstValue * component.atmosphericToBars);
   });
 
@@ -38,15 +39,26 @@ describe('PressureComponent', () => {
 
     component.pressureConversion();
 
+    expect(component.showPressureKey).toBeTrue();
     expect(component.secondValue).toEqual(component.firstValue * component.barsToAtmospheric);
   });
 
   it('should clear all variables', () => {
-    component.firstSystem = '';
-    component.secondSystem = '';
-    component.firstValue = 0;
-    component.secondValue = 0;
+    component.clearPressure();
+
+    expect(component.firstSystem).toEqual('');
+    expect(component.secondSystem).toEqual('');
+    expect(component.firstValue).toEqual(0);
+    expect(component.secondValue).toEqual(0);
+    expect(component.displayConversionRate).toEqual(0);
+    expect(component.displayPlanetEarth).toEqual([]);
   });
 
-  
+  it('should change variable showPressureKey to false, hiding icon key', () => {
+    component.showPressureKey = true;
+
+    component.clearPressureClicked();
+
+    expect(component.showPressureKey).toBeFalse();
+  });
 });

@@ -32,6 +32,7 @@ import { ShowCalculationHistoryComponent } from './show-calculation-history/show
 import { CurrentTimeComponent } from './current-time/current-time.component';
 import { SharedDateComponent } from './shared-date/shared-date.component';
 import { DataConverterComponent } from './data-converter/data-converter.component';
+import { ElectricCurrentConverterComponent } from './electric-current-converter/electric-current-converter.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { DataConverterComponent } from './data-converter/data-converter.componen
     ShowCalculationHistoryComponent,
     CurrentTimeComponent,
     SharedDateComponent,
-    DataConverterComponent
+    DataConverterComponent,
+    ElectricCurrentConverterComponent
 
   ],
   imports: [

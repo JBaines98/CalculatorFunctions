@@ -18,4 +18,6 @@ describe('CurrentTimeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should', () => {})
 });

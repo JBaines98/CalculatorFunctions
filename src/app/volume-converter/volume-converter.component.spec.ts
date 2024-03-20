@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VolumeConverterComponent } from './volume-converter.component';
+import { enableProdMode } from '@angular/core';
 
 describe('VolumeConverterComponent', () => {
   let component: VolumeConverterComponent;
@@ -171,5 +172,11 @@ describe('VolumeConverterComponent', () => {
     expect(component.americanValue).toEqual(0);
     expect(component.displayConversionRate).toEqual(0);
     expect(component.displayLiters).toEqual([]);
+  });
+
+  it('should change variable showVolumeKey to be true', () => {
+    component.showVolumeKey = false;
+    component.clearVolumesClicked();
+    expect(component.showVolumeKey).toBeTrue();
   });
 });

@@ -33,6 +33,7 @@ import { CurrentTimeComponent } from './current-time/current-time.component';
 import { SharedDateComponent } from './shared-date/shared-date.component';
 import { DataConverterComponent } from './data-converter/data-converter.component';
 import { ElectricCurrentConverterComponent } from './electric-current-converter/electric-current-converter.component';
+import { AreaConverterComponent } from './area-converter/area-converter.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { ElectricCurrentConverterComponent } from './electric-current-converter/
     CurrentTimeComponent,
     SharedDateComponent,
     DataConverterComponent,
-    ElectricCurrentConverterComponent
+    ElectricCurrentConverterComponent,
+    AreaConverterComponent
 
   ],
   imports: [

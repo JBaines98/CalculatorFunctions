@@ -30,6 +30,10 @@ export class ElectricCurrentConverterComponent {
   titleString: string = 'Electric-current-converter';
   electricPanelState: boolean = false;
   themeName: string = 'business';
+  iconMilliampere: string = 'fa-solid fa-lightbulb';
+  iconAmpere: string = 'fa-solid fa-plug';
+  iconCoulombPerSecond: string = 'fa-solid fa-bolt';
+  iconKiloampere: string = 'fa-solid fa-car-battery';
   public destroyed$ = new Subject();
 
   public milliampereToAmpere: number = 0.001;
@@ -47,6 +51,11 @@ export class ElectricCurrentConverterComponent {
   public kiloampereToMilliampere: number = 1000000;
   public kiloampereToAmpere: number = 1000;
   public kiloampereToCoulombPerSecond: number = 1000;
+
+  public milliampereToIcon: number = 0;
+  public ampereToIcon: number = 0;
+  public coulombPerSecondToIcon: number = 0;
+  public kiloampereToIcon: number = 0;
 
   firstQuantity: string[] = [
     'Milliampere',
@@ -92,96 +101,117 @@ export class ElectricCurrentConverterComponent {
         switch(this.secondSystem){
           case 'Ampere': {
             this.displayConversionRate = this.convertToSecondSystem(this.milliampereToAmpere);
-            this.displayIconConversionRate = this.convertToIcon();
+            this.displayIconConversionRate = this.convertToIcon(this.ampereToIcon);
+            this.iconName = this.iconAmpere;
             break;
           }
           case 'Coulomb per second': {
             this.displayConversionRate = this.convertToSecondSystem(this.milliampereToCoulombPerSecond);
-            this.displayIconConversionRate = this.convertToIcon();
+            this.displayIconConversionRate = this.convertToIcon(this.coulombPerSecondToIcon);
+            this.iconName = this.iconCoulombPerSecond;
             break;
           }
           case 'Kiloampere': {
             this.displayConversionRate = this.convertToSecondSystem(this.milliampereToKiloampere);
-            this.displayIconConversionRate = this.convertToIcon();
+            this.displayIconConversionRate = this.convertToIcon(this.kiloampereToIcon);
+            this.iconName = this.iconKiloampere;
             break;
           }
           case 'Milliampere': {
             window.alert("Cannot convert to the same unit. Please choose a different unit.");
             console.log("Cannot convert to the same unit.");  
+            this.iconName = '';
+            break;
           }
         }
+        break;
       }
       case 'Ampere': {
         switch(this.secondSystem){
           case 'Ampere': {
             window.alert("Cannot convert to the same unit. Please choose a different unit.");
             console.log("Cannot convert to the same unit.");  
+            this.iconName = '';
             break;
           }
           case 'Coulomb per second': {
             this.displayConversionRate = this.convertToSecondSystem(this.ampereToCoulombPerSecond);
-            this.displayIconConversionRate = this.convertToIcon();
+            this.displayIconConversionRate = this.convertToIcon(this.coulombPerSecondToIcon);
+            this.iconName = this.iconCoulombPerSecond;
             break;
           }
           case 'Kiloampere': {
             this.displayConversionRate = this.convertToSecondSystem(this.ampereToKiloampere);
-            this.displayIconConversionRate = this.convertToIcon();
+            this.displayIconConversionRate = this.convertToIcon(this.kiloampereToIcon);
+            this.iconName = this.iconKiloampere
             break;
           }
           case 'Milliampere': {
             this.displayConversionRate = this.convertToSecondSystem(this.ampereToMilliampere);
-            this.displayIconConversionRate = this.convertToIcon(); 
+            this.displayIconConversionRate = this.convertToIcon(this.milliampereToIcon);
+            this.iconName = this.iconMilliampere; 
             break;
           }
         }
+        break;
       }
       case 'Coulomb per second': {
         switch(this.secondSystem){
           case 'Ampere': {
             this.displayConversionRate = this.convertToSecondSystem(this.coulombPerSecondToAmpere);
-            this.displayIconConversionRate = this.convertToIcon();
+            this.displayIconConversionRate = this.convertToIcon(this.ampereToIcon);
+            this.iconName = this.iconAmpere;
             break;
           }
           case 'Coulomb per second': {
             window.alert("Cannot convert to the same unit. Please choose a different unit.");
             console.log("Cannot convert to the same unit.");  
+            this.iconName = '';
             break;
           }
           case 'Kiloampere': {
             this.displayConversionRate = this.convertToSecondSystem(this.coulombPerSecondToKiloampere);
-            this.displayIconConversionRate = this.convertToIcon();
+            this.displayIconConversionRate = this.convertToIcon(this.kiloampereToIcon);
+            this.iconName = this.iconKiloampere;
             break;
           }
           case 'Milliampere': {
             this.displayConversionRate = this.convertToSecondSystem(this.coulombPerSecondToMilliampere);
-            this.displayIconConversionRate = this.convertToIcon(); 
+            this.displayIconConversionRate = this.convertToIcon(this.milliampereToIcon);
+            this.iconName = this.iconMilliampere; 
             break;
           }
         }
+        break;
       }
       case 'Kiloampere': {
         switch(this.secondSystem){
           case 'Ampere': {
             this.displayConversionRate = this.convertToSecondSystem(this.kiloampereToAmpere);
-            this.displayIconConversionRate = this.convertToIcon(); 
+            this.displayIconConversionRate = this.convertToIcon(this.ampereToIcon);
+            this.iconName = this.iconAmpere; 
             break;
           }
           case 'Coulomb per second': {
             this.displayConversionRate = this.convertToSecondSystem(this.kiloampereToCoulombPerSecond);
-            this.displayIconConversionRate = this.convertToIcon(); 
+            this.displayIconConversionRate = this.convertToIcon(this.coulombPerSecondToIcon);
+            this.iconName = this.iconCoulombPerSecond; 
             break;
           }
           case 'Kiloampere': {
             window.alert("Cannot convert to the same unit. Please choose a different unit.");
             console.log("Cannot convert to the same unit.");  
+            this.iconName = '';
             break;
           }
           case 'Milliampere': {
             this.displayConversionRate = this.convertToSecondSystem(this.kiloampereToMilliampere);
-            this.displayIconConversionRate = this.convertToIcon(); 
+            this.displayIconConversionRate = this.convertToIcon(this.milliampereToIcon);
+            this.iconName = this.iconMilliampere; 
             break;
           }
         }
+        break;
       }
     };
   };

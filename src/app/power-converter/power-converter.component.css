@@ -80,6 +80,7 @@
     border-style: solid;
     border-width: 2px;
     border-color: black;
+    color: black;
 }
 .mat-mdc-slider.mat-primary {
     --mdc-slider-handle-color: white;

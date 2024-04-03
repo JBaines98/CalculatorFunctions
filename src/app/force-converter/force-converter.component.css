@@ -1,0 +1,80 @@
+.forceTitle{
+    margin-left: 10px;
+    font-size: larger;
+}
+
+.buttonForceBusiness{
+    color: black;
+    background-color: aquamarine;
+}
+.buttonForceLight{
+    background-color: lightgreen;
+    color: black;
+}
+.buttonForceDark{
+    background-color: aquamarine;
+    color: black;
+}
+.buttonClearBusiness{
+    color: white;
+    background-color: red;
+}
+.buttonClearLight{
+    color: black;
+    background-color: lightcoral;
+}
+.buttonClearDark{
+    color: white;
+    background-color: maroon;
+}
+.buttonShowForceKey{
+    border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    height: 50px;
+    width: 100px;
+    margin-left: 40px;
+    background-color: bisque;
+}
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.icon {
+    margin-left: 40%;
+}
+.textSize{
+    font-size: xx-large;
+}
+.inputPressure {
+    margin-left: 10px;
+    width: 100%;
+}
+.margin {
+    margin-left: 30px;
+}
+.width {
+    width: 400px;
+}
+.expansionBusiness{
+    background-color: rgb(100 116 139);
+    color: white;
+}
+.expansionLight{
+    background-color: lightskyblue;
+}
+.expansionDark{
+    background-color: darkblue;
+    color: white;
+}
+.inputBorder{
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+    color: black;
+}

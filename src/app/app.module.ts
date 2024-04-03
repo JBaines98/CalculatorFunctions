@@ -34,6 +34,7 @@ import { SharedDateComponent } from './shared-date/shared-date.component';
 import { DataConverterComponent } from './data-converter/data-converter.component';
 import { ElectricCurrentConverterComponent } from './electric-current-converter/electric-current-converter.component';
 import { AreaConverterComponent } from './area-converter/area-converter.component';
+import { ForceConverterComponent } from './force-converter/force-converter.component';
 
 
 @NgModule({
@@ -63,7 +64,8 @@ import { AreaConverterComponent } from './area-converter/area-converter.componen
     SharedDateComponent,
     DataConverterComponent,
     ElectricCurrentConverterComponent,
-    AreaConverterComponent
+    AreaConverterComponent,
+    ForceConverterComponent
 
   ],
   imports: [

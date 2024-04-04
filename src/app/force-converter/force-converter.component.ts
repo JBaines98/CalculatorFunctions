@@ -21,10 +21,23 @@ export class ForceConverterComponent {
   displayConversionRate: number = 0;
   showForceKey: boolean = false;
   iconName: string = 'fa-solid fa-jedi';
+  forceIconWeak: string = 'fa-solid fa-jedi';
+  forceIconStrong: string = 'fa-solid fa-empire';
+  showWeakOrStrong: string = 'weak';
   titleString: string = 'Force-converter';
   forcePanelState: boolean = false;
   themeName: string = 'business';
+  isNewtons: boolean = false;
   destroyed$ = new Subject();
+  iconValueWeak: number = 10;
+  iconUnitWeak: string = 'Newtons';
+  iconFirstAdditionWeak: number = 10;
+  iconValueStrong: number = 10;
+  iconUnitStrong: string = 'Kilonewtons';
+  iconFirstAdditionStrong: number = 10;
+  displayForce: number[] = [];
+  forceValue: number = 0;
+
 
   fromQuantity: string[] = [
     'Newtons',
@@ -77,90 +90,202 @@ export class ForceConverterComponent {
 }
 
   forceConversion(){
-    switch(this.firstSystem){
-      case 'Newtons': {
-        switch(this.secondSystem){
-          case 'Newtons': {
-            console.log("Error, cannot convert Newtons to Newtons.");
-            break;
+
+    if(this.firstSystem === 'Newtons'){
+      this.isNewtons = true;
+    }else if(this.firstSystem === 'Gram-force'){
+      this.isNewtons = true;
+    }else{
+      this.isNewtons = false;
+    };
+
+    if(this.firstValue < 100 && this.isNewtons){
+      this.showWeakOrStrong = 'weak';
+    };
+    if(this.firstValue < 100 && !this.isNewtons){
+      this.showWeakOrStrong = 'weak';
+    };
+    if(this.firstValue > 100 && this.isNewtons){
+      this.showWeakOrStrong = 'strong';
+    };
+    if(this.firstValue > 100 && !this.isNewtons){
+      this.showWeakOrStrong = 'strong';
+    };
+
+    if(this.showWeakOrStrong === 'weak'){
+      switch(this.firstSystem){
+        case 'Newtons': {
+          switch(this.secondSystem){
+            case 'Newtons': {
+              console.log("Error, cannot convert Newtons to Newtons.");
+              break;
+            }
+            case 'Kilonewtons': {
+              this.displayConversionRate = this.convertForce(this.newtonsToKilonewtons);
+              break;
+            }
+            case 'Gram-force': {
+              this.displayConversionRate = this.convertForce(this.newtonsToGramforce);
+              break;
+            }
+            case 'Kilogram-force': {
+              this.displayConversionRate = this.convertForce(this.newtonsToKilogramForce);
+              break;
+            }
           }
-          case 'Kilonewtons': {
-            this.displayConversionRate = this.convertForce(this.newtonsToKilonewtons);
-            break;
-          }
-          case 'Gram-force': {
-            this.displayConversionRate = this.convertForce(this.newtonsToGramforce);
-            break;
-          }
-          case 'Kilogram-force': {
-            this.displayConversionRate = this.convertForce(this.newtonsToKilogramForce);
-            break;
-          }
+          break;
         }
-        break;
+        case 'Kilonewtons': {
+          switch(this.secondSystem){
+            case 'Newtons': {
+              this.displayConversionRate = this.convertForce(this.kilonewtonsToNewtons);
+              break;
+            }
+            case 'Kilonewtons': {
+              console.log("Error, cannot convert Kilonewtons to Kilonewtons.");
+              break;
+            }
+            case 'Gram-force': {
+              this.displayConversionRate = this.convertForce(this.kilonewtonsToGramForce);
+              break;
+            }
+            case 'Kilogram-force': {
+              this.displayConversionRate = this.convertForce(this.kilonewtonsToKilogramForce);
+              break;
+            }
+          }
+          break;
+        }
+        case 'Gram-force': {
+          switch(this.secondSystem){
+            case 'Newtons': {
+              this.displayConversionRate = this.convertForce(this.gramForceToNewtons);
+              break;
+            }
+            case 'Kilonewtons': {
+              this.displayConversionRate = this.convertForce(this.gramForceToKilonewtons);
+              break;
+            }
+            case 'Gram-force': {
+              console.log("Error, cannot convert Gram-force to Gram-force.");
+              break;
+            }
+            case 'Kilogram-force': {
+              this.displayConversionRate = this.convertForce(this.gramForceToKilogramForce);
+              break;
+            }
+          }
+          break;
+        }
+        case 'Kilogram-force': {
+          switch(this.secondSystem){
+            case 'Newtons': {
+              this.displayConversionRate = this.convertForce(this.kilogramForceToNewtons);
+              break;
+            }
+            case 'Kilonewtons': {
+              this.displayConversionRate = this.convertForce(this.kilogramForceToKiloNewtons);
+              break;
+            }
+            case 'Gram-force': {
+              this.displayConversionRate = this.convertForce(this.kilogramForceToGramForce);
+              break;
+            }
+            case 'Kilogram-force': {
+              console.log("Error, cannot convert Kilogram-force to Kilogram-force.");
+              break;
+            }
+          }
+          break;
+        }
       }
-      case 'Kilonewtons': {
-        switch(this.secondSystem){
-          case 'Newtons': {
-            this.displayConversionRate = this.convertForce(this.kilonewtonsToNewtons);
-            break;
+    }
+    if(this.showWeakOrStrong === 'strong'){
+      switch(this.firstSystem){
+        case 'Newtons': {
+          switch(this.secondSystem){
+            case 'Newtons': {
+              console.log("Error, cannot convert Newtons to Newtons.");
+              break;
+            }
+            case 'Kilonewtons': {
+              this.displayConversionRate = this.convertForce(this.newtonsToKilonewtons);
+              break;
+            }
+            case 'Gram-force': {
+              this.displayConversionRate = this.convertForce(this.newtonsToGramforce);
+              break;
+            }
+            case 'Kilogram-force': {
+              this.displayConversionRate = this.convertForce(this.newtonsToKilogramForce);
+              break;
+            }
           }
-          case 'Kilonewtons': {
-            console.log("Error, cannot convert Kilonewtons to Kilonewtons.");
-            break;
-          }
-          case 'Gram-force': {
-            this.displayConversionRate = this.convertForce(this.kilonewtonsToGramForce);
-            break;
-          }
-          case 'Kilogram-force': {
-            this.displayConversionRate = this.convertForce(this.kilonewtonsToKilogramForce);
-            break;
-          }
+          break;
         }
-        break;
-      }
-      case 'Gram-force': {
-        switch(this.secondSystem){
-          case 'Newtons': {
-            this.displayConversionRate = this.convertForce(this.gramForceToNewtons);
-            break;
+        case 'Kilonewtons': {
+          switch(this.secondSystem){
+            case 'Newtons': {
+              this.displayConversionRate = this.convertForce(this.kilonewtonsToNewtons);
+              break;
+            }
+            case 'Kilonewtons': {
+              console.log("Error, cannot convert Kilonewtons to Kilonewtons.");
+              break;
+            }
+            case 'Gram-force': {
+              this.displayConversionRate = this.convertForce(this.kilonewtonsToGramForce);
+              break;
+            }
+            case 'Kilogram-force': {
+              this.displayConversionRate = this.convertForce(this.kilonewtonsToKilogramForce);
+              break;
+            }
           }
-          case 'Kilonewtons': {
-            this.displayConversionRate = this.convertForce(this.gramForceToKilonewtons);
-            break;
-          }
-          case 'Gram-force': {
-            console.log("Error, cannot convert Gram-force to Gram-force.");
-            break;
-          }
-          case 'Kilogram-force': {
-            this.displayConversionRate = this.convertForce(this.gramForceToKilogramForce);
-            break;
-          }
+          break;
         }
-        break;
-      }
-      case 'Kilogram-force': {
-        switch(this.secondSystem){
-          case 'Newtons': {
-            this.displayConversionRate = this.convertForce(this.kilogramForceToNewtons);
-            break;
+        case 'Gram-force': {
+          switch(this.secondSystem){
+            case 'Newtons': {
+              this.displayConversionRate = this.convertForce(this.gramForceToNewtons);
+              break;
+            }
+            case 'Kilonewtons': {
+              this.displayConversionRate = this.convertForce(this.gramForceToKilonewtons);
+              break;
+            }
+            case 'Gram-force': {
+              console.log("Error, cannot convert Gram-force to Gram-force.");
+              break;
+            }
+            case 'Kilogram-force': {
+              this.displayConversionRate = this.convertForce(this.gramForceToKilogramForce);
+              break;
+            }
           }
-          case 'Kilonewtons': {
-            this.displayConversionRate = this.convertForce(this.kilogramForceToKiloNewtons);
-            break;
-          }
-          case 'Gram-force': {
-            this.displayConversionRate = this.convertForce(this.kilogramForceToGramForce);
-            break;
-          }
-          case 'Kilogram-force': {
-            console.log("Error, cannot convert Kilogram-force to Kilogram-force.");
-            break;
-          }
+          break;
         }
-        break;
+        case 'Kilogram-force': {
+          switch(this.secondSystem){
+            case 'Newtons': {
+              this.displayConversionRate = this.convertForce(this.kilogramForceToNewtons);
+              break;
+            }
+            case 'Kilonewtons': {
+              this.displayConversionRate = this.convertForce(this.kilogramForceToKiloNewtons);
+              break;
+            }
+            case 'Gram-force': {
+              this.displayConversionRate = this.convertForce(this.kilogramForceToGramForce);
+              break;
+            }
+            case 'Kilogram-force': {
+              console.log("Error, cannot convert Kilogram-force to Kilogram-force.");
+              break;
+            }
+          }
+          break;
+        }
       }
     }
     this.showForceKey = true;
@@ -169,6 +294,30 @@ export class ForceConverterComponent {
 
   convertForce(conversionRate: number){
     this.secondValue = this.firstValue * conversionRate;
+    return conversionRate;
+  }
+
+  convertToWeakIcon(conversionRate: number){
+    this.forceValue = this.secondValue / 10;
+    this.iconValueWeak = Math.trunc(this.forceValue);
+    this.displayForce = [];
+    for(let index=0; index < this.iconValueWeak; index++){
+      this.displayForce.push(index);
+    };
+    this.iconName = this.forceIconWeak;
+    this.iconValueWeak = 0;
+    return conversionRate;
+  }
+
+  convertToStrongIcon(conversionRate: number){
+    this.forceValue = this.secondValue / 10;
+    this.iconValueWeak = Math.trunc(this.forceValue);
+    this.displayForce = [];
+    for(let index=0; index < this.iconValueStrong; index++){
+      this.displayForce.push(index);
+    };
+    this.iconName = this.forceIconStrong;
+    this.iconValueStrong = 0;
     return conversionRate;
   }
 
@@ -209,6 +358,11 @@ export class ForceConverterComponent {
     this.firstValue = 0;
     this.secondValue = 0;
     this.displayConversionRate = 0;
+    this.displayForce = [];
+    this.iconName = '';
+    this.iconValueStrong = 0;
+    this.iconValueWeak = 0;
+    console.log("Cleared.");
   };
 
 }

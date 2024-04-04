@@ -262,7 +262,7 @@ export class SpeedConverterComponent implements OnDestroy {
     this.iconDisplayerValue = Math.trunc(this.speedValue);
     // this.speedValue = this.metricValue / 10;
     this.displaySpeed = [];
-    for(let index=0; index < this.iconDisplayerValue; index++){3
+    for(let index=0; index < this.iconDisplayerValue; index++){
       this.displaySpeed.push(index);
     };
     this.speedIconName = this.speedIconMedium;

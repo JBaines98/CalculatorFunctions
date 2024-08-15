@@ -1,76 +1,75 @@
 <app-title-banner [iconName]="iconName" [titleString]="titleString"></app-title-banner>
 <br>
 <div>
+
     <mat-accordion>
-        <mat-expansion-panel (opened)="forcePanelState = true" (closed)="forcePanelState = false"
+        <mat-expansion-panel (opened)="soundPanelSate = true" (closed)="soundPanelSate = false"
         [class.expansionBusiness]="themeName === 'business'"
         [class.expansionLight]="themeName === 'light'"
         [class.expansionDark]="themeName === 'dark'">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     <strong>
-                        Force-converter
+                        Sound-converter
                     </strong>
                 </mat-panel-title>
                 <mat-panel-description>
                     <strong>
-                        Currently I am {{forcePanelState ? 'open' : 'closed'}}
+                        Currently I am {{soundPanelSate ? 'open' : 'closed'}}
                     </strong>
                 </mat-panel-description>
             </mat-expansion-panel-header>
             <div class="flex-container">
                 <div class="width">
-                    <div class="inputForce">
-                        <label><strong> First unit of force: </strong></label>
+                    <div class="inputSound">
+                        <label><strong> First unit of sound: </strong></label>
                     </div>
-                    <div class="inputForce">
+                    <div class="inputSound">
                         <select class="w-full inputBorder" name="fromQuantity" id="fromQuantity" [(ngModel)]="firstSystem">
-                            <option value="Newtons">Newtons</option>
-                            <option value="Kilonewtons">Kilonewtons</option>
-                            <option value="Gram-force">Gram-force</option>
-                            <option value="Kilogram-force">Kilogram-force</option>
+                            <option value="Bel">Bel</option>
+                            <option value="Decibel">Decibel</option>
+                            <option value="Neper">Neper</option>
                         </select>
                     </div>
-                    <div class="inputForce">
-                        <label><strong> Second unit of force: </strong></label>
+                    <div class="inputSound">
+                        <label><strong> Second unit of sound: </strong></label>
                     </div>
-                    <div class="inputForce">
+                    <div class="inputSound">
                         <select class="w-full inputBorder" name="toQuantity" id="toQuantity" [(ngModel)]="secondSystem">
-                            <option value="Newtons">Newtons</option>
-                            <option value="Kilonewtons">Kilonewtons</option>
-                            <option value="Gram-force">Gram-force</option>
-                            <option value="Kilogram-force">Kilogram-force</option>
+                            <option value="Bel">Bel</option>
+                            <option value="Decibel">Decibel</option>
+                            <option value="Neper">Neper</option>
                         </select>
                     </div>
                     <br>
                     <div>
-                        <div class="inputForce">
-                            <label><strong>Force</strong></label>
+                        <div class="inputSound">
+                            <label><strong>Sound</strong></label>
                         </div>
-                        <div class="inputForce">
+                        <div class="inputSound">
                             <input class="w-full inputBorder" [(ngModel)]="firstValue">
                         </div>
-                        <div class="inputForce">
+                        <div class="inputSound">
                             <strong>{{firstSystem}}</strong>
                         </div>
                     </div>
                     <div>
-                        <div class="inputForce">
-                            <label><strong>Force</strong></label>
+                        <div class="inputSound">
+                            <label><strong>Sound</strong></label>
                         </div>
-                        <div class="inputForce">
+                        <div class="inputSound">
                             <input class="w-full inputBorder" readonly [(ngModel)]="secondValue">
                         </div>
-                        <div class="inputForce">
+                        <div class="inputSound">
                             <strong>{{secondSystem}}</strong>
                         </div>
                     </div>
                     <br>
                     <div>
-                        <div class="inputForce">
+                        <div class="inputSound">
                             <label><strong>Conversion rate: </strong></label>
                         </div>
-                        <div class="inputForce">
+                        <div class="inputSound">
                             <input class="w-full inputBorder" readonly [(ngModel)]="displayConversionRate">
                         </div>
                     </div>
@@ -78,28 +77,31 @@
                 <div>
                     <div>
                         <span>
-                            <button (click)="forceConversion()"
-                            [class.buttonForceBusiness]="themeName === 'business'"
-                            [class.buttonForceLight]="themeName === 'light'"
-                            [class.buttonForceDark]="themeName === 'dark'"
+                            <button (click)="soundConversion()"
+                            [class.buttonSoundBusiness]="themeName === 'business'"
+                            [class.buttonSoundLight]="themeName === 'light'"
+                            [class.buttonSoundDark]="themeName === 'dark'"
                             [class.button-base]="themeName === 'business' || themeName === 'light' || themeName === 'dark'">
-                                <strong>Go</strong>
+                                <strong>
+                                    Go
+                                </strong>
                             </button>
-                            <button (click)="clearForceClicked()"
+                            <button (click)="soundConversion()"
                             [class.buttonClearBusiness]="themeName === 'business'"
                             [class.buttonClearLight]="themeName === 'light'"
                             [class.buttonClearDark]="themeName === 'dark'"
                             [class.button-base]="themeName === 'business' || themeName === 'light' || themeName === 'dark'">
-                                <strong>Clear</strong>
+                                <strong>
+                                    Clear
+                                </strong>
                             </button>
                         </span>
                     </div>
                     <br>
-                    <br>
-                    <div *ngIf="showForceKey">
+                    <div *ngIf="showSoundKey">
                         <div class="margin">
                             <span class="icon">
-                                <app-icon-displayer [iconArray]="displayForce" [iconName]="iconName" [iconValue]="forceValue" [iconUnit]="forceUnit" [iconFirstAddition]="iconFirstAddition" ></app-icon-displayer>
+                                <app-icon-displayer [iconArray]="displayIcon" [iconName]="iconName" [iconValue]="iconValue" [iconUnit]="iconUnit" [iconFirstAddition]="iconFirstAddition"></app-icon-displayer>
                             </span>
                         </div>
                     </div>
@@ -107,4 +109,5 @@
             </div>
         </mat-expansion-panel>
     </mat-accordion>
+
 </div>

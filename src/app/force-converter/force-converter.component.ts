@@ -19,6 +19,7 @@ export class ForceConverterComponent {
   firstValue: number = 0;
   secondValue: number = 0;
   displayConversionRate: number = 0;
+  displayIconConversionRate: number = 0;
   showForceKey: boolean = false;
   iconName: string = 'fa-solid fa-jedi';
   forceIconWeak: string = 'fa-solid fa-jedi';
@@ -37,6 +38,8 @@ export class ForceConverterComponent {
   iconFirstAdditionStrong: number = 10;
   displayForce: number[] = [];
   forceValue: number = 0;
+  forceUnit: string = '';
+  iconFirstAddition: number = 0;
 
 
   fromQuantity: string[] = [
@@ -52,18 +55,20 @@ export class ForceConverterComponent {
     'Kilogram-force'
   ];
 
-  public newtonsToKilonewtons: number = 0;
-  public newtonsToGramforce: number = 0;
-  public newtonsToKilogramForce: number = 0;
-  public kilogramForceToNewtons: number = 0;
-  public kilogramForceToGramForce: number = 0;
-  public kilogramForceToKiloNewtons: number = 0;
-  public gramForceToNewtons: number = 0;
-  public gramForceToKilonewtons: number = 0;
-  public gramForceToKilogramForce: number = 0;
-  public kilonewtonsToNewtons: number = 0;
-  public kilonewtonsToGramForce: number = 0;
-  public kilonewtonsToKilogramForce: number = 0;
+  public newtonsToKilonewtons: number = 1000;
+  public newtonsToGramforce: number = 0.00980665;
+  public newtonsToKilogramForce: number = 9.80665;
+  public kilogramForceToNewtons: number = 0.1019716213;
+  public kilogramForceToGramForce: number = 0.001;
+  public kilogramForceToKiloNewtons: number = 101.9716213;
+  public gramForceToNewtons: number = 101.9716213;
+  public gramForceToKilonewtons: number = 101971.6213;
+  public gramForceToKilogramForce: number = 1000;
+  public kilonewtonsToNewtons: number = 0.001;
+  public kilonewtonsToGramForce: number = 0.0000098067;
+  public kilonewtonsToKilogramForce: number = 0.00980665;
+  public newtonsToWeakIcon: number = 10;
+  public kilonewtonsToStrongIcon: number = 100;
 
   constructor(
     public themeService: ThemeService,
@@ -84,7 +89,7 @@ export class ForceConverterComponent {
     ).subscribe();
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy(): void { 
     this.destroyed$.next(this.destroyed$);
     this.destroyed$.complete();
 }
@@ -122,14 +127,17 @@ export class ForceConverterComponent {
             }
             case 'Kilonewtons': {
               this.displayConversionRate = this.convertForce(this.newtonsToKilonewtons);
+              this.displayIconConversionRate = this.convertToWeakIcon(this.newtonsToWeakIcon);
               break;
             }
             case 'Gram-force': {
               this.displayConversionRate = this.convertForce(this.newtonsToGramforce);
+              this.displayIconConversionRate = this.convertToWeakIcon(this.newtonsToWeakIcon);
               break;
             }
             case 'Kilogram-force': {
               this.displayConversionRate = this.convertForce(this.newtonsToKilogramForce);
+              this.displayIconConversionRate = this.convertToWeakIcon(this.newtonsToWeakIcon);
               break;
             }
           }
@@ -139,6 +147,7 @@ export class ForceConverterComponent {
           switch(this.secondSystem){
             case 'Newtons': {
               this.displayConversionRate = this.convertForce(this.kilonewtonsToNewtons);
+              this.displayIconConversionRate = this.convertToWeakIcon(this.newtonsToWeakIcon);
               break;
             }
             case 'Kilonewtons': {
@@ -147,10 +156,12 @@ export class ForceConverterComponent {
             }
             case 'Gram-force': {
               this.displayConversionRate = this.convertForce(this.kilonewtonsToGramForce);
+              this.displayIconConversionRate = this.convertToWeakIcon(this.newtonsToWeakIcon);
               break;
             }
             case 'Kilogram-force': {
               this.displayConversionRate = this.convertForce(this.kilonewtonsToKilogramForce);
+              this.displayIconConversionRate = this.convertToWeakIcon(this.newtonsToWeakIcon);
               break;
             }
           }
@@ -160,10 +171,12 @@ export class ForceConverterComponent {
           switch(this.secondSystem){
             case 'Newtons': {
               this.displayConversionRate = this.convertForce(this.gramForceToNewtons);
+              this.displayIconConversionRate = this.convertToWeakIcon(this.newtonsToWeakIcon);
               break;
             }
             case 'Kilonewtons': {
               this.displayConversionRate = this.convertForce(this.gramForceToKilonewtons);
+              this.displayIconConversionRate = this.convertToWeakIcon(this.newtonsToWeakIcon);
               break;
             }
             case 'Gram-force': {
@@ -172,6 +185,7 @@ export class ForceConverterComponent {
             }
             case 'Kilogram-force': {
               this.displayConversionRate = this.convertForce(this.gramForceToKilogramForce);
+              this.displayIconConversionRate = this.convertToWeakIcon(this.newtonsToWeakIcon);
               break;
             }
           }
@@ -181,14 +195,17 @@ export class ForceConverterComponent {
           switch(this.secondSystem){
             case 'Newtons': {
               this.displayConversionRate = this.convertForce(this.kilogramForceToNewtons);
+              this.displayIconConversionRate = this.convertToWeakIcon(this.newtonsToWeakIcon);
               break;
             }
             case 'Kilonewtons': {
               this.displayConversionRate = this.convertForce(this.kilogramForceToKiloNewtons);
+              this.displayIconConversionRate = this.convertToWeakIcon(this.newtonsToWeakIcon);
               break;
             }
             case 'Gram-force': {
               this.displayConversionRate = this.convertForce(this.kilogramForceToGramForce);
+              this.displayIconConversionRate = this.convertToWeakIcon(this.newtonsToWeakIcon);
               break;
             }
             case 'Kilogram-force': {
@@ -210,14 +227,17 @@ export class ForceConverterComponent {
             }
             case 'Kilonewtons': {
               this.displayConversionRate = this.convertForce(this.newtonsToKilonewtons);
+              this.displayIconConversionRate = this.convertToStrongIcon(this.kilonewtonsToStrongIcon);
               break;
             }
             case 'Gram-force': {
               this.displayConversionRate = this.convertForce(this.newtonsToGramforce);
+              this.displayIconConversionRate = this.convertToStrongIcon(this.kilonewtonsToStrongIcon);
               break;
             }
             case 'Kilogram-force': {
               this.displayConversionRate = this.convertForce(this.newtonsToKilogramForce);
+              this.displayIconConversionRate = this.convertToStrongIcon(this.kilonewtonsToStrongIcon);
               break;
             }
           }
@@ -227,6 +247,7 @@ export class ForceConverterComponent {
           switch(this.secondSystem){
             case 'Newtons': {
               this.displayConversionRate = this.convertForce(this.kilonewtonsToNewtons);
+              this.displayIconConversionRate = this.convertToStrongIcon(this.kilonewtonsToStrongIcon);
               break;
             }
             case 'Kilonewtons': {
@@ -235,10 +256,12 @@ export class ForceConverterComponent {
             }
             case 'Gram-force': {
               this.displayConversionRate = this.convertForce(this.kilonewtonsToGramForce);
+              this.displayIconConversionRate = this.convertToStrongIcon(this.kilonewtonsToStrongIcon);
               break;
             }
             case 'Kilogram-force': {
               this.displayConversionRate = this.convertForce(this.kilonewtonsToKilogramForce);
+              this.displayIconConversionRate = this.convertToStrongIcon(this.kilonewtonsToStrongIcon);
               break;
             }
           }
@@ -248,10 +271,12 @@ export class ForceConverterComponent {
           switch(this.secondSystem){
             case 'Newtons': {
               this.displayConversionRate = this.convertForce(this.gramForceToNewtons);
+              this.displayIconConversionRate = this.convertToStrongIcon(this.kilonewtonsToStrongIcon);
               break;
             }
             case 'Kilonewtons': {
               this.displayConversionRate = this.convertForce(this.gramForceToKilonewtons);
+              this.displayIconConversionRate = this.convertToStrongIcon(this.kilonewtonsToStrongIcon);
               break;
             }
             case 'Gram-force': {
@@ -260,6 +285,7 @@ export class ForceConverterComponent {
             }
             case 'Kilogram-force': {
               this.displayConversionRate = this.convertForce(this.gramForceToKilogramForce);
+              this.displayIconConversionRate = this.convertToStrongIcon(this.kilonewtonsToStrongIcon);
               break;
             }
           }
@@ -269,14 +295,17 @@ export class ForceConverterComponent {
           switch(this.secondSystem){
             case 'Newtons': {
               this.displayConversionRate = this.convertForce(this.kilogramForceToNewtons);
+              this.displayIconConversionRate = this.convertToStrongIcon(this.kilonewtonsToStrongIcon);
               break;
             }
             case 'Kilonewtons': {
               this.displayConversionRate = this.convertForce(this.kilogramForceToKiloNewtons);
+              this.displayIconConversionRate = this.convertToStrongIcon(this.kilonewtonsToStrongIcon);
               break;
             }
             case 'Gram-force': {
               this.displayConversionRate = this.convertForce(this.kilogramForceToGramForce);
+              this.displayIconConversionRate = this.convertToStrongIcon(this.kilonewtonsToStrongIcon);
               break;
             }
             case 'Kilogram-force': {
@@ -306,6 +335,8 @@ export class ForceConverterComponent {
     };
     this.iconName = this.forceIconWeak;
     this.iconValueWeak = 0;
+    this.forceValue = this.iconValueWeak;
+    this.iconFirstAddition = this.iconFirstAdditionWeak;
     return conversionRate;
   }
 

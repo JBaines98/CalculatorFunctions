@@ -35,6 +35,7 @@ import { DataConverterComponent } from './data-converter/data-converter.componen
 import { ElectricCurrentConverterComponent } from './electric-current-converter/electric-current-converter.component';
 import { AreaConverterComponent } from './area-converter/area-converter.component';
 import { ForceConverterComponent } from './force-converter/force-converter.component';
+import { SoundConverterComponent } from './sound-converter/sound-converter.component';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { ForceConverterComponent } from './force-converter/force-converter.compo
     DataConverterComponent,
     ElectricCurrentConverterComponent,
     AreaConverterComponent,
-    ForceConverterComponent
+    ForceConverterComponent,
+    SoundConverterComponent
 
   ],
   imports: [
